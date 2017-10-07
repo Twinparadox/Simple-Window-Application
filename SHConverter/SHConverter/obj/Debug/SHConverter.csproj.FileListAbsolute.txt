@@ -1,0 +1,9 @@
+C:\Users\wonwoo\Source\Repos\Project\SHConverter\SHConverter\bin\Debug\SHConverter.exe.config
+C:\Users\wonwoo\Source\Repos\Project\SHConverter\SHConverter\bin\Debug\SHConverter.exe
+C:\Users\wonwoo\Source\Repos\Project\SHConverter\SHConverter\bin\Debug\SHConverter.pdb
+C:\Users\wonwoo\Source\Repos\Project\SHConverter\SHConverter\obj\Debug\SHConverter.csprojResolveAssemblyReference.cache
+C:\Users\wonwoo\Source\Repos\Project\SHConverter\SHConverter\obj\Debug\SHConverter.SHConverter.resources
+C:\Users\wonwoo\Source\Repos\Project\SHConverter\SHConverter\obj\Debug\SHConverter.Properties.Resources.resources
+C:\Users\wonwoo\Source\Repos\Project\SHConverter\SHConverter\obj\Debug\SHConverter.csproj.GenerateResource.Cache
+C:\Users\wonwoo\Source\Repos\Project\SHConverter\SHConverter\obj\Debug\SHConverter.exe
+C:\Users\wonwoo\Source\Repos\Project\SHConverter\SHConverter\obj\Debug\SHConverter.pdb
