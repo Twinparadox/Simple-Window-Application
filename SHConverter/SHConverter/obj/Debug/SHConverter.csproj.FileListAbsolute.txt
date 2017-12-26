@@ -7,3 +7,13 @@ C:\Users\wonwoo\Source\Repos\Project\SHConverter\SHConverter\obj\Debug\SHConvert
 C:\Users\wonwoo\Source\Repos\Project\SHConverter\SHConverter\obj\Debug\SHConverter.csproj.GenerateResource.Cache
 C:\Users\wonwoo\Source\Repos\Project\SHConverter\SHConverter\obj\Debug\SHConverter.exe
 C:\Users\wonwoo\Source\Repos\Project\SHConverter\SHConverter\obj\Debug\SHConverter.pdb
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\bin\Debug\SHConverter.exe.config
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\bin\Debug\SHConverter.exe
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\bin\Debug\SHConverter.pdb
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\obj\Debug\SHConverter.csprojResolveAssemblyReference.cache
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\obj\Debug\SHConverter.SHConverter.resources
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\obj\Debug\SHConverter.Properties.Resources.resources
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\obj\Debug\SHConverter.csproj.GenerateResource.Cache
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\obj\Debug\SHConverter.csproj.CoreCompileInputs.cache
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\obj\Debug\SHConverter.exe
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\obj\Debug\SHConverter.pdb

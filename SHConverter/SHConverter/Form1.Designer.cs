@@ -96,6 +96,7 @@
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.btnConvert);
             this.Controls.Add(this.txtSource);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SHConverter";
             this.Text = "SHConverter";

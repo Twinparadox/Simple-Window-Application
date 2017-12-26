@@ -15,3 +15,13 @@ D:\Source\Repos\Project\SHConverter\SHConverter\obj\Release\SHConverter.Properti
 D:\Source\Repos\Project\SHConverter\SHConverter\obj\Release\SHConverter.csproj.GenerateResource.Cache
 D:\Source\Repos\Project\SHConverter\SHConverter\obj\Release\SHConverter.exe
 D:\Source\Repos\Project\SHConverter\SHConverter\obj\Release\SHConverter.pdb
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\bin\Release\SHConverter.exe.config
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\bin\Release\SHConverter.exe
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\bin\Release\SHConverter.pdb
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\obj\Release\SHConverter.csprojResolveAssemblyReference.cache
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\obj\Release\SHConverter.SHConverter.resources
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\obj\Release\SHConverter.Properties.Resources.resources
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\obj\Release\SHConverter.csproj.GenerateResource.Cache
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\obj\Release\SHConverter.csproj.CoreCompileInputs.cache
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\obj\Release\SHConverter.exe
+D:\문서\Source\Repos\Simple-Window-Application\SHConverter\SHConverter\obj\Release\SHConverter.pdb

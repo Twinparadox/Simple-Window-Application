@@ -35,11 +35,16 @@ namespace SHConverter
         {
             if (this.boxList.Text.Equals(""))
             {
-                MessageBox.Show("언어를 선택해주세요.");
+                MessageBox.Show("언어를 입력해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
             {
+                if (this.txtSource.Text == "")
+                {
+                    MessageBox.Show("코드를 입력해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 source = this.txtSource.Text;
                 source = source.Replace("<", "&lt;");
                 source = source.Replace(">", "&gt;");
@@ -56,7 +61,14 @@ namespace SHConverter
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(this.txtResult.Text);
+            try
+            {
+                Clipboard.SetText(this.txtResult.Text);
+            }
+            catch
+            {
+                MessageBox.Show("복사할 내용이 없습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
