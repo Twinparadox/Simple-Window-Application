@@ -10,10 +10,11 @@ using System.Windows.Forms;
 using System.IO;
 using System.Timers;
 using System.Runtime.InteropServices;
+using LIbraryExample.Tools;
 
 namespace TPWord
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         /* 저장 경로 */
         static string saveFolder = @"C:\TPWord";
@@ -27,6 +28,9 @@ namespace TPWord
         static int MinSec = 60;
         static int Seco = 1000;
 
+        /* 로그 매니저 */
+        LogManager log = new LogManager();
+
         /* 윈도우 최상위 */
         [DllImport("user32.dll")]
         private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
@@ -39,47 +43,87 @@ namespace TPWord
         static bool isStart = false;
 
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             this.trayIcon.Visible = false;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             /* Check Directory and File */
             if (!Directory.Exists(saveFolder))
             {
-                Directory.CreateDirectory(saveFolder);
+                log.WriteLine("[Make Directory...]");
+                try
+                {
+                    Directory.CreateDirectory(saveFolder);
+                }
+                catch (Exception ex)
+                {
+                    log.WriteLine("Ex:"+ex.ToString());
+                }
             }
             if (!File.Exists(saveEnPath))
             {
-                File.CreateText(saveEnPath);
+                log.WriteLine("[Make saveEnPath...]");
+                try
+                {
+                    File.CreateText(saveEnPath);
+                }
+                catch (Exception ex)
+                {
+                    log.WriteLine("Ex:" + ex.ToString());
+                }
             }
             if (!File.Exists(saveKrPath))
             {
-                File.CreateText(saveKrPath);
+                log.WriteLine("[Make saveKrPath...]");
+                try
+                {
+                    File.CreateText(saveKrPath);
+                }
+                catch (Exception ex)
+                {
+                    log.WriteLine("Ex:" + ex.ToString());
+                }
             }
             if (!File.Exists(saveCountPath))
             {
-                File.CreateText(saveCountPath);
+                log.WriteLine("[Make saveCountPath...]");
+                try
+                {
+                    File.CreateText(saveCountPath);
+                }
+                catch (Exception ex)
+                {
+                    log.WriteLine("Ex:" + ex.ToString());
+                }
             }
             if (!File.Exists(saveSettings))
             {
-                File.CreateText(saveSettings);
+                log.WriteLine("[Make saveSettings...]");
+                try
+                {
+                    File.CreateText(saveSettings);
+                }
+                catch (Exception ex)
+                {
+                    log.WriteLine("Ex:" + ex.ToString());
+                }
             }
             InitSetting();
         }
 
         private void btnAddWord_Click(object sender, EventArgs e)
         {
-            Form2 frm2 = new Form2();
-            frm2.ShowDialog();
+            StartForm startfrm = new StartForm();
+            startfrm.ShowDialog();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            System.Windows.Forms.Application.Exit();
         }
 
         private void btnSetting_Click(object sender, EventArgs e)
@@ -92,6 +136,15 @@ namespace TPWord
         private void btnStart_Click(object sender, EventArgs e)
         {
             // Read Settings
+            log.WriteLine("[Read Settings...]");
+            try
+            {
+            }
+            catch (Exception ex)
+            {
+                log.WriteLine("Ex:" + ex.ToString());
+            }
+
             string[] Setting = File.ReadAllLines(saveSettings, Encoding.GetEncoding("utf-8"));
 
             // integer type transform

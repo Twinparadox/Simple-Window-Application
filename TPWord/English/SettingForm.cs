@@ -93,9 +93,14 @@ namespace TPWord
                 /* Initialize Setting */
                 txtbxFrequency.Text = strMin;
                 rbtnSoundOn.Checked = true;
-                File.WriteAllText(saveSettings, strMin + "\r\n", Encoding.UTF8);
-                File.AppendAllText(saveSettings, alarm + "\r\n", Encoding.UTF8);
-                File.AppendAllText(saveSettings, currentSize + "\r\n", Encoding.UTF8);
+                try
+                {
+                    File.WriteAllText(saveSettings, strMin + "\r\n", Encoding.UTF8);
+                    File.AppendAllText(saveSettings, alarm + "\r\n", Encoding.UTF8);
+                    File.AppendAllText(saveSettings, currentSize + "\r\n", Encoding.UTF8);
+                }
+                catch (Exception ex)
+                { }
             }
         }
 
@@ -103,8 +108,13 @@ namespace TPWord
         {
             if(MessageBox.Show("입력하신 단어가 모두 삭제됩니다.\r계속하시겠습니까?","확인",MessageBoxButtons.YesNo)==DialogResult.Yes)
             {
-                File.CreateText(saveEnPath);
-                File.CreateText(saveKrPath);
+                try
+                {
+                    File.CreateText(saveEnPath);
+                    File.CreateText(saveKrPath);
+                }
+                catch (Exception ex)
+                { }
             }
         }
     }

@@ -11,7 +11,7 @@ using System.IO;
 
 namespace TPWord
 {
-    public partial class Form2 : Form
+    public partial class StartForm : Form
     {
         /* 저장 경로 */
         static string saveEnPath = @"C:\TPWord\EWORD.txt";
@@ -28,12 +28,12 @@ namespace TPWord
         /* is already? */
         private bool isAlready;
 
-        public Form2()
+        public StartForm()
         {
             InitializeComponent();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void StartForm_Load(object sender, EventArgs e)
         {
             txtbxEnglishWord.Select();
         }
@@ -62,8 +62,13 @@ namespace TPWord
                 }
                 else
                 {
-                    File.AppendAllText(saveEnPath, enWord + count + "\r\n", Encoding.UTF8);
-                    File.AppendAllText(saveKrPath, koWord + "\r\n", Encoding.UTF8);
+                    try
+                    {
+                        File.AppendAllText(saveEnPath, enWord + count + "\r\n", Encoding.UTF8);
+                        File.AppendAllText(saveKrPath, koWord + "\r\n", Encoding.UTF8);
+                    }
+                    catch (Exception ex)
+                    { }
                 }
                 this.txtbxKoreanWord.Text = "";
                 this.txtbxEnglishWord.Text = "";
@@ -72,12 +77,17 @@ namespace TPWord
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            int currentSize = File.ReadLines(saveEnPath).Count();
-            string[] Setting = File.ReadAllLines(saveSettings);
+            try
+            {
+                int currentSize = File.ReadLines(saveEnPath).Count();
+                string[] Setting = File.ReadAllLines(saveSettings);
 
-            File.WriteAllText(saveSettings, Setting[0] + "\r\n", Encoding.UTF8);
-            File.AppendAllText(saveSettings, Setting[1] + "\r\n", Encoding.UTF8);
-            File.AppendAllText(saveSettings, currentSize + "\r\n", Encoding.UTF8);
+                File.WriteAllText(saveSettings, Setting[0] + "\r\n", Encoding.UTF8);
+                File.AppendAllText(saveSettings, Setting[1] + "\r\n", Encoding.UTF8);
+                File.AppendAllText(saveSettings, currentSize + "\r\n", Encoding.UTF8);
+            }
+            catch (Exception ex)
+            { }
             this.Close();
         }
     }
