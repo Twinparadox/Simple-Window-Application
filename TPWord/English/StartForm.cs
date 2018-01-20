@@ -40,14 +40,23 @@ namespace TPWord
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string[] enText = File.ReadAllLines(saveEnPath, Encoding.GetEncoding("utf-8"));
-            string[] koText = File.ReadAllLines(saveKrPath, Encoding.GetEncoding("utf-8"));
+            MainForm.log.WriteLine("[Read txt Files...]");
+            try
+            {
+                string[] enText = File.ReadAllLines(saveEnPath, Encoding.GetEncoding("utf-8"));
+                string[] koText = File.ReadAllLines(saveKrPath, Encoding.GetEncoding("utf-8"));
+                lineCount = File.ReadLines(saveEnPath).Count();
+            }
+            catch (Exception ex)
+            {
+                MainForm.log.WriteLine("Ex:" + ex.ToString());
+            }
+            
             isAlready = false;
             txtbxEnglishWord.Focus();
             string enWord = this.txtbxEnglishWord.Text;
             string koWord = this.txtbxKoreanWord.Text;
             string count = ",0,0";
-            lineCount = File.ReadLines(saveEnPath).Count();
 
             if (enWord != "" && koWord != "")
             {
@@ -62,13 +71,16 @@ namespace TPWord
                 }
                 else
                 {
+                    MainForm.log.WriteLine("[Append txt Files...]");
                     try
                     {
                         File.AppendAllText(saveEnPath, enWord + count + "\r\n", Encoding.UTF8);
                         File.AppendAllText(saveKrPath, koWord + "\r\n", Encoding.UTF8);
                     }
                     catch (Exception ex)
-                    { }
+                    {
+                        MainForm.log.WriteLine("Ex:" + ex.ToString());
+                    }
                 }
                 this.txtbxKoreanWord.Text = "";
                 this.txtbxEnglishWord.Text = "";
@@ -77,6 +89,7 @@ namespace TPWord
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            MainForm.log.WriteLine("[StartForm Close...]");
             try
             {
                 int currentSize = File.ReadLines(saveEnPath).Count();
@@ -87,7 +100,9 @@ namespace TPWord
                 File.AppendAllText(saveSettings, currentSize + "\r\n", Encoding.UTF8);
             }
             catch (Exception ex)
-            { }
+            {
+                MainForm.log.WriteLine("Ex:" + ex.ToString());
+            }
             this.Close();
         }
     }

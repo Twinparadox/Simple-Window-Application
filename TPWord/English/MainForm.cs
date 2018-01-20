@@ -29,7 +29,7 @@ namespace TPWord
         static int Seco = 1000;
 
         /* 로그 매니저 */
-        LogManager log = new LogManager();
+        public static LogManager log = new LogManager();
 
         /* 윈도우 최상위 */
         [DllImport("user32.dll")]
@@ -187,16 +187,32 @@ namespace TPWord
             // User Setting
             if (Setting.Length != 0)
             {
-                File.WriteAllText(saveSettings, Setting[0] + "\r\n", Encoding.UTF8);
-                File.AppendAllText(saveSettings, Setting[1] + "\r\n", Encoding.UTF8);
-                File.AppendAllText(saveSettings, currentSize + "\r\n", Encoding.UTF8);
+                log.WriteLine("[Initialize to User Settings...]");
+                try
+                {
+                    File.WriteAllText(saveSettings, Setting[0] + "\r\n", Encoding.UTF8);
+                    File.AppendAllText(saveSettings, Setting[1] + "\r\n", Encoding.UTF8);
+                    File.AppendAllText(saveSettings, currentSize + "\r\n", Encoding.UTF8);
+                }
+                catch (Exception ex)
+                {
+                    log.WriteLine("Ex:" + ex.ToString());
+                }
             }
             // Basic Setting
             else
             {
-                File.WriteAllText(saveSettings, "5\r\n", Encoding.UTF8);
-                File.AppendAllText(saveSettings, "AON\r\n", Encoding.UTF8);
-                File.AppendAllText(saveSettings, "0\r\n", Encoding.UTF8);
+                log.WriteLine("[Initailze to Basic Settings...]");
+                try
+                {
+                    File.WriteAllText(saveSettings, "5\r\n", Encoding.UTF8);
+                    File.AppendAllText(saveSettings, "AON\r\n", Encoding.UTF8);
+                    File.AppendAllText(saveSettings, "0\r\n", Encoding.UTF8);
+                }
+                catch(Exception ex)
+                {
+                    log.WriteLine("Ex:" + ex.ToString());
+                }
             }
         }
 

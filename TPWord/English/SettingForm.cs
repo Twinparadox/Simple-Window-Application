@@ -88,6 +88,7 @@ namespace TPWord
         {
             if(MessageBox.Show("모든 설정이 초기화 됩니다.\r계속하시겠습니까?","확인",MessageBoxButtons.YesNo)==DialogResult.Yes)
             {
+                MainForm.log.WriteLine("[Init All Settings...]");
                 int currentSize = File.ReadLines(saveEnPath).Count();
 
                 /* Initialize Setting */
@@ -100,7 +101,9 @@ namespace TPWord
                     File.AppendAllText(saveSettings, currentSize + "\r\n", Encoding.UTF8);
                 }
                 catch (Exception ex)
-                { }
+                {
+                    MainForm.log.WriteLine("Ex:" + ex.ToString());
+                }
             }
         }
 
@@ -108,13 +111,16 @@ namespace TPWord
         {
             if(MessageBox.Show("입력하신 단어가 모두 삭제됩니다.\r계속하시겠습니까?","확인",MessageBoxButtons.YesNo)==DialogResult.Yes)
             {
+                MainForm.log.WriteLine("[Clear Word Files...]]");
                 try
                 {
                     File.CreateText(saveEnPath);
                     File.CreateText(saveKrPath);
                 }
                 catch (Exception ex)
-                { }
+                {
+                    MainForm.log.WriteLine("Ex:" + ex.ToString());
+                }
             }
         }
     }
