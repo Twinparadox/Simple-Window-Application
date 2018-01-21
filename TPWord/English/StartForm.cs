@@ -14,9 +14,9 @@ namespace TPWord
     public partial class StartForm : Form
     {
         /* 저장 경로 */
-        static string saveEnPath = @"C:\TPWord\EWORD.txt";
-        static string saveKrPath = @"C:\TPWord\KWORD.txt";
-        static string saveSettings = @"C:\TPWord\TPSetting.txt";
+        private static string saveEnPath = @"C:\TPWord\EWORD.txt";
+        private static string saveKrPath = @"C:\TPWord\KWORD.txt";
+        private static string saveSettings = @"C:\TPWord\TPSetting.txt";
 
         /* Reading File and make string */
         private string[] enText;
@@ -38,6 +38,7 @@ namespace TPWord
             txtbxEnglishWord.Select();
         }
 
+        #region Button Methods
         private void btnAdd_Click(object sender, EventArgs e)
         {
             MainForm.log.WriteLine("[Read txt Files...]");
@@ -93,17 +94,17 @@ namespace TPWord
             try
             {
                 int currentSize = File.ReadLines(saveEnPath).Count();
-                string[] Setting = File.ReadAllLines(saveSettings);
+                string[] Setting = Properties.Settings.Default.settings.Split(';');
 
-                File.WriteAllText(saveSettings, Setting[0] + "\r\n", Encoding.UTF8);
-                File.AppendAllText(saveSettings, Setting[1] + "\r\n", Encoding.UTF8);
-                File.AppendAllText(saveSettings, currentSize + "\r\n", Encoding.UTF8);
-            }
+                Properties.Settings.Default.settings = Setting[0] + ";" + Setting[1] + ";" + currentSize.ToString();
+                Properties.Settings.Default.Save();
+            }   
             catch (Exception ex)
             {
                 MainForm.log.WriteLine("Ex:" + ex.ToString());
             }
             this.Close();
         }
+        #endregion
     }
 }

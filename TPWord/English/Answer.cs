@@ -15,10 +15,10 @@ namespace TPWord
     public partial class Answer : Form
     {
         /* 저장 경로 */
-        static string saveEnPath = @"C:\TPWord\EWORD.txt";
-        static string saveKrPath = @"C:\TPWord\KWORD.txt";
-        static string saveSettings = @"C:\TPWord\TPSetting.txt";
-        static string saveFolderPath = @"C:\TPWord";
+        private static string saveEnPath = @"C:\TPWord\EWORD.txt";
+        private static string saveKrPath = @"C:\TPWord\KWORD.txt";
+        private static string saveSettings = @"C:\TPWord\TPSetting.txt";
+        private static string saveFolderPath = @"C:\TPWord";
 
         /* Reading File and make string */
         private string[] enText = File.ReadAllLines(saveEnPath, Encoding.GetEncoding("utf-8"));
@@ -76,6 +76,7 @@ namespace TPWord
             }
         }
 
+        #region Button Methods
         private void btnAdmit_Click(object sender, EventArgs e)
         {
             if (this.txtbxKorean.Text == koText[lineRandom])
@@ -105,7 +106,9 @@ namespace TPWord
             isTopMost = false;
             this.Close();
         }
+        #endregion
 
+        #region Other Methods
         public bool DoNotContinue()
         {
             return cont;
@@ -161,5 +164,6 @@ namespace TPWord
             File.Copy(sourceFile, destFile, true);
             File.Delete(tmpPath);
         }
+        #endregion
     }
 }

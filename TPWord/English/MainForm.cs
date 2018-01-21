@@ -17,16 +17,16 @@ namespace TPWord
     public partial class MainForm : Form
     {
         /* 저장 경로 */
-        static string saveFolder = @"C:\TPWord";
-        static string saveEnPath = @"C:\TPWord\EWORD.txt";
-        static string saveKrPath = @"C:\TPWord\KWORD.txt";
-        static string saveCountPath = @"C:\TPWord\COUNT.txt";
-        static string saveSettings = @"C:\TPWord\TPSetting.txt";
+        private static string saveFolder = @"C:\TPWord";
+        private static string saveEnPath = @"C:\TPWord\EWORD.txt";
+        private static string saveKrPath = @"C:\TPWord\KWORD.txt";
+        private static string saveCountPath = @"C:\TPWord\COUNT.txt";
+        private static string saveSettings = @"C:\TPWord\TPSetting.txt";
 
         /* 타이머 */
         System.Timers.Timer timer = new System.Timers.Timer();
-        static int MinSec = 60;
-        static int Seco = 1000;
+        private static int MinSec = 60;
+        private static int Seco = 1000;
 
         /* 로그 매니저 */
         public static LogManager log = new LogManager();
@@ -40,7 +40,7 @@ namespace TPWord
         private static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
 
         /* 상황 체크 변수 */
-        static bool isStart = false;
+        private static bool isStart = false;
 
 
         public MainForm()
@@ -115,6 +115,7 @@ namespace TPWord
             InitSetting();
         }
 
+        #region Button Methods
         private void btnAddWord_Click(object sender, EventArgs e)
         {
             StartForm startfrm = new StartForm();
@@ -135,26 +136,28 @@ namespace TPWord
         // Start Button
         private void btnStart_Click(object sender, EventArgs e)
         {
+            int min, curSize;
+
             // Read Settings
-            log.WriteLine("[Read Settings...]");
+            log.WriteLine("[Read Settings and Start Word Test...]");
             try
             {
+                string[] Setting = Properties.Settings.Default.settings.Split(';');
+
+                // integer type transform
+                min = Int32.Parse(Setting[1]);
+                curSize = Int32.Parse(Setting[2]);
+
+                // Timer
+                timer.Interval = min * Seco * MinSec;
+                timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
             }
             catch (Exception ex)
             {
                 log.WriteLine("Ex:" + ex.ToString());
+                curSize = -1;
             }
-
-            string[] Setting = File.ReadAllLines(saveSettings, Encoding.GetEncoding("utf-8"));
-
-            // integer type transform
-            int min = Int32.Parse(Setting[0]);
-            int curSize = Int32.Parse(Setting[2]);
-
-            // Timer
-            timer.Interval = min * Seco * MinSec;
-            timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
-
+            
             if (curSize > 0)
             {
                 if (isStart == true)
@@ -172,15 +175,23 @@ namespace TPWord
                     timer.Start();
                 }
             }
-            else
+            else if(curSize==0)
             {
                 MessageBox.Show("단어를 추가하세요!", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            /* Read Setting Exception */
+            else
+            {
+            }
         }
+        #endregion
 
+        #region Other Methods
         /* Initialize Setting */
         private void InitSetting()
         {
+            log.WriteLine("[Read File...]");
+            /* need to handle exception */
             int currentSize = File.ReadLines(saveEnPath).Count();
             string[] Setting = File.ReadAllLines(saveSettings);
 
@@ -215,20 +226,7 @@ namespace TPWord
                 }
             }
         }
-
-
-
-        /* form, tray transform */
-        private void VisibleChange(Boolean FormVisible, Boolean TrayIconVisible)
-        {
-            this.Visible = FormVisible;
-            this.trayIcon.Visible = TrayIconVisible;
-        }
-        private void trayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            VisibleChange(true, false);
-        }
-
+        
         /* Answer Form Renewal */
         private void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
@@ -242,5 +240,19 @@ namespace TPWord
                 this.TopLevel = true;
             }
         }
+        #endregion
+
+        #region Tray Transform Methods
+        /* form, tray transform */
+        private void VisibleChange(Boolean FormVisible, Boolean TrayIconVisible)
+        {
+            this.Visible = FormVisible;
+            this.trayIcon.Visible = TrayIconVisible;
+        }
+        private void trayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            VisibleChange(true, false);
+        }
+        #endregion        
     }
 }
