@@ -16,17 +16,15 @@ namespace TPWord
         /* 저장 경로 */
         private static string saveEnPath = @"C:\TPWord\EWORD.txt";
         private static string saveKrPath = @"C:\TPWord\KWORD.txt";
-        private static string saveSettings = @"C:\TPWord\TPSetting.txt";
 
-
-        /* 세팅 */
-        private string[] Setting = File.ReadAllLines(saveSettings, Encoding.GetEncoding("utf-8"));
+        /* 현재세팅 */
+        private string[] curSettings = Properties.Settings.Default.curSettings.Split(';');
 
         /* 초기화 */
-        private string[] options = Properties.Settings.Default.settings.Split(';');
+        private string[] defaultSettings = Properties.Settings.Default.defaultSettings.Split(';');
         private string alarm;
         private string strMin;
-        private string initSize;
+        private int size = Properties.Settings.Default.curSize;
 
         public SettingForm()
         {
@@ -35,9 +33,8 @@ namespace TPWord
 
         private void SettingForm_Load(object sender, EventArgs e)
         {
-            alarm = options[0];
-            strMin = options[1];
-            initSize = options[2];
+            alarm = defaultSettings[0];
+            strMin = defaultSettings[1];
 
             txtbxFrequency.Text = strMin;
             if(alarm=="AON")
@@ -55,7 +52,6 @@ namespace TPWord
         #region Button Methods
         private void btnClose_Click(object sender, EventArgs e)
         {
-            int currentSize = File.ReadLines(saveEnPath).Count();
             strMin = txtbxFrequency.Text;
             if (rbtnSoundOn.Checked == true)
             {
@@ -65,9 +61,7 @@ namespace TPWord
             {
                 alarm = "AOFF";
             }
-            initSize = currentSize.ToString();
-
-            Properties.Settings.Default.settings = alarm + ";" + strMin + ";" + initSize;
+            Properties.Settings.Default.curSettings = alarm + ";" + strMin;
             Properties.Settings.Default.Save();
             this.Close();
         }
@@ -75,19 +69,8 @@ namespace TPWord
         private void btnInitAll_Click(object sender, EventArgs e)
         {
             /* Remake txt file */
-            MainForm.log.WriteLine("[Remake txt Files...]");
-            try
-            {
-                StreamWriter enFile = File.CreateText(saveEnPath);
-                StreamWriter koFile = File.CreateText(saveKrPath);
-                enFile.Close();
-                koFile.Close();
-            }
-            catch(Exception ex)
-            {
-                MainForm.log.WriteLine("Ex:" + ex.ToString());
-            }
             InitializeSetting();
+            InitializeWord();
         }
 
         private void txtbxFrequency_KeyPress(object sender, KeyPressEventArgs e)
@@ -100,27 +83,12 @@ namespace TPWord
 
         private void btnInitSet_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("모든 설정이 초기화 됩니다.\r계속하시겠습니까?","확인",MessageBoxButtons.YesNo)==DialogResult.Yes)
-            {
-                InitializeSetting();
-            }
+            InitializeSetting();
         }
 
         private void btnInitWord_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("입력하신 단어가 모두 삭제됩니다.\r계속하시겠습니까?","확인",MessageBoxButtons.YesNo)==DialogResult.Yes)
-            {
-                MainForm.log.WriteLine("[Clear Word Files...]]");
-                try
-                {
-                    File.CreateText(saveEnPath);
-                    File.CreateText(saveKrPath);
-                }
-                catch (Exception ex)
-                {
-                    MainForm.log.WriteLine("Ex:" + ex.ToString());
-                }
-            }
+            InitializeWord();
         }
         #endregion
 
@@ -128,22 +96,42 @@ namespace TPWord
         private void InitializeSetting()
         {
             MainForm.log.WriteLine("[Initialize Settings...]");
-            int currentSize = File.ReadLines(saveEnPath).Count();
 
-            /* Initialize Setting */
-            txtbxFrequency.Text = "5";
-            rbtnSoundOn.Checked = true;
-            try
+            if (MessageBox.Show("모든 설정이 초기화 됩니다.\r계속하시겠습니까?", "확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                alarm = options[0] = "AON";
-                strMin = options[1] = "5";
-                initSize = options[2] = currentSize.ToString();
-                Properties.Settings.Default.settings = alarm + ";" + strMin + ";" + initSize;
-                Properties.Settings.Default.Save();
+                /* Initialize Setting */
+                txtbxFrequency.Text = "5";
+                rbtnSoundOn.Checked = true;
+                try
+                {
+                    Properties.Settings.Default.curSettings = Properties.Settings.Default.defaultSettings;
+                    Properties.Settings.Default.Save();
+                }
+                catch (Exception ex)
+                {
+                    MainForm.log.WriteLine("Ex:" + ex.ToString());
+                }
             }
-            catch (Exception ex)
+        }
+
+        private void InitializeWord()
+        {
+            if (MessageBox.Show("입력하신 단어가 모두 삭제됩니다.\r계속하시겠습니까?", "확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                MainForm.log.WriteLine("Ex:" + ex.ToString());
+                MainForm.log.WriteLine("[Clear Word Files...]]");
+                try
+                {
+                    StreamWriter enFile = File.CreateText(saveEnPath);
+                    StreamWriter koFile = File.CreateText(saveKrPath);
+                    enFile.Close();
+                    koFile.Close();
+
+                    Properties.Settings.Default.curSize = 0;
+                }
+                catch (Exception ex)
+                {
+                    MainForm.log.WriteLine("Ex:" + ex.ToString());
+                }
             }
         }
         #endregion

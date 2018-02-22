@@ -21,7 +21,6 @@ namespace TPWord
         private static string saveEnPath = @"C:\TPWord\EWORD.txt";
         private static string saveKrPath = @"C:\TPWord\KWORD.txt";
         private static string saveCountPath = @"C:\TPWord\COUNT.txt";
-        private static string saveSettings = @"C:\TPWord\TPSetting.txt";
 
         /* 타이머 */
         System.Timers.Timer timer = new System.Timers.Timer();
@@ -100,25 +99,12 @@ namespace TPWord
                     log.WriteLine("Ex:" + ex.ToString());
                 }
             }
-            if (!File.Exists(saveSettings))
-            {
-                log.WriteLine("[Make saveSettings...]");
-                try
-                {
-                    File.CreateText(saveSettings);
-                }
-                catch (Exception ex)
-                {
-                    log.WriteLine("Ex:" + ex.ToString());
-                }
-            }
-            InitSetting();
         }
 
         #region Button Methods
         private void btnAddWord_Click(object sender, EventArgs e)
         {
-            StartForm startfrm = new StartForm();
+            AddForm startfrm = new AddForm();
             startfrm.ShowDialog();
         }
 
@@ -142,11 +128,11 @@ namespace TPWord
             log.WriteLine("[Read Settings and Start Word Test...]");
             try
             {
-                string[] Setting = Properties.Settings.Default.settings.Split(';');
+                string[] Setting = Properties.Settings.Default.curSettings.Split(';');
 
                 // integer type transform
                 min = Int32.Parse(Setting[1]);
-                curSize = Int32.Parse(Setting[2]);
+                curSize = Properties.Settings.Default.curSize;
 
                 // Timer
                 timer.Interval = min * Seco * MinSec;
@@ -187,45 +173,6 @@ namespace TPWord
         #endregion
 
         #region Other Methods
-        /* Initialize Setting */
-        private void InitSetting()
-        {
-            log.WriteLine("[Read File...]");
-            /* need to handle exception */
-            int currentSize = File.ReadLines(saveEnPath).Count();
-            string[] Setting = File.ReadAllLines(saveSettings);
-
-            // User Setting
-            if (Setting.Length != 0)
-            {
-                log.WriteLine("[Initialize to User Settings...]");
-                try
-                {
-                    File.WriteAllText(saveSettings, Setting[0] + "\r\n", Encoding.UTF8);
-                    File.AppendAllText(saveSettings, Setting[1] + "\r\n", Encoding.UTF8);
-                    File.AppendAllText(saveSettings, currentSize + "\r\n", Encoding.UTF8);
-                }
-                catch (Exception ex)
-                {
-                    log.WriteLine("Ex:" + ex.ToString());
-                }
-            }
-            // Basic Setting
-            else
-            {
-                log.WriteLine("[Initailze to Basic Settings...]");
-                try
-                {
-                    File.WriteAllText(saveSettings, "5\r\n", Encoding.UTF8);
-                    File.AppendAllText(saveSettings, "AON\r\n", Encoding.UTF8);
-                    File.AppendAllText(saveSettings, "0\r\n", Encoding.UTF8);
-                }
-                catch(Exception ex)
-                {
-                    log.WriteLine("Ex:" + ex.ToString());
-                }
-            }
-        }
         
         /* Answer Form Renewal */
         private void timer_Elapsed(object sender, ElapsedEventArgs e)

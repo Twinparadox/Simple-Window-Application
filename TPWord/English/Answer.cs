@@ -17,13 +17,12 @@ namespace TPWord
         /* 저장 경로 */
         private static string saveEnPath = @"C:\TPWord\EWORD.txt";
         private static string saveKrPath = @"C:\TPWord\KWORD.txt";
-        private static string saveSettings = @"C:\TPWord\TPSetting.txt";
         private static string saveFolderPath = @"C:\TPWord";
 
         /* Reading File and make string */
         private string[] enText = File.ReadAllLines(saveEnPath, Encoding.GetEncoding("utf-8"));
         private string[] koText = File.ReadAllLines(saveKrPath, Encoding.GetEncoding("utf-8"));
-        private string[] Setting = File.ReadAllLines(saveSettings, Encoding.GetEncoding("utf-8"));
+        private string[] Setting = Properties.Settings.Default.curSettings.Split(';');
 
         /* contine? */
         private bool cont;
@@ -46,7 +45,16 @@ namespace TPWord
             isTopMost = false;
             cont = true;
             InitializeComponent();
-            lineCount = File.ReadLines(saveEnPath).Count();
+
+            MainForm.log.WriteLine("[Read saveEnPath.txt...]");
+            try
+            {
+                lineCount = File.ReadLines(saveEnPath).Count();
+            }
+            catch(Exception ex)
+            {
+                MainForm.log.WriteLine("Ex: " + ex.ToString());
+            }
             Random r = new Random();
             lineRandom = r.Next(0, lineCount - 1);
             string[] questionStr = enText[lineRandom].Split(sep);
@@ -69,7 +77,7 @@ namespace TPWord
             }
 
 
-            convertInt();
+            ConvertInt();
             if (Setting[1] == "AON")
             {
                 SystemSounds.Beep.Play();
@@ -81,21 +89,27 @@ namespace TPWord
         {
             if (this.txtbxKorean.Text == koText[lineRandom])
             {
-                correct++;
                 MessageBox.Show("정답입니다!", "정답", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 isTopMost = false;
-                convertStr();
+
+                ConvertInt();
+                CalculateRate(lineRandom, 1);
+                ConvertStr();
                 this.Close();
             }
             else
             {
                 MessageBox.Show("틀렸습니다!", "틀림", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 isTopMost = false;
-                convertStr();
+
                 btnAdmit.Visible = false;
                 this.txtbxKorean.Text = koText[lineRandom];
                 this.txtbxKorean.ReadOnly = true;
                 Delay(2000);
+
+                ConvertInt();
+                CalculateRate(lineRandom, 2);
+                ConvertStr();
                 this.Close();
             }
         }
@@ -129,7 +143,7 @@ namespace TPWord
         }
 
         // 정수 변환 함수
-        private void convertInt()
+        private void ConvertInt()
         {
             string[] correctStr = enText[lineRandom].Split(',');
             correct = Int32.Parse(correctStr[1]);
@@ -138,11 +152,11 @@ namespace TPWord
         }
 
         // 문자열 변환 함수
-        private void convertStr()
+        private void ConvertStr()
         {
             string tmpPath = @"C:\TPWord\tmp.txt";
             string[] questionStr = enText[lineRandom].Split(sep);
-            string correctStr = questionStr[0] + ',' + correct + ',' + question;
+            string correctStr = questionStr[0] + ',' + correct.ToString() + ',' + question.ToString();
             StreamWriter tmpFile = File.CreateText(tmpPath);
             tmpFile.Close();
             string sourceFile = Path.Combine(saveFolderPath, "tmp.txt");
@@ -163,6 +177,19 @@ namespace TPWord
 
             File.Copy(sourceFile, destFile, true);
             File.Delete(tmpPath);
+        }
+
+        // 정답률 체크
+        private void CalculateRate(int line, int ans)
+        {
+            if(ans==1)
+            {
+                correct++;
+            }
+            else
+            {
+            }
+            question++;
         }
         #endregion
     }

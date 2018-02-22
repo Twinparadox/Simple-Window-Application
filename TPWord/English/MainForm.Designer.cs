@@ -85,7 +85,7 @@
             this.lblCopyRight.Name = "lblCopyRight";
             this.lblCopyRight.Size = new System.Drawing.Size(292, 12);
             this.lblCopyRight.TabIndex = 1;
-            this.lblCopyRight.Text = "Copyright(c)2017 Twinparadox All rights reserved. ";
+            this.lblCopyRight.Text = "Copyright(c)2018 Twinparadox All rights reserved. ";
             // 
             // trayIcon
             // 
@@ -94,7 +94,7 @@
             this.trayIcon.Visible = true;
             this.trayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_MouseDoubleClick);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -108,7 +108,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TPWord";
             this.Load += new System.EventHandler(this.MainForm_Load);

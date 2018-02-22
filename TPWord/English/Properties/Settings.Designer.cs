@@ -25,13 +25,37 @@ namespace TPWord.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("AON;5;0")]
-        public string settings {
+        [global::System.Configuration.DefaultSettingValueAttribute("AON;5")]
+        public string curSettings {
             get {
-                return ((string)(this["settings"]));
+                return ((string)(this["curSettings"]));
             }
             set {
-                this["settings"] = value;
+                this["curSettings"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("AON;5")]
+        public string defaultSettings {
+            get {
+                return ((string)(this["defaultSettings"]));
+            }
+            set {
+                this["defaultSettings"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int curSize {
+            get {
+                return ((int)(this["curSize"]));
+            }
+            set {
+                this["curSize"] = value;
             }
         }
     }

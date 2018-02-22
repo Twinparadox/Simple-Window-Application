@@ -11,12 +11,11 @@ using System.IO;
 
 namespace TPWord
 {
-    public partial class StartForm : Form
+    public partial class AddForm : Form
     {
         /* 저장 경로 */
         private static string saveEnPath = @"C:\TPWord\EWORD.txt";
         private static string saveKrPath = @"C:\TPWord\KWORD.txt";
-        private static string saveSettings = @"C:\TPWord\TPSetting.txt";
 
         /* Reading File and make string */
         private string[] enText;
@@ -28,7 +27,7 @@ namespace TPWord
         /* is already? */
         private bool isAlready;
 
-        public StartForm()
+        public AddForm()
         {
             InitializeComponent();
         }
@@ -46,7 +45,7 @@ namespace TPWord
             {
                 string[] enText = File.ReadAllLines(saveEnPath, Encoding.GetEncoding("utf-8"));
                 string[] koText = File.ReadAllLines(saveKrPath, Encoding.GetEncoding("utf-8"));
-                lineCount = File.ReadLines(saveEnPath).Count();
+                lineCount = Properties.Settings.Default.curSize;
             }
             catch (Exception ex)
             {
@@ -94,9 +93,10 @@ namespace TPWord
             try
             {
                 int currentSize = File.ReadLines(saveEnPath).Count();
-                string[] Setting = Properties.Settings.Default.settings.Split(';');
+                string[] Setting = Properties.Settings.Default.curSettings.Split(';');
 
-                Properties.Settings.Default.settings = Setting[0] + ";" + Setting[1] + ";" + currentSize.ToString();
+                Properties.Settings.Default.curSettings = Setting[0] + ";" + Setting[1];
+                Properties.Settings.Default.curSize = lineCount;
                 Properties.Settings.Default.Save();
             }   
             catch (Exception ex)

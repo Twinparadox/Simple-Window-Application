@@ -1,6 +1,6 @@
 ﻿namespace TPWord
 {
-    partial class StartForm
+    partial class AddForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddForm));
             this.lblWord = new System.Windows.Forms.Label();
             this.txtbxEnglishWord = new System.Windows.Forms.TextBox();
             this.txtbxKoreanWord = new System.Windows.Forms.TextBox();
