@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddForm));
             this.lblWord = new System.Windows.Forms.Label();
-            this.txtbxEnglishWord = new System.Windows.Forms.TextBox();
-            this.txtbxKoreanWord = new System.Windows.Forms.TextBox();
+            this.TextBoxEnglishWord = new System.Windows.Forms.TextBox();
+            this.TextBoxKoreanWord = new System.Windows.Forms.TextBox();
             this.lblMeaning = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.ButtonClose = new System.Windows.Forms.Button();
+            this.ButtonAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblWord
@@ -47,19 +47,19 @@
             this.lblWord.TabIndex = 0;
             this.lblWord.Text = "단어";
             // 
-            // txtbxEnglishWord
+            // TextBoxEnglishWord
             // 
-            this.txtbxEnglishWord.Location = new System.Drawing.Point(84, 19);
-            this.txtbxEnglishWord.Name = "txtbxEnglishWord";
-            this.txtbxEnglishWord.Size = new System.Drawing.Size(149, 21);
-            this.txtbxEnglishWord.TabIndex = 1;
+            this.TextBoxEnglishWord.Location = new System.Drawing.Point(84, 19);
+            this.TextBoxEnglishWord.Name = "TextBoxEnglishWord";
+            this.TextBoxEnglishWord.Size = new System.Drawing.Size(149, 21);
+            this.TextBoxEnglishWord.TabIndex = 1;
             // 
-            // txtbxKoreanWord
+            // TextBoxKoreanWord
             // 
-            this.txtbxKoreanWord.Location = new System.Drawing.Point(299, 19);
-            this.txtbxKoreanWord.Name = "txtbxKoreanWord";
-            this.txtbxKoreanWord.Size = new System.Drawing.Size(149, 21);
-            this.txtbxKoreanWord.TabIndex = 1;
+            this.TextBoxKoreanWord.Location = new System.Drawing.Point(299, 19);
+            this.TextBoxKoreanWord.Name = "TextBoxKoreanWord";
+            this.TextBoxKoreanWord.Size = new System.Drawing.Size(149, 21);
+            this.TextBoxKoreanWord.TabIndex = 1;
             // 
             // lblMeaning
             // 
@@ -71,25 +71,25 @@
             this.lblMeaning.TabIndex = 0;
             this.lblMeaning.Text = "뜻";
             // 
-            // btnClose
+            // ButtonClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(332, 58);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(116, 28);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "창 닫기";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.ButtonClose.Location = new System.Drawing.Point(332, 58);
+            this.ButtonClose.Name = "ButtonClose";
+            this.ButtonClose.Size = new System.Drawing.Size(116, 28);
+            this.ButtonClose.TabIndex = 2;
+            this.ButtonClose.Text = "창 닫기";
+            this.ButtonClose.UseVisualStyleBackColor = true;
+            this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
             // 
-            // btnAdd
+            // ButtonAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(210, 58);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(116, 28);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "추가하기";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.ButtonAdd.Location = new System.Drawing.Point(210, 58);
+            this.ButtonAdd.Name = "ButtonAdd";
+            this.ButtonAdd.Size = new System.Drawing.Size(116, 28);
+            this.ButtonAdd.TabIndex = 2;
+            this.ButtonAdd.Text = "추가하기";
+            this.ButtonAdd.UseVisualStyleBackColor = true;
+            this.ButtonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // StartForm
             // 
@@ -97,10 +97,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(484, 107);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.txtbxKoreanWord);
-            this.Controls.Add(this.txtbxEnglishWord);
+            this.Controls.Add(this.ButtonAdd);
+            this.Controls.Add(this.ButtonClose);
+            this.Controls.Add(this.TextBoxKoreanWord);
+            this.Controls.Add(this.TextBoxEnglishWord);
             this.Controls.Add(this.lblMeaning);
             this.Controls.Add(this.lblWord);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -119,10 +119,10 @@
         #endregion
 
         private System.Windows.Forms.Label lblWord;
-        private System.Windows.Forms.TextBox txtbxEnglishWord;
-        private System.Windows.Forms.TextBox txtbxKoreanWord;
+        private System.Windows.Forms.TextBox TextBoxEnglishWord;
+        private System.Windows.Forms.TextBox TextBoxKoreanWord;
         private System.Windows.Forms.Label lblMeaning;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button ButtonClose;
+        private System.Windows.Forms.Button ButtonAdd;
     }
 }

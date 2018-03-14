@@ -36,32 +36,32 @@ namespace TPWord
             alarm = curSettings[0];
             strMin = curSettings[1];
 
-            txtbxFrequency.Text = strMin;
+            TextBoxFrequency.Text = strMin;
             if(alarm=="AON")
             {
-                rbtnSoundOn.Checked = true;
-                rbtnSoundOff.Checked = false;
+                rButtonSoundOn.Checked = true;
+                rButtonSoundOff.Checked = false;
             }
             else
             {
-                rbtnSoundOn.Checked = false;
-                rbtnSoundOff.Checked = true;
+                rButtonSoundOn.Checked = false;
+                rButtonSoundOff.Checked = true;
             }
         }
 
         #region Button Methods
-        private void btnClose_Click(object sender, EventArgs e)
+        private void ButtonClose_Click(object sender, EventArgs e)
         {
             int min;
 
-            if(Int32.TryParse(txtbxFrequency.Text,out min)==false)
+            if(Int32.TryParse(TextBoxFrequency.Text,out min)==false)
             {
                 MessageBox.Show("유효하지 않은 시간입니다.", "확인", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             strMin = min.ToString();
-            if (rbtnSoundOn.Checked == true)
+            if (rButtonSoundOn.Checked == true)
             {
                 alarm = "AON";
             }
@@ -74,7 +74,7 @@ namespace TPWord
             this.Close();
         }
 
-        private void btnInitAll_Click(object sender, EventArgs e)
+        private void ButtonInitAll_Click(object sender, EventArgs e)
         {
             /* Initialize All(Setting, Word) */
             if (MessageBox.Show("설정을 초기화하고 입력한 단어를 모두 삭제합니다.\r계속하시겠습니까?", "확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -84,7 +84,7 @@ namespace TPWord
             }
         }
 
-        private void txtbxFrequency_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxFrequency_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(!(char.IsDigit(e.KeyChar) || e.KeyChar==Convert.ToChar(Keys.Back)))
             {
@@ -92,7 +92,7 @@ namespace TPWord
             }
         }
 
-        private void btnInitSet_Click(object sender, EventArgs e)
+        private void ButtonInitSet_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("설정이 초기화합니다.\r계속하시겠습니까?", "확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -100,7 +100,7 @@ namespace TPWord
             }
         }
 
-        private void btnInitWord_Click(object sender, EventArgs e)
+        private void ButtonInitWord_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("입력한 단어를 모두 삭제합니다.\r계속하시겠습니까?", "확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -114,8 +114,8 @@ namespace TPWord
         {
             MainForm.log.WriteLine("[Initialize Settings...]");
 
-            txtbxFrequency.Text = "5";
-            rbtnSoundOn.Checked = true;
+            TextBoxFrequency.Text = "5";
+            rButtonSoundOn.Checked = true;
             try
             {
                 Properties.Settings.Default.curSettings = Properties.Settings.Default.defaultSettings;

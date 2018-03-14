@@ -102,25 +102,25 @@ namespace TPWord
         }
 
         #region Button Methods
-        private void btnAddWord_Click(object sender, EventArgs e)
+        private void ButtonAddWord_Click(object sender, EventArgs e)
         {
             AddForm startfrm = new AddForm();
             startfrm.ShowDialog();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void ButtonExit_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
         }
 
-        private void btnSetting_Click(object sender, EventArgs e)
+        private void ButtonSetting_Click(object sender, EventArgs e)
         {
             SettingForm setfrm = new SettingForm();
             setfrm.ShowDialog();
         }
 
         // Start Button
-        private void btnStart_Click(object sender, EventArgs e)
+        private void ButtonStart_Click(object sender, EventArgs e)
         {
             int min, curSize;
 
@@ -136,7 +136,7 @@ namespace TPWord
 
                 // Timer
                 timer.Interval = min * Seco * MinSec;
-                timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
+                timer.Elapsed += new ElapsedEventHandler(TimerElapsed);
             }
             catch (Exception ex)
             {
@@ -149,14 +149,14 @@ namespace TPWord
                 if (isStart == true)
                 {
                     isStart = false;
-                    btnStart.Text = "시작하기";
+                    ButtonStart.Text = "시작하기";
                     VisibleChange(true, false);
                     timer.Stop();
                 }
                 else
                 {
                     isStart = true;
-                    btnStart.Text = "중단하기";
+                    ButtonStart.Text = "중단하기";
                     VisibleChange(false, true);
                     timer.Start();
                 }
@@ -175,7 +175,7 @@ namespace TPWord
         #region Other Methods
         
         /* Answer Form Renewal */
-        private void timer_Elapsed(object sender, ElapsedEventArgs e)
+        private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
             Answer ans = new Answer();
             ans.ShowDialog();
@@ -196,7 +196,7 @@ namespace TPWord
             this.Visible = FormVisible;
             this.trayIcon.Visible = TrayIconVisible;
         }
-        private void trayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void TrayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             VisibleChange(true, false);
         }

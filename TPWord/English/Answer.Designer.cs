@@ -29,59 +29,59 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Answer));
-            this.btnAdmit = new System.Windows.Forms.Button();
-            this.txtbxEnglish = new System.Windows.Forms.TextBox();
-            this.txtbxKorean = new System.Windows.Forms.TextBox();
-            this.btnStop = new System.Windows.Forms.Button();
+            this.ButtonAdmit = new System.Windows.Forms.Button();
+            this.TextBoxEnglish = new System.Windows.Forms.TextBox();
+            this.TextBoxKorean = new System.Windows.Forms.TextBox();
+            this.ButtonStop = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnAdmit
+            // ButtonAdmit
             // 
-            this.btnAdmit.Font = new System.Drawing.Font("굴림", 9F);
-            this.btnAdmit.Location = new System.Drawing.Point(459, 86);
-            this.btnAdmit.Name = "btnAdmit";
-            this.btnAdmit.Size = new System.Drawing.Size(75, 23);
-            this.btnAdmit.TabIndex = 0;
-            this.btnAdmit.Text = "정답제출";
-            this.btnAdmit.UseVisualStyleBackColor = true;
-            this.btnAdmit.Click += new System.EventHandler(this.btnAdmit_Click);
+            this.ButtonAdmit.Font = new System.Drawing.Font("굴림", 9F);
+            this.ButtonAdmit.Location = new System.Drawing.Point(459, 86);
+            this.ButtonAdmit.Name = "ButtonAdmit";
+            this.ButtonAdmit.Size = new System.Drawing.Size(75, 23);
+            this.ButtonAdmit.TabIndex = 0;
+            this.ButtonAdmit.Text = "정답제출";
+            this.ButtonAdmit.UseVisualStyleBackColor = true;
+            this.ButtonAdmit.Click += new System.EventHandler(this.ButtonAdmit_Click);
             // 
-            // txtbxEnglish
+            // TextBoxEnglish
             // 
-            this.txtbxEnglish.Font = new System.Drawing.Font("굴림", 13F);
-            this.txtbxEnglish.Location = new System.Drawing.Point(33, 40);
-            this.txtbxEnglish.Name = "txtbxEnglish";
-            this.txtbxEnglish.ReadOnly = true;
-            this.txtbxEnglish.Size = new System.Drawing.Size(232, 27);
-            this.txtbxEnglish.TabIndex = 1;
+            this.TextBoxEnglish.Font = new System.Drawing.Font("굴림", 13F);
+            this.TextBoxEnglish.Location = new System.Drawing.Point(33, 40);
+            this.TextBoxEnglish.Name = "TextBoxEnglish";
+            this.TextBoxEnglish.ReadOnly = true;
+            this.TextBoxEnglish.Size = new System.Drawing.Size(232, 27);
+            this.TextBoxEnglish.TabIndex = 1;
             // 
-            // txtbxKorean
+            // TextBoxKorean
             // 
-            this.txtbxKorean.Font = new System.Drawing.Font("굴림", 13F);
-            this.txtbxKorean.Location = new System.Drawing.Point(302, 40);
-            this.txtbxKorean.Name = "txtbxKorean";
-            this.txtbxKorean.Size = new System.Drawing.Size(232, 27);
-            this.txtbxKorean.TabIndex = 2;
+            this.TextBoxKorean.Font = new System.Drawing.Font("굴림", 13F);
+            this.TextBoxKorean.Location = new System.Drawing.Point(302, 40);
+            this.TextBoxKorean.Name = "TextBoxKorean";
+            this.TextBoxKorean.Size = new System.Drawing.Size(232, 27);
+            this.TextBoxKorean.TabIndex = 2;
             // 
-            // btnStop
+            // ButtonStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(33, 86);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 23);
-            this.btnStop.TabIndex = 3;
-            this.btnStop.Text = "중단하기";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            this.ButtonStop.Location = new System.Drawing.Point(33, 86);
+            this.ButtonStop.Name = "ButtonStop";
+            this.ButtonStop.Size = new System.Drawing.Size(75, 23);
+            this.ButtonStop.TabIndex = 3;
+            this.ButtonStop.Text = "중단하기";
+            this.ButtonStop.UseVisualStyleBackColor = true;
+            this.ButtonStop.Click += new System.EventHandler(this.ButtonStop_Click);
             // 
             // Answer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(568, 132);
-            this.Controls.Add(this.btnStop);
-            this.Controls.Add(this.txtbxKorean);
-            this.Controls.Add(this.txtbxEnglish);
-            this.Controls.Add(this.btnAdmit);
+            this.Controls.Add(this.ButtonStop);
+            this.Controls.Add(this.TextBoxKorean);
+            this.Controls.Add(this.TextBoxEnglish);
+            this.Controls.Add(this.ButtonAdmit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -98,9 +98,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnAdmit;
-        private System.Windows.Forms.TextBox txtbxEnglish;
-        private System.Windows.Forms.TextBox txtbxKorean;
-        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button ButtonAdmit;
+        private System.Windows.Forms.TextBox TextBoxEnglish;
+        private System.Windows.Forms.TextBox TextBoxKorean;
+        private System.Windows.Forms.Button ButtonStop;
     }
 }

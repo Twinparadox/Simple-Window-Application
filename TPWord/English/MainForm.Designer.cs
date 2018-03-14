@@ -30,53 +30,53 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.btnAddWord = new System.Windows.Forms.Button();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.btnSetting = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.ButtonAddWord = new System.Windows.Forms.Button();
+            this.ButtonStart = new System.Windows.Forms.Button();
+            this.ButtonSetting = new System.Windows.Forms.Button();
+            this.ButtonExit = new System.Windows.Forms.Button();
             this.lblCopyRight = new System.Windows.Forms.Label();
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
-            // btnAddWord
+            // ButtonAddWord
             // 
-            this.btnAddWord.Location = new System.Drawing.Point(87, 24);
-            this.btnAddWord.Name = "btnAddWord";
-            this.btnAddWord.Size = new System.Drawing.Size(145, 43);
-            this.btnAddWord.TabIndex = 0;
-            this.btnAddWord.Text = "단어 추가";
-            this.btnAddWord.UseVisualStyleBackColor = true;
-            this.btnAddWord.Click += new System.EventHandler(this.btnAddWord_Click);
+            this.ButtonAddWord.Location = new System.Drawing.Point(87, 24);
+            this.ButtonAddWord.Name = "ButtonAddWord";
+            this.ButtonAddWord.Size = new System.Drawing.Size(145, 43);
+            this.ButtonAddWord.TabIndex = 0;
+            this.ButtonAddWord.Text = "단어 추가";
+            this.ButtonAddWord.UseVisualStyleBackColor = true;
+            this.ButtonAddWord.Click += new System.EventHandler(this.ButtonAddWord_Click);
             // 
-            // btnStart
+            // ButtonStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(87, 84);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(145, 43);
-            this.btnStart.TabIndex = 0;
-            this.btnStart.Text = "시작하기";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            this.ButtonStart.Location = new System.Drawing.Point(87, 84);
+            this.ButtonStart.Name = "ButtonStart";
+            this.ButtonStart.Size = new System.Drawing.Size(145, 43);
+            this.ButtonStart.TabIndex = 0;
+            this.ButtonStart.Text = "시작하기";
+            this.ButtonStart.UseVisualStyleBackColor = true;
+            this.ButtonStart.Click += new System.EventHandler(this.ButtonStart_Click);
             // 
-            // btnSetting
+            // ButtonSetting
             // 
-            this.btnSetting.Location = new System.Drawing.Point(87, 144);
-            this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(145, 43);
-            this.btnSetting.TabIndex = 0;
-            this.btnSetting.Text = "설정";
-            this.btnSetting.UseVisualStyleBackColor = true;
-            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+            this.ButtonSetting.Location = new System.Drawing.Point(87, 144);
+            this.ButtonSetting.Name = "ButtonSetting";
+            this.ButtonSetting.Size = new System.Drawing.Size(145, 43);
+            this.ButtonSetting.TabIndex = 0;
+            this.ButtonSetting.Text = "설정";
+            this.ButtonSetting.UseVisualStyleBackColor = true;
+            this.ButtonSetting.Click += new System.EventHandler(this.ButtonSetting_Click);
             // 
-            // btnExit
+            // ButtonExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(87, 203);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(145, 43);
-            this.btnExit.TabIndex = 0;
-            this.btnExit.Text = "종료";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.ButtonExit.Location = new System.Drawing.Point(87, 203);
+            this.ButtonExit.Name = "ButtonExit";
+            this.ButtonExit.Size = new System.Drawing.Size(145, 43);
+            this.ButtonExit.TabIndex = 0;
+            this.ButtonExit.Text = "종료";
+            this.ButtonExit.UseVisualStyleBackColor = true;
+            this.ButtonExit.Click += new System.EventHandler(this.ButtonExit_Click);
             // 
             // lblCopyRight
             // 
@@ -92,7 +92,7 @@
             this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIcon.Icon")));
             this.trayIcon.Text = "TPWord";
             this.trayIcon.Visible = true;
-            this.trayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_MouseDoubleClick);
+            this.trayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TrayIcon_MouseDoubleClick);
             // 
             // MainForm
             // 
@@ -100,10 +100,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(315, 292);
             this.Controls.Add(this.lblCopyRight);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnSetting);
-            this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.btnAddWord);
+            this.Controls.Add(this.ButtonExit);
+            this.Controls.Add(this.ButtonSetting);
+            this.Controls.Add(this.ButtonStart);
+            this.Controls.Add(this.ButtonAddWord);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -119,10 +119,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnAddWord;
-        private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Button btnSetting;
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button ButtonAddWord;
+        private System.Windows.Forms.Button ButtonStart;
+        private System.Windows.Forms.Button ButtonSetting;
+        private System.Windows.Forms.Button ButtonExit;
         private System.Windows.Forms.Label lblCopyRight;
         private System.Windows.Forms.NotifyIcon trayIcon;
     }

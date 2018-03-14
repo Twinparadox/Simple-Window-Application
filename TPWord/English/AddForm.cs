@@ -34,11 +34,11 @@ namespace TPWord
 
         private void StartForm_Load(object sender, EventArgs e)
         {
-            txtbxEnglishWord.Select();
+            TextBoxEnglishWord.Select();
         }
 
         #region Button Methods
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void ButtonAdd_Click(object sender, EventArgs e)
         {
             MainForm.log.WriteLine("[Read txt Files...]");
             try
@@ -53,9 +53,9 @@ namespace TPWord
             }
             
             isAlready = false;
-            txtbxEnglishWord.Focus();
-            string enWord = this.txtbxEnglishWord.Text;
-            string koWord = this.txtbxKoreanWord.Text;
+            TextBoxEnglishWord.Focus();
+            string enWord = this.TextBoxEnglishWord.Text;
+            string koWord = this.TextBoxKoreanWord.Text;
             string count = ",0,0";
 
             if (enWord != "" && koWord != "")
@@ -82,17 +82,17 @@ namespace TPWord
                         MainForm.log.WriteLine("Ex:" + ex.ToString());
                     }
                 }
-                this.txtbxKoreanWord.Text = "";
-                this.txtbxEnglishWord.Text = "";
+                this.TextBoxKoreanWord.Text = "";
+                this.TextBoxEnglishWord.Text = "";
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void ButtonClose_Click(object sender, EventArgs e)
         {
             MainForm.log.WriteLine("[StartForm Close...]");
             try
             {
-                int currentSize = File.ReadLines(saveEnPath).Count();
+                lineCount = File.ReadLines(saveEnPath).Count();
                 string[] Setting = Properties.Settings.Default.curSettings.Split(';');
 
                 Properties.Settings.Default.curSettings = Setting[0] + ";" + Setting[1];

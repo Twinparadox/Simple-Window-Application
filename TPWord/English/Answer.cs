@@ -36,13 +36,8 @@ namespace TPWord
         private int correct;
         private char sep = ',';
 
-        /* 창 최상위 */
-        private bool isTopMost = false;
-
-
         public Answer()
         {
-            isTopMost = false;
             cont = true;
             InitializeComponent();
 
@@ -58,7 +53,7 @@ namespace TPWord
             Random r = new Random();
             lineRandom = r.Next(0, lineCount - 1);
             string[] questionStr = enText[lineRandom].Split(sep);
-            this.txtbxEnglish.Text = questionStr[0];
+            this.TextBoxEnglish.Text = questionStr[0];
         }
 
         private void Answer_Load(object sender, EventArgs e)
@@ -67,7 +62,6 @@ namespace TPWord
             this.Focus();
             if (this.TopMost)
             {
-                isTopMost = true;
                 this.TopMost = false;
                 this.TopMost = true;
             }
@@ -85,39 +79,35 @@ namespace TPWord
         }
 
         #region Button Methods
-        private void btnAdmit_Click(object sender, EventArgs e)
+        private void ButtonAdmit_Click(object sender, EventArgs e)
         {
-            if (this.txtbxKorean.Text == koText[lineRandom])
+            if (this.TextBoxKorean.Text == koText[lineRandom])
             {
                 MessageBox.Show("정답입니다!", "정답", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                isTopMost = false;
 
                 ConvertInt();
-                CalculateRate(lineRandom, 1);
+                correct++;
                 ConvertStr();
                 this.Close();
             }
             else
             {
                 MessageBox.Show("틀렸습니다!", "틀림", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                isTopMost = false;
 
-                btnAdmit.Visible = false;
-                this.txtbxKorean.Text = koText[lineRandom];
-                this.txtbxKorean.ReadOnly = true;
+                ButtonAdmit.Visible = false;
+                this.TextBoxKorean.Text = koText[lineRandom];
+                this.TextBoxKorean.ReadOnly = true;
                 Delay(2000);
 
                 ConvertInt();
-                CalculateRate(lineRandom, 2);
                 ConvertStr();
                 this.Close();
             }
         }
 
-        private void btnStop_Click(object sender, EventArgs e)
+        private void ButtonStop_Click(object sender, EventArgs e)
         {
             cont = false;
-            isTopMost = false;
             this.Close();
         }
         #endregion
@@ -157,39 +147,35 @@ namespace TPWord
             string tmpPath = @"C:\TPWord\tmp.txt";
             string[] questionStr = enText[lineRandom].Split(sep);
             string correctStr = questionStr[0] + ',' + correct.ToString() + ',' + question.ToString();
-            StreamWriter tmpFile = File.CreateText(tmpPath);
-            tmpFile.Close();
-            string sourceFile = Path.Combine(saveFolderPath, "tmp.txt");
-            string destFile = Path.Combine(saveFolderPath, "EWORD.txt");
 
-
-            for (int i = 0; i < lineCount; i++)
+            MainForm.log.WriteLine("[Modify txt files...]");
+            try
             {
-                if (i == lineRandom)
+                StreamWriter tmpFile = File.CreateText(tmpPath);
+                tmpFile.Close();
+                string sourceFile = Path.Combine(saveFolderPath, "tmp.txt");
+                string destFile = Path.Combine(saveFolderPath, "EWORD.txt");
+
+
+                for (int i = 0; i < lineCount; i++)
                 {
-                    File.AppendAllText(tmpPath, correctStr + "\r\n");
+                    if (i == lineRandom)
+                    {
+                        File.AppendAllText(tmpPath, correctStr + "\r\n");
+                    }
+                    else
+                    {
+                        File.AppendAllText(tmpPath, enText[i] + "\r\n");
+                    }
                 }
-                else
-                {
-                    File.AppendAllText(tmpPath, enText[i] + "\r\n");
-                }
-            }
 
-            File.Copy(sourceFile, destFile, true);
-            File.Delete(tmpPath);
-        }
-
-        // 정답률 체크
-        private void CalculateRate(int line, int ans)
-        {
-            if(ans==1)
-            {
-                correct++;
+                File.Copy(sourceFile, destFile, true);
+                File.Delete(tmpPath);
             }
-            else
+            catch(Exception ex)
             {
+                MainForm.log.WriteLine("Ex: " + ex.ToString());
             }
-            question++;
         }
         #endregion
     }
