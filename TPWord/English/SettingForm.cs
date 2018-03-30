@@ -50,6 +50,11 @@ namespace TPWord
         }
 
         #region Button Methods
+        /// <summary>
+        /// 종료 함수
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonClose_Click(object sender, EventArgs e)
         {
             int min;
@@ -74,6 +79,11 @@ namespace TPWord
             this.Close();
         }
 
+        /// <summary>
+        /// 설정 & 단어 초기화 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonInitAll_Click(object sender, EventArgs e)
         {
             /* Initialize All(Setting, Word) */
@@ -84,6 +94,11 @@ namespace TPWord
             }
         }
 
+        /// <summary>
+        /// 시간을 입력받는 박스에 숫자 외에 다른 형태의 값이 입력되는 것을 방지
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBoxFrequency_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(!(char.IsDigit(e.KeyChar) || e.KeyChar==Convert.ToChar(Keys.Back)))
@@ -92,6 +107,11 @@ namespace TPWord
             }
         }
 
+        /// <summary>
+        /// 설정 초기화 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonInitSet_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("설정이 초기화합니다.\r계속하시겠습니까?", "확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -100,6 +120,11 @@ namespace TPWord
             }
         }
 
+        /// <summary>
+        /// 단어 초기화 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonInitWord_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("입력한 단어를 모두 삭제합니다.\r계속하시겠습니까?", "확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -110,6 +135,9 @@ namespace TPWord
         #endregion
 
         #region Other Methods
+        /// <summary>
+        /// 설정 초기화
+        /// </summary>
         private void InitializeSetting()
         {
             MainForm.log.WriteLine("[Initialize Settings...]");
@@ -127,6 +155,9 @@ namespace TPWord
             }
         }
 
+        /// <summary>
+        /// 단어 초기화
+        /// </summary>
         private void InitializeWord()
         {
             MainForm.log.WriteLine("[Clear Word Files...]]");

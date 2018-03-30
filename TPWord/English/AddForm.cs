@@ -38,6 +38,11 @@ namespace TPWord
         }
 
         #region Button Methods
+        /// <summary>
+        /// 단어 추가 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
             MainForm.log.WriteLine("[Read txt Files...]");
@@ -87,6 +92,11 @@ namespace TPWord
             }
         }
 
+        /// <summary>
+        /// 종료 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonClose_Click(object sender, EventArgs e)
         {
             MainForm.log.WriteLine("[StartForm Close...]");

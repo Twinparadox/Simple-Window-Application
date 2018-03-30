@@ -36,11 +36,14 @@
             this.ButtonExit = new System.Windows.Forms.Button();
             this.lblCopyRight = new System.Windows.Forms.Label();
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.ButtonNote = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ButtonAddWord
             // 
-            this.ButtonAddWord.Location = new System.Drawing.Point(87, 24);
+            this.ButtonAddWord.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 11F);
+            this.ButtonAddWord.Location = new System.Drawing.Point(57, 125);
             this.ButtonAddWord.Name = "ButtonAddWord";
             this.ButtonAddWord.Size = new System.Drawing.Size(145, 43);
             this.ButtonAddWord.TabIndex = 0;
@@ -50,7 +53,8 @@
             // 
             // ButtonStart
             // 
-            this.ButtonStart.Location = new System.Drawing.Point(87, 84);
+            this.ButtonStart.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 11F);
+            this.ButtonStart.Location = new System.Drawing.Point(57, 35);
             this.ButtonStart.Name = "ButtonStart";
             this.ButtonStart.Size = new System.Drawing.Size(145, 43);
             this.ButtonStart.TabIndex = 0;
@@ -60,7 +64,8 @@
             // 
             // ButtonSetting
             // 
-            this.ButtonSetting.Location = new System.Drawing.Point(87, 144);
+            this.ButtonSetting.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 11F);
+            this.ButtonSetting.Location = new System.Drawing.Point(57, 215);
             this.ButtonSetting.Name = "ButtonSetting";
             this.ButtonSetting.Size = new System.Drawing.Size(145, 43);
             this.ButtonSetting.TabIndex = 0;
@@ -70,7 +75,8 @@
             // 
             // ButtonExit
             // 
-            this.ButtonExit.Location = new System.Drawing.Point(87, 203);
+            this.ButtonExit.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 11F);
+            this.ButtonExit.Location = new System.Drawing.Point(323, 215);
             this.ButtonExit.Name = "ButtonExit";
             this.ButtonExit.Size = new System.Drawing.Size(145, 43);
             this.ButtonExit.TabIndex = 0;
@@ -81,11 +87,12 @@
             // lblCopyRight
             // 
             this.lblCopyRight.AutoSize = true;
-            this.lblCopyRight.Location = new System.Drawing.Point(12, 271);
+            this.lblCopyRight.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 9F);
+            this.lblCopyRight.Location = new System.Drawing.Point(185, 279);
             this.lblCopyRight.Name = "lblCopyRight";
-            this.lblCopyRight.Size = new System.Drawing.Size(292, 12);
+            this.lblCopyRight.Size = new System.Drawing.Size(327, 13);
             this.lblCopyRight.TabIndex = 1;
-            this.lblCopyRight.Text = "Copyright(c)2018 Twinparadox All rights reserved. ";
+            this.lblCopyRight.Text = "Copyright(c)2017-2018 Twinparadox All rights reserved. ";
             // 
             // trayIcon
             // 
@@ -94,11 +101,34 @@
             this.trayIcon.Visible = true;
             this.trayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TrayIcon_MouseDoubleClick);
             // 
+            // ButtonNote
+            // 
+            this.ButtonNote.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 11F);
+            this.ButtonNote.Location = new System.Drawing.Point(323, 125);
+            this.ButtonNote.Name = "ButtonNote";
+            this.ButtonNote.Size = new System.Drawing.Size(145, 46);
+            this.ButtonNote.TabIndex = 2;
+            this.ButtonNote.Text = "오답노트";
+            this.ButtonNote.UseVisualStyleBackColor = true;
+            this.ButtonNote.Click += new System.EventHandler(this.ButtonNote_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 11F);
+            this.button1.Location = new System.Drawing.Point(323, 35);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(145, 43);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "20제 퀴즈";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 292);
+            this.ClientSize = new System.Drawing.Size(519, 300);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ButtonNote);
             this.Controls.Add(this.lblCopyRight);
             this.Controls.Add(this.ButtonExit);
             this.Controls.Add(this.ButtonSetting);
@@ -125,6 +155,8 @@
         private System.Windows.Forms.Button ButtonExit;
         private System.Windows.Forms.Label lblCopyRight;
         private System.Windows.Forms.NotifyIcon trayIcon;
+        private System.Windows.Forms.Button ButtonNote;
+        private System.Windows.Forms.Button button1;
     }
 }
 

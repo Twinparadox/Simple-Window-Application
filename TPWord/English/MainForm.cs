@@ -47,7 +47,11 @@ namespace TPWord
             InitializeComponent();
             this.trayIcon.Visible = false;
         }
-
+        /// <summary>
+        /// 프로그램 최초 실행 시 디렉토리와 파일을 체크해주는 작업을 실시
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
             /* Check Directory and File */
@@ -102,24 +106,43 @@ namespace TPWord
         }
 
         #region Button Methods
+        /// <summary>
+        /// 단어 추가 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonAddWord_Click(object sender, EventArgs e)
         {
-            AddForm startfrm = new AddForm();
-            startfrm.ShowDialog();
+            AddForm addform = new AddForm();
+            addform.ShowDialog();
         }
 
+        /// <summary>
+        /// 종료 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonExit_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
         }
 
+        /// <summary>
+        /// 설정 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonSetting_Click(object sender, EventArgs e)
         {
             SettingForm setfrm = new SettingForm();
             setfrm.ShowDialog();
         }
 
-        // Start Button
+        /// <summary>
+        /// 시작 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonStart_Click(object sender, EventArgs e)
         {
             int min, curSize;
@@ -170,10 +193,21 @@ namespace TPWord
             {
             }
         }
+
+        /// <summary>
+        /// 오답 노트 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonNote_Click(object sender, EventArgs e)
+        {
+            NoteForm noteform = new NoteForm();
+            noteform.ShowDialog();
+        }
         #endregion
 
         #region Other Methods
-        
+
         /* Answer Form Renewal */
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
@@ -190,7 +224,11 @@ namespace TPWord
         #endregion
 
         #region Tray Transform Methods
-        /* form, tray transform */
+        /// <summary>
+        /// 트레이 해제 시, 화면 포커싱
+        /// </summary>
+        /// <param name="FormVisible"></param>
+        /// <param name="TrayIconVisible"></param>
         private void VisibleChange(Boolean FormVisible, Boolean TrayIconVisible)
         {
             this.Visible = FormVisible;
@@ -200,6 +238,6 @@ namespace TPWord
         {
             VisibleChange(true, false);
         }
-        #endregion        
+        #endregion
     }
 }

@@ -56,9 +56,13 @@ namespace TPWord
             this.TextBoxEnglish.Text = questionStr[0];
         }
 
+        /// <summary>
+        /// 폼을 포커싱하고, 사운드 출력
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Answer_Load(object sender, EventArgs e)
         {
-            // Form Focus
             this.Focus();
             if (this.TopMost)
             {
@@ -79,6 +83,11 @@ namespace TPWord
         }
 
         #region Button Methods
+        /// <summary>
+        /// 정답 제출 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonAdmit_Click(object sender, EventArgs e)
         {
             if (this.TextBoxKorean.Text == koText[lineRandom])
@@ -105,6 +114,11 @@ namespace TPWord
             }
         }
 
+        /// <summary>
+        /// 중단 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonStop_Click(object sender, EventArgs e)
         {
             cont = false;
@@ -118,7 +132,11 @@ namespace TPWord
             return cont;
         }
 
-        // 시간 관리
+        /// <summary>
+        /// 시간 함수
+        /// </summary>
+        /// <param name="MS"></param>
+        /// <returns></returns>
         private static DateTime Delay(int MS)
         {
             DateTime ThisMoment = DateTime.Now;
@@ -132,7 +150,9 @@ namespace TPWord
             return DateTime.Now;
         }
 
-        // 정수 변환 함수
+        /// <summary>
+        /// int형으로 파싱
+        /// </summary>
         private void ConvertInt()
         {
             string[] correctStr = enText[lineRandom].Split(',');
@@ -141,7 +161,10 @@ namespace TPWord
             question++;
         }
 
-        // 문자열 변환 함수
+        /// <summary>
+        /// string형으로 변환
+        /// 단어의 정보 갱신
+        /// </summary>
         private void ConvertStr()
         {
             string tmpPath = @"C:\TPWord\tmp.txt";
