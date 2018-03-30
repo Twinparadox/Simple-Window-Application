@@ -1,0 +1,15 @@
+﻿<Window x:Class="WordMaster.AddWordWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WordMaster"
+        mc:Ignorable="d" Height="150" Width="500" ResizeMode="NoResize" Topmost="True" Title="WordMaster - 단어추가">
+    <Grid Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Height="121" VerticalAlignment="Top" HorizontalAlignment="Right" Width="494">
+        <TextBox x:Name="TextBoxEnglishWord" Height="25" TextWrapping="Wrap" Text="영단어를 입력해주세요." VerticalAlignment="Top" Margin="20,10,20,0" UndoLimit="255" FontSize="20" FontFamily="NanumSquare ExtraBold" GotFocus="TextBoxEnglishWord_GotFocus" LostFocus="TextBoxEnglishWord_LostFocus"/>
+        <TextBox x:Name="TextBoxKoreanWord" Height="25" TextWrapping="Wrap" Text="단어의 뜻을 입력해주세요." VerticalAlignment="Top" RenderTransformOrigin="1.768,2.52" Margin="20,40,20,0" UndoLimit="255" FontFamily="NanumSquare ExtraBold" FontSize="20" GotFocus="TextBoxKoreanWord_GotFocus" LostFocus="TextBoxKoreanWord_LostFocus"/>
+        <Button x:Name="ButtonClose" Content="닫기" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" RenderTransformOrigin="2.275,2.939" Margin="399,78,0,0" FontFamily="NanumSquare ExtraBold" FontSize="15" Height="25" Click="ButtonClose_Click"/>
+        <Button Content="DB사용" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="20,79,0,0" Height="25" FontFamily="NanumSquare ExtraBold" FontSize="15"/>
+        <Button Content="추가하기" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="319,78,0,0" Height="25" FontFamily="NanumSquare ExtraBold" FontSize="15" Click="Button_Click"/>
+    </Grid>
+</Window>

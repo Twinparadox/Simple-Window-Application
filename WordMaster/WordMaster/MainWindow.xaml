@@ -1,0 +1,20 @@
+﻿<Window x:Class="WordMaster.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WordMaster"
+        mc:Ignorable="d"
+        Title="WordMaster" Height="400" Width="550">
+    <Grid>
+        <Button x:Name="ButtonStart" Content="시작하기" VerticalAlignment="Top" Margin="50,30,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20" HorizontalAlignment="Left" Width="145"/>
+        <Button x:Name="ButtonAdd" Content="단어추가" VerticalAlignment="Top" Margin="347,30,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20" HorizontalAlignment="Left" Width="145" Click="ButtonAdd_Click"/>
+        <Button x:Name="ButtonQuiz" Content="쪽지시험" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="50,110,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20"/>
+        <Button x:Name="ButtonNote" Content="오답노트" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="347,110,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20"/>
+        <Button x:Name="ButtonStatis" Content="통계" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="50,190,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20"/>
+        <Button x:Name="ButtonHelp" Content="도움말" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="50,270,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20"/>
+        <Button x:Name="ButtonClose" Content="종료" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="347,270,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20" Click="ButtonClose_Click"/>
+        <Button x:Name="ButtonSetting" Content="설정" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="347,190,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20"/>
+
+    </Grid>
+</Window>
