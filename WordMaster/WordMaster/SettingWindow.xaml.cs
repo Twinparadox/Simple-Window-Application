@@ -21,12 +21,13 @@ namespace WordMaster
     {
         private string defaultTextBoxFrequency = "숫자(분단위)만 입력. 기본값(5분).";
 
+        private string strMin;
+        private string alarmSize;
+
         public SettingWindow()
         {
             InitializeComponent();
         }
-
-
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
@@ -43,10 +44,19 @@ namespace WordMaster
 
         private void TextBoxFrequency_LostFocus(object sender, RoutedEventArgs e)
         {
-            if(TextBoxFrequency.Text.Equals(""))
+            int min;
+
+            if (Int32.TryParse(TextBoxFrequency.Text, out min) == false)
             {
-                TextBoxFrequency.Text = defaultTextBoxFrequency;
+                if (TextBoxFrequency.Text.Equals(""))
+                {
+                    TextBoxFrequency.Text = defaultTextBoxFrequency;
+                }
+                MessageBox.Show("유효하지 않은 시간입니다.", "확인", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
+
+            strMin = min.ToString();            
         }
     }
 }

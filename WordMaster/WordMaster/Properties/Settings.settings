@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WordMaster.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="curSetting" Type="System.String" Scope="User">
+    <Setting Name="curSettings" Type="System.String" Scope="User">
       <Value Profile="(Default)">AON;5</Value>
     </Setting>
     <Setting Name="defaultSetting" Type="System.String" Scope="User">

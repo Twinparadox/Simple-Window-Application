@@ -26,12 +26,12 @@ namespace WordMaster.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("AON;5")]
-        public string curSetting {
+        public string curSettings {
             get {
-                return ((string)(this["curSetting"]));
+                return ((string)(this["curSettings"]));
             }
             set {
-                this["curSetting"] = value;
+                this["curSettings"] = value;
             }
         }
         
