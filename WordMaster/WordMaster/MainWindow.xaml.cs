@@ -35,5 +35,11 @@ namespace WordMaster
             AddWordWindow addWindow = new AddWordWindow();
             addWindow.Show();
         }
+
+        private void ButtonSetting_Click(object sender, RoutedEventArgs e)
+        {
+            SettingWindow settingWindow = new SettingWindow();
+            settingWindow.Show();
+        }
     }
 }

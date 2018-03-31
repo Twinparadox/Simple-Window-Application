@@ -14,7 +14,7 @@
         <Button x:Name="ButtonStatis" Content="통계" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="50,190,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20"/>
         <Button x:Name="ButtonHelp" Content="도움말" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="50,270,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20"/>
         <Button x:Name="ButtonClose" Content="종료" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="347,270,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20" Click="ButtonClose_Click"/>
-        <Button x:Name="ButtonSetting" Content="설정" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="347,190,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20"/>
+        <Button x:Name="ButtonSetting" Content="설정" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="347,190,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20" Click="ButtonSetting_Click"/>
 
     </Grid>
 </Window>
