@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -57,6 +58,23 @@ namespace WordMaster
             }
 
             strMin = min.ToString();            
+        }
+
+        /*
+        private void TextBoxFrequency_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (!Char.IsDigit((char)KeyInterop.VirtualKeyFromKey(e.Key)) & e.Key != Key.Back | e.Key == Key.Space)
+            {
+                e.Handled = true;
+                MessageBox.Show("숫자만 입력해주세요.\n단위는 분(min)입니다.", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        */
+
+        private void TextBoxFrequency_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
