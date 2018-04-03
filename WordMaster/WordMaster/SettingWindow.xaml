@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WordMaster"
         mc:Ignorable="d"
-        Title="WordMaster - 설정" Height="250" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Topmost="True">
+        Title="WordMaster - 설정" Height="250" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Topmost="True" Loaded="Window_Loaded" Closed="Window_Closed">
     <Grid>
         <TextBlock Text="문제 출제 주기"  FontFamily="NanumSquare ExtraBold" FontSize="15" Width="90" Height="21" Margin="0,0,283,179" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
         <TextBox x:Name="TextBoxFrequency" Text="숫자(분단위)만 입력. 기본값(5분)." Margin="123,0,0,180" FontFamily="NanumSquare ExtraBold" FontSize="15" AutomationProperties.HelpText="숫자만 입력해주세요." Height="21" IsUndoEnabled="True" GotFocus="TextBoxFrequency_GotFocus" LostFocus="TextBoxFrequency_LostFocus" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="251" PreviewTextInput="TextBoxFrequency_PreviewTextInput"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="알람" VerticalAlignment="Top" Margin="81,60,0,0" Width="30" Height="21" FontFamily="NanumSquare ExtraBold" FontSize="15"/>
         <Slider VerticalAlignment="Top" Margin="123,60,0,0" HorizontalAlignment="Left" Width="251"/>
-        <Button x:Name="ButtonInitSetting" Content="설정 초기화" VerticalAlignment="Top" Margin="21,115,0,0" FontFamily="NanumSquare ExtraBold" FontSize="15" Width="90" Height="21" HorizontalAlignment="Left"/>
-        <Button x:Name="ButtonInitWord" Content="단어 초기화" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="149,115,0,0" Height="21" FontFamily="NanumSquare ExtraBold" FontSize="15"/>
-        <Button x:Name="ButtonInitAll" Content="전체 초기화" VerticalAlignment="Top" Margin="284,115,0,0" Height="21" FontFamily="NanumSquare ExtraBold" FontSize="15" Width="90" HorizontalAlignment="Left"/>
+        <Button x:Name="ButtonInitSetting" Content="설정 초기화" VerticalAlignment="Top" Margin="21,115,0,0" FontFamily="NanumSquare ExtraBold" FontSize="15" Width="90" Height="21" HorizontalAlignment="Left" Click="ButtonInitSetting_Click"/>
+        <Button x:Name="ButtonInitWord" Content="단어 초기화" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="149,115,0,0" Height="21" FontFamily="NanumSquare ExtraBold" FontSize="15" Click="ButtonInitWord_Click"/>
+        <Button x:Name="ButtonInitAll" Content="전체 초기화" VerticalAlignment="Top" Margin="284,115,0,0" Height="21" FontFamily="NanumSquare ExtraBold" FontSize="15" Width="90" HorizontalAlignment="Left" Click="ButtonInitAll_Click"/>
         <Button x:Name="ButtonClose" Content="닫기" VerticalAlignment="Top" Margin="299,169,0,0" Height="21" FontFamily="NanumSquare ExtraBold" FontSize="15" Click="ButtonClose_Click" HorizontalAlignment="Left" Width="75"/>
     </Grid>
 </Window>

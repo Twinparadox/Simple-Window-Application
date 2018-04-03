@@ -38,12 +38,12 @@ namespace WordMaster.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("AON;5")]
-        public string defaultSetting {
+        public string defaultSettings {
             get {
-                return ((string)(this["defaultSetting"]));
+                return ((string)(this["defaultSettings"]));
             }
             set {
-                this["defaultSetting"] = value;
+                this["defaultSettings"] = value;
             }
         }
         
