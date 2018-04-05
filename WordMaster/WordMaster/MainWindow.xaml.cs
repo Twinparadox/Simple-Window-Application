@@ -79,7 +79,7 @@ namespace WordMaster
 
                 // Timer
                 timer.Interval = min * Seco * MinSec;
-                //    timer.Elapsed += new ElapsedEventHandler(TimerElapsed);
+                timer.Elapsed += new ElapsedEventHandler(TimerElapsed);
             }
             catch (Exception ex)
             {
@@ -107,19 +107,18 @@ namespace WordMaster
                 MessageBox.Show("단어를 추가하세요!", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        /*
+        
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
+            AnswerWindow ans = new AnswerWindow();
+            ans.ShowDialog();
             if (ans.DoNotContinue() == false)
             {
                 timer.Stop();
-                VisibleChange(true, false);
                 this.Focus();
                 this.Topmost = true;
             }
         }
-        */
 
         private void CloseWindow()
         {
