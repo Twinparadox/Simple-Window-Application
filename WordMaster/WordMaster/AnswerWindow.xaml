@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="WordMaster - 문제" Height="140" Width="600" Loaded="Window_Loaded" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid Width="600" Height="140">
-        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="515,110,0,0"/>
-        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,110,0,0"/>
+        <Button x:Name="ButtonSubmit" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="515,110,0,0" Click="ButtonSubmit_Click"/>
+        <Button x:Name="ButtonStop" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,110,0,0"/>
+        <TextBox x:Name="TextBoxEnglish" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="580" Margin="10,10,0,0" IsEnabled="False"/>
+        <TextBox x:Name="TextBoxKorean" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="580" Margin="10,53,0,0"/>
 
     </Grid>
 </Window>

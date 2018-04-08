@@ -10,7 +10,7 @@ namespace WordMaster
     public class WordBook
     {
         /* 저장 경로 */
-        public static string saveFolder = @"C:\WordMaster";
+        public static string saveFolderPath = @"C:\WordMaster";
         public static string saveEnPath = @"C:\WordMaster\EWORD.txt";
         public static string saveKrPath = @"C:\WordMaster\KWORD.txt";
 
