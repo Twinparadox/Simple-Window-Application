@@ -43,6 +43,7 @@
             this.btnSetPath.TabIndex = 0;
             this.btnSetPath.Text = "경로 설정";
             this.btnSetPath.UseVisualStyleBackColor = true;
+            this.btnSetPath.Click += new System.EventHandler(this.btnSetPath_Click);
             // 
             // lvLog
             // 
@@ -62,6 +63,7 @@
             this.btnSetUsers.TabIndex = 2;
             this.btnSetUsers.Text = "사용자 설정";
             this.btnSetUsers.UseVisualStyleBackColor = true;
+            this.btnSetUsers.Click += new System.EventHandler(this.btnSetUsers_Click);
             // 
             // btnExit
             // 
@@ -72,8 +74,9 @@
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "종료";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // Form1
+            // KeyLogger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -83,7 +86,7 @@
             this.Controls.Add(this.lvLog);
             this.Controls.Add(this.btnSetPath);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form1";
+            this.Name = "KeyLogger";
             this.ShowIcon = false;
             this.Text = "KeyLogger";
             this.ResumeLayout(false);
