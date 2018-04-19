@@ -10,7 +10,7 @@
         <Button x:Name="ButtonStart" Content="시작하기" VerticalAlignment="Top" Margin="50,30,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20" HorizontalAlignment="Left" Width="145" Click="ButtonStart_Click"/>
         <Button x:Name="ButtonAdd" Content="단어추가" VerticalAlignment="Top" Margin="347,30,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20" HorizontalAlignment="Left" Width="145" Click="ButtonAdd_Click"/>
         <Button x:Name="ButtonQuiz" Content="쪽지시험" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="50,110,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20"/>
-        <Button x:Name="ButtonNote" Content="오답노트" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="347,110,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20"/>
+        <Button x:Name="ButtonNote" Content="오답노트" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="347,110,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20" Click="ButtonNote_Click"/>
         <Button x:Name="ButtonStatis" Content="통계" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="50,190,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20"/>
         <Button x:Name="ButtonHelp" Content="도움말" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="50,270,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20"/>
         <Button x:Name="ButtonClose" Content="종료" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="347,270,0,0" Height="45" FontFamily="NanumSquare ExtraBold" FontSize="20" Click="ButtonClose_Click"/>

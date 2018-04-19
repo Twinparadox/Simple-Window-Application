@@ -17,11 +17,11 @@ namespace WordMaster
         public static void CreateDirectoryAndFiles()
         {
             /* Check Directory and File */
-            if (!Directory.Exists(saveFolder))
+            if (!Directory.Exists(saveFolderPath))
             {
                 try
                 {
-                    Directory.CreateDirectory(saveFolder);
+                    Directory.CreateDirectory(saveFolderPath);
                 }
                 catch (Exception ex)
                 {

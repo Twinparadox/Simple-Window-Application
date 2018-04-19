@@ -25,7 +25,7 @@ namespace WordMaster
     {
         /* 타이머 */
         System.Timers.Timer timer = new System.Timers.Timer();
-        private static int MinSec = 60;
+        private static int MinSec = 1;
         private static int Seco = 1000;
 
         /* 상황 체크 변수 */
@@ -86,7 +86,7 @@ namespace WordMaster
                 curSize = -1;
             }
 
-            if (curSize >= 0)
+            if (curSize > 0)
             {
                 if (isStart == true)
                 {
@@ -110,8 +110,12 @@ namespace WordMaster
         
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
-            AnswerWindow ans = new AnswerWindow();
-            ans.ShowDialog();
+            AnswerWindow ans = null;
+            Dispatcher.Invoke(() =>
+            {
+                ans = new AnswerWindow();
+                ans.ShowDialog();
+            });
             if (ans.DoNotContinue() == false)
             {
                 timer.Stop();
@@ -130,6 +134,12 @@ namespace WordMaster
         {
             this.Visibility = Visibility.Visible;
             notifyIcon.Visible = false;
+        }
+
+        private void ButtonNote_Click(object sender, RoutedEventArgs e)
+        {
+            NoteWindow note = new NoteWindow();
+            note.ShowDialog();
         }
     }
 }

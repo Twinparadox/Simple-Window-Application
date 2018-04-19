@@ -95,6 +95,12 @@ namespace WordMaster
             }
         }
 
+        private void ButtonStop_Click(object sender, RoutedEventArgs e)
+        {
+            cont = false;
+            this.Close();
+        }
+
         #region Other Methods
         public bool DoNotContinue()
         {
