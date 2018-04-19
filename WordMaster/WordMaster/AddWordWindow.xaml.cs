@@ -43,7 +43,21 @@ namespace WordMaster
             this.Close();
         }
 
-
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                lineCount=File.ReadLines(WordBook.saveEnPath).Count();
+            }
+            catch(Exception ex)
+            {
+            }
+            finally
+            {
+                Properties.Settings.Default.curSize = lineCount;
+                Properties.Settings.Default.Save();
+            }
+        }
 
         private void TextBoxEnglishWord_GotFocus(object sender, RoutedEventArgs e)
         {

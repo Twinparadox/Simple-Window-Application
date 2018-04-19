@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WordMaster"
-        mc:Ignorable="d" Height="150" Width="500" ResizeMode="NoResize" Topmost="True" Title="WordMaster - 단어추가">
+        mc:Ignorable="d" Height="150" Width="500" ResizeMode="NoResize" Topmost="True" Title="WordMaster - 단어추가" Closing="Window_Closing">
     <Grid Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Height="121" VerticalAlignment="Top" HorizontalAlignment="Right" Width="494">
         <TextBox x:Name="TextBoxEnglishWord" Height="25" TextWrapping="Wrap" Text="영단어를 입력해주세요." VerticalAlignment="Top" Margin="20,10,20,0" UndoLimit="255" FontSize="20" FontFamily="NanumSquare ExtraBold" GotFocus="TextBoxEnglishWord_GotFocus" LostFocus="TextBoxEnglishWord_LostFocus"/>
         <TextBox x:Name="TextBoxKoreanWord" Height="25" TextWrapping="Wrap" Text="단어의 뜻을 입력해주세요." VerticalAlignment="Top" RenderTransformOrigin="1.768,2.52" Margin="20,40,20,0" UndoLimit="255" FontFamily="NanumSquare ExtraBold" FontSize="20" GotFocus="TextBoxKoreanWord_GotFocus" LostFocus="TextBoxKoreanWord_LostFocus"/>
