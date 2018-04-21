@@ -58,6 +58,7 @@ namespace WordMaster
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.Focus();
+            /*
             if (this.Topmost)
             {
                 this.Topmost = false;
@@ -67,6 +68,8 @@ namespace WordMaster
             {
                 this.Topmost = true;
             }
+            */
+            this.Topmost = true;
         }
 
         private void ButtonSubmit_Click(object sender, RoutedEventArgs e)

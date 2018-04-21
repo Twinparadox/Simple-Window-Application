@@ -48,5 +48,22 @@ namespace WordMaster
                 }
             }
         }
+
+        public static void InitializeFiles()
+        {
+            try
+            {
+                StreamWriter enFile = File.CreateText(saveEnPath);
+                StreamWriter koFile = File.CreateText(saveKrPath);
+                enFile.Close();
+                koFile.Close();
+
+                Properties.Settings.Default.curSize = 0;
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
 }

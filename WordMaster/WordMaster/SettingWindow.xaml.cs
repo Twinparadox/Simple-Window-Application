@@ -161,18 +161,7 @@ namespace WordMaster
         /// </summary>
         private void InitializeWord()
         {
-            try
-            {
-                StreamWriter enFile = File.CreateText(WordBook.saveEnPath);
-                StreamWriter koFile = File.CreateText(WordBook.saveKrPath);
-                enFile.Close();
-                koFile.Close();
-
-                Properties.Settings.Default.curSize = 0;
-            }
-            catch (Exception ex)
-            {
-            }
+            WordBook.InitializeFiles();
         }
         #endregion
     }

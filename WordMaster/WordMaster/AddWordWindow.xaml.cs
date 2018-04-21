@@ -145,5 +145,11 @@ namespace WordMaster
                 this.TextBoxEnglishWord.Text = defaultTextboxEng;
             }
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Topmost = true;
+            this.Focus();
+        }
     }
 }
