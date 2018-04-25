@@ -49,13 +49,46 @@ namespace DirectoryCleaner
                     }
                     if (IsExist(item))
                     {
+                        string fileType = Extension.CheckExtensionType(item.Extension.Substring(1, item.Extension.Length - 1));
+                        switch (fileType)
+                        {
+                            case "":
+                                fileType = "분류 없음";
+                                break;
+                            case "Audio":
+                                fileType = "오디오";
+                                break;
+                            case "Compac":
+                                fileType = "압축파일";
+                                break;
+                            case "Disc":
+                                fileType = "디스크";
+                                break;
+                            case "Doc":
+                                fileType = "문서";
+                                break;
+                            case "Etc":
+                                fileType = "기타";
+                                break;
+                            case "Image":
+                                fileType = "이미지";
+                                break;
+                            case "Txt":
+                                fileType = "텍스트";
+                                break;
+                            case "Video":
+                                fileType = "비디오";
+                                break;
+                            default:
+                                break;
+                        }
                         string fileName = GetPureFileName(item.Name);
                         string fileSize = item.Length.ToString();
                         string directoryName = item.DirectoryName;
                         string accessTime = item.LastAccessTime.ToString();
 
                         fileSize = (Double.Parse(fileSize) / 1024.0).ToString("0.#");
-                        ListViewItem tmp = new ListViewItem(new String[] { fileName, directoryName, accessTime, fileSize });
+                        ListViewItem tmp = new ListViewItem(new String[] { fileType, fileName, directoryName, accessTime, fileSize });
                         this.ListViewFileList.Items.Add(tmp);
                     }
                 }
@@ -201,7 +234,7 @@ namespace DirectoryCleaner
                 ListViewItem ListViewItem = items[0];
                 try
                 {
-                    Process.Start(ListViewItem.SubItems[1].Text);
+                    Process.Start(ListViewItem.SubItems[2].Text);
                 }
                 catch
                 {

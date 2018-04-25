@@ -85,10 +85,11 @@ namespace DirectoryCleaner
         private void ButtonManagement_Click(object sender, EventArgs e)
         {
             Point thisFormPoint = this.Location;
-            ViewExtensionList viewForm = new ViewExtensionList();
-
-            viewForm.StartPosition = FormStartPosition.Manual;
-            viewForm.Location = thisFormPoint;
+            ViewExtensionList viewForm = new ViewExtensionList
+            {
+                StartPosition = FormStartPosition.Manual,
+                Location = thisFormPoint
+            };
 
             this.TopMost = false;
             viewForm.ShowDialog();

@@ -119,7 +119,14 @@ namespace DirectoryCleaner
 
         public static void TokenizeExtension()
         {
+            arrAudioExtension = audioExtension.Split(sep);
+            arrCompacExtension = compacExtension.Split(sep);
+            arrDiscExtension = discExtension.Split(sep);
             arrDocExtension = docExtension.Split(sep);
+            arrEtcExtension = etcExtension.Split(sep);
+            arrImgExtension = imgExtension.Split(sep);
+            arrTxtExtension = txtExtension.Split(sep);
+            arrVideoExtension = videoExtension.Split(sep);
         }
 
         public static bool CheckActivatedExtension()
@@ -128,6 +135,52 @@ namespace DirectoryCleaner
                     Properties.Settings.Default.isDoc || Properties.Settings.Default.isEtc ||
                     Properties.Settings.Default.isImg || Properties.Settings.Default.isVideo ||
                     Properties.Settings.Default.isTxt || Properties.Settings.Default.isDisc);
+        }
+
+        public static string CheckExtensionType(string extension)
+        {
+            int size;
+            size = arrAudioExtension.Length;
+            for(int i=0;i<size;i++)
+                if (arrAudioExtension[i].Equals(extension))
+                    return "Audio";
+
+            size = arrCompacExtension.Length;
+            for (int i = 0; i < size; i++)
+                if (arrCompacExtension[i].Equals(extension))
+                    return "Compac";
+
+            size = arrDiscExtension.Length;
+            for (int i = 0; i < size; i++)
+                if (arrDiscExtension[i].Equals(extension))
+                    return "Disc";
+
+            size = arrDocExtension.Length;
+            for (int i = 0; i < size; i++)
+                if (arrDocExtension[i].Equals(extension))
+                    return "Doc";
+
+            size = arrEtcExtension.Length;
+            for (int i = 0; i < size; i++)
+                if (arrEtcExtension[i].Equals(extension))
+                    return "Etc";
+
+            size = arrImgExtension.Length;
+            for (int i = 0; i < size; i++)
+                if (arrImgExtension[i].Equals(extension))
+                    return "Image";
+
+            size = arrTxtExtension.Length;
+            for (int i = 0; i < size; i++)
+                if (arrTxtExtension[i].Equals(extension))
+                    return "Txt";
+
+            size = arrVideoExtension.Length;
+            for (int i = 0; i < size; i++)
+                if (arrVideoExtension[i].Equals(extension))
+                    return "Video";
+
+            return "";
         }
     }
 }

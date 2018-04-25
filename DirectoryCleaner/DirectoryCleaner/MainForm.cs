@@ -94,11 +94,15 @@ namespace DirectoryCleaner
                 return;
             }
             
-            Point thisFormPoint = this.Location;
-            Search searchForm = new Search();
+            Extension.LoadExtension();
+            Extension.TokenizeExtension();
 
-            searchForm.StartPosition = FormStartPosition.Manual;
-            searchForm.Location = thisFormPoint;
+            Point thisFormPoint = this.Location;
+            Search searchForm = new Search
+            {
+                StartPosition = FormStartPosition.Manual,
+                Location = thisFormPoint
+            };
 
             this.Visible = false;
             searchForm.ShowDialog();
