@@ -24,8 +24,8 @@ namespace WordMaster
         private string defaultTextboxKor = "단어의 뜻을 입력해주세요.";
 
         /* Reading File and make string */
-        private string[] enText;
-        private string[] koText;
+        private string[] enText = null;
+        private string[] koText = null;
 
         /* line */
         private int lineCount;
@@ -105,8 +105,8 @@ namespace WordMaster
             }
             try
             {
-                string[] enText = File.ReadAllLines(WordBook.saveEnPath, Encoding.GetEncoding("utf-8"));
-                string[] koText = File.ReadAllLines(WordBook.saveKrPath, Encoding.GetEncoding("utf-8"));
+                enText = File.ReadAllLines(WordBook.saveEnPath, Encoding.GetEncoding("utf-8"));
+                koText = File.ReadAllLines(WordBook.saveKrPath, Encoding.GetEncoding("utf-8"));
                 lineCount = Properties.Settings.Default.curSize;
             }
             catch (Exception ex)

@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="WordMaster - NoteWindow" Height="800" Width="400" ResizeMode="CanMinimize" WindowState="Maximized" Loaded="Window_Loaded">
     <Grid x:Name="Grid" Loaded="Grid_Loaded">
-        <ListView x:Name="ListViewWord" HorizontalAlignment="Left" Height="100" Margin="129,111,0,0" VerticalAlignment="Top" Width="100">
-        </ListView>
+        <ListView x:Name="ListViewWord" HorizontalAlignment="Left" Height="751" Margin="10,10,0,0" VerticalAlignment="Top" Width="374"/>
     </Grid>
 </Window>
