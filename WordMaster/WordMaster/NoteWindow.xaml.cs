@@ -62,6 +62,9 @@ namespace WordMaster
 
         private char sep = ',';
 
+        private int pageCount;
+        private int curPage;
+
         public NoteWindow()
         {
             InitializeComponent();
@@ -73,6 +76,7 @@ namespace WordMaster
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            wordList = new List<Words>();
             this.Topmost = true;
 
             try
@@ -93,12 +97,17 @@ namespace WordMaster
 
                 for (int i = 0; i < lineCount; i++)
                 {
-                    ListViewWord.Items.Add(wordList[i].eng);
+                    ListViewWord.Items.Add(new ListViewItem { Content = wordList[i].eng, HorizontalContentAlignment = HorizontalAlignment.Center });
                 }
             }
             catch (Exception ex)
             {
             }
+        }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

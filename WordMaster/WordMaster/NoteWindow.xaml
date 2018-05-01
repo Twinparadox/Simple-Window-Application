@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WordMaster"
         mc:Ignorable="d"
-        Title="WordMaster - NoteWindow" Height="800" Width="400" ResizeMode="CanMinimize" WindowState="Maximized" Loaded="Window_Loaded">
+        Title="WordMaster - NoteWindow" Height="820" Width="400" ResizeMode="CanMinimize" Loaded="Window_Loaded">
     <Grid x:Name="Grid" Loaded="Grid_Loaded">
-        <ListView x:Name="ListViewWord" HorizontalAlignment="Left" Height="751" Margin="10,10,0,0" VerticalAlignment="Top" Width="374"/>
+        <ListView x:Name="ListViewWord" Height="700" Margin="10,10,10,0" VerticalAlignment="Top"/>
+        <Slider Margin="10,715,10,0" VerticalAlignment="Top" IsSnapToTickEnabled="True"/>
+        <Button x:Name="ButtonClose" Content="닫기" RenderTransformOrigin="1.48,4.367" Margin="309,743,10,10" FontFamily="NanumSquare ExtraBold" Click="ButtonClose_Click"/>
     </Grid>
 </Window>
