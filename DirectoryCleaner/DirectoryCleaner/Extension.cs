@@ -9,13 +9,15 @@ namespace DirectoryCleaner
     static class Extension
     {
         // 기본 확장자 - 문서, 이미지, 음성, 영상, 압축, 텍스트
-        public static string defaultDocExtension = "csv,doc,dochtml,docm,docx,docxml,dot,dothtml,dotm,dotx,eps,fdf,key,keynote,kth,mpd,mpp,mpt,mpx,nmbtemplate,numbers,odc,odg,odp,ods,odt,pages,pdf,pdfxml,pot,pothtml,potm,potx,ppa,ppam,pps,ppsm,ppsx,ppt,ppthtml,pptm,pptx,pptxml,prn,ps,pwz,rtf,tab,template,tsv,txt,vdx,vsd,vss,vst,vsx,vtx,wbk,wiz,wpd,wps,xdf,xdp,xlam,xll,xlr,xls,xlsb,xlsm,xlsx,xltm,xltx,xps";
-        public static string defaultImgExtension = "bmp,cr2,gif,ico,ithmb,jpeg,jpg,nef,png,raw,svg,tif,tiff,wbmp,webp";
         public static string defaultAudioExtension = "aac,aif,aifc,aiff,au,flac,m4a,m4b,m4p,m4r,mid,mp3,oga,ogg,opus,ra,ram,spx,wav,wma";
-        public static string defaultVideoExtension = "3g2,3gp,3gpp,3gpp2,asf,avi,dv,dvi,flv,m2t,m4v,mkv,mov,mp4,mpeg,mpg,mts,ogv,ogx,rm,rmvb,ts,vob,webm,wmv";
         public static string defaultCompacExtension = "ace,alz,bz2,gz,jar,rar,tar,xz,zip, 7z";
-        public static string defaultTxtExtension = "applescript,as,as3,c,cc,clisp,coffee,cpp,cs,css,csv,cxx,def,diff,erl,fountain,ft,h,hpp,htm,html,hxx,inc,ini,java,js,json,less,log,lua,m,markdown,mat,md,mdown,mkdn,mm,mustache,mxml,patch,php,phtml,pl,plist,properties,py,rb,sass,scss,sh,shtml,sql,tab,taskpaper,tex,text,tmpl,tsv,txt,url,vb,xhtml,xml,yaml,yml";
+        public static string defaultDocExtension = "csv,doc,dochtml,docm,docx,docxml,dot,dothtml,dotm,dotx,eps,fdf,key,keynote,kth,mpd,mpp,mpt,mpx,nmbtemplate,numbers,odc,odg,odp,ods,odt,pages,pdf,pdfxml,pot,pothtml,potm,potx,ppa,ppam,pps,ppsm,ppsx,ppt,ppthtml,pptm,pptx,pptxml,prn,ps,pwz,rtf,tab,template,tsv,txt,vdx,vsd,vss,vst,vsx,vtx,wbk,wiz,wpd,wps,xdf,xdp,xlam,xll,xlr,xls,xlsb,xlsm,xlsx,xltm,xltx,xps";
         public static string defaultDiscExtension = "bin,dmg,img,iso,lcd,ooo";
+        public static string defaultDeveloperExtension = "cpp,c,hpp,h,java,jav";
+        public static string defaultImgExtension = "bmp,cr2,gif,ico,ithmb,jpeg,jpg,nef,png,raw,svg,tif,tiff,wbmp,webp";
+        public static string defaultTxtExtension = "applescript,as,as3,c,cc,clisp,coffee,cpp,cs,css,csv,cxx,def,diff,erl,fountain,ft,h,hpp,htm,html,hxx,inc,ini,java,js,json,less,log,lua,m,markdown,mat,md,mdown,mkdn,mm,mustache,mxml,patch,php,phtml,pl,plist,properties,py,rb,sass,scss,sh,shtml,sql,tab,taskpaper,tex,text,tmpl,tsv,txt,url,vb,xhtml,xml,yaml,yml";
+        public static string defaultVideoExtension = "3g2,3gp,3gpp,3gpp2,asf,avi,dv,dvi,flv,m2t,m4v,mkv,mov,mp4,mpeg,mpg,mts,ogv,ogx,rm,rmvb,ts,vob,webm,wmv";
+
         public static string defaultEtcExtension;
 
         // 기타 확장자 - 사용자 추가 확장자

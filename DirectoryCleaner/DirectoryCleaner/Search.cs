@@ -194,28 +194,36 @@ namespace DirectoryCleaner
             ListView.SelectedListViewItemCollection selectedItems = ListViewFileList.SelectedItems;
             ListView.SelectedIndexCollection items = ListViewFileList.SelectedIndices;
 
-            while (items.Count>0)
+            while (i<items.Count && movePath.Equals("")==false)
             {
-                string move = selectedItems[i].SubItems[1].Text + @"\" + selectedItems[i].Text;
+                string move = selectedItems[i].SubItems[2].Text + @"\" + selectedItems[i].SubItems[1].Text;
                 FileInfo moveFile = new FileInfo(move);
                 if (moveFile.Exists)
                 {
                     try
                     {
-                        moveFile.MoveTo(movePath + @"\" + selectedItems[i].Text);
-                        ListViewFileList.Items[i].SubItems[1].Text = movePath;
+                        moveFile.MoveTo(movePath + @"\" + selectedItems[i].SubItems[1].Text);
+                        ListViewFileList.Items[i].SubItems[2].Text = movePath;
                     }
                     catch
                     {
                         // 중복 시, 상위 폴더 명을 접합
-                        string tmp = CreateAdditionalString(selectedItems[i].SubItems[1].Text);
-                        moveFile.MoveTo(movePath + @"\" + tmp + selectedItems[i].Text);
-                        ListViewFileList.Items[i].SubItems[1].Text = movePath;
+                        string tmp = CreateAdditionalString(selectedItems[i].SubItems[2].Text);
+                        moveFile.MoveTo(movePath + @"\" + tmp + selectedItems[i].SubItems[1].Text);
+                        ListViewFileList.Items[i].SubItems[1].Text = tmp + selectedItems[i].SubItems[1].Text;
+                        ListViewFileList.Items[i].SubItems[2].Text = movePath;
+                    }
+                    finally
+                    {
+                        if (movePath.Contains(MainForm.pTextPath.Text) == false)
+                        {
+                            ListViewFileList.Items[i].Remove();
+                            ListViewFileList.Refresh();
+                        }
                     }
                 }
-                ListViewFileList.Items[i].Remove();
+                i++;
             }
-            ListViewFileList.Refresh();
         }
 
         // 중복 시 파일에 폴더명 추가
