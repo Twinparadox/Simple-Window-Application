@@ -34,16 +34,17 @@
             this.ListViewExtension = new System.Windows.Forms.ListView();
             this.chKind = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chContent = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ComboBoxDocument = new System.Windows.Forms.CheckBox();
-            this.ComboBoxImage = new System.Windows.Forms.CheckBox();
-            this.ComboBoxAudio = new System.Windows.Forms.CheckBox();
-            this.ComboBoxVideo = new System.Windows.Forms.CheckBox();
-            this.ComboBoxCompact = new System.Windows.Forms.CheckBox();
-            this.ComboBoxEtc = new System.Windows.Forms.CheckBox();
+            this.CheckBoxDocument = new System.Windows.Forms.CheckBox();
+            this.CheckBoxImage = new System.Windows.Forms.CheckBox();
+            this.CheckBoxAudio = new System.Windows.Forms.CheckBox();
+            this.CheckBoxVideo = new System.Windows.Forms.CheckBox();
+            this.CheckBoxCompact = new System.Windows.Forms.CheckBox();
+            this.CheckBoxEtc = new System.Windows.Forms.CheckBox();
             this.ComboBoxList = new System.Windows.Forms.ComboBox();
             this.ButtonAccept = new System.Windows.Forms.Button();
-            this.ComboBoxTxt = new System.Windows.Forms.CheckBox();
-            this.ComboBoxDisc = new System.Windows.Forms.CheckBox();
+            this.CheckBoxTxt = new System.Windows.Forms.CheckBox();
+            this.CheckBoxDisc = new System.Windows.Forms.CheckBox();
+            this.CheckBoxDevelope = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtExtension
@@ -88,95 +89,95 @@
             this.chContent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chContent.Width = 196;
             // 
-            // ComboBoxDocument
+            // CheckBoxDocument
             // 
-            this.ComboBoxDocument.AutoSize = true;
-            this.ComboBoxDocument.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ComboBoxDocument.Checked = true;
-            this.ComboBoxDocument.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ComboBoxDocument.Font = new System.Drawing.Font("굴림", 10F);
-            this.ComboBoxDocument.Location = new System.Drawing.Point(118, 249);
-            this.ComboBoxDocument.Name = "ComboBoxDocument";
-            this.ComboBoxDocument.Size = new System.Drawing.Size(39, 32);
-            this.ComboBoxDocument.TabIndex = 3;
-            this.ComboBoxDocument.Text = "문서";
-            this.ComboBoxDocument.UseVisualStyleBackColor = true;
-            this.ComboBoxDocument.CheckedChanged += new System.EventHandler(this.ComboBoxDocument_CheckedChanged);
+            this.CheckBoxDocument.AutoSize = true;
+            this.CheckBoxDocument.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.CheckBoxDocument.Checked = true;
+            this.CheckBoxDocument.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxDocument.Font = new System.Drawing.Font("굴림", 10F);
+            this.CheckBoxDocument.Location = new System.Drawing.Point(118, 249);
+            this.CheckBoxDocument.Name = "CheckBoxDocument";
+            this.CheckBoxDocument.Size = new System.Drawing.Size(39, 32);
+            this.CheckBoxDocument.TabIndex = 3;
+            this.CheckBoxDocument.Text = "문서";
+            this.CheckBoxDocument.UseVisualStyleBackColor = true;
+            this.CheckBoxDocument.CheckedChanged += new System.EventHandler(this.CheckBoxDocument_CheckedChanged);
             // 
-            // ComboBoxImage
+            // CheckBoxImage
             // 
-            this.ComboBoxImage.AutoSize = true;
-            this.ComboBoxImage.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ComboBoxImage.Checked = true;
-            this.ComboBoxImage.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ComboBoxImage.Font = new System.Drawing.Font("굴림", 10F);
-            this.ComboBoxImage.Location = new System.Drawing.Point(12, 249);
-            this.ComboBoxImage.Name = "ComboBoxImage";
-            this.ComboBoxImage.Size = new System.Drawing.Size(53, 32);
-            this.ComboBoxImage.TabIndex = 4;
-            this.ComboBoxImage.Text = "이미지";
-            this.ComboBoxImage.UseVisualStyleBackColor = true;
-            this.ComboBoxImage.CheckedChanged += new System.EventHandler(this.ComboBoxImage_CheckedChanged);
+            this.CheckBoxImage.AutoSize = true;
+            this.CheckBoxImage.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.CheckBoxImage.Checked = true;
+            this.CheckBoxImage.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxImage.Font = new System.Drawing.Font("굴림", 10F);
+            this.CheckBoxImage.Location = new System.Drawing.Point(12, 249);
+            this.CheckBoxImage.Name = "CheckBoxImage";
+            this.CheckBoxImage.Size = new System.Drawing.Size(53, 32);
+            this.CheckBoxImage.TabIndex = 4;
+            this.CheckBoxImage.Text = "이미지";
+            this.CheckBoxImage.UseVisualStyleBackColor = true;
+            this.CheckBoxImage.CheckedChanged += new System.EventHandler(this.CheckBoxImage_CheckedChanged);
             // 
-            // ComboBoxAudio
+            // CheckBoxAudio
             // 
-            this.ComboBoxAudio.AutoSize = true;
-            this.ComboBoxAudio.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ComboBoxAudio.Checked = true;
-            this.ComboBoxAudio.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ComboBoxAudio.Font = new System.Drawing.Font("굴림", 10F);
-            this.ComboBoxAudio.Location = new System.Drawing.Point(219, 249);
-            this.ComboBoxAudio.Name = "ComboBoxAudio";
-            this.ComboBoxAudio.Size = new System.Drawing.Size(53, 32);
-            this.ComboBoxAudio.TabIndex = 5;
-            this.ComboBoxAudio.Text = "오디오";
-            this.ComboBoxAudio.UseVisualStyleBackColor = true;
-            this.ComboBoxAudio.CheckedChanged += new System.EventHandler(this.ComboBoxAudio_CheckedChanged);
+            this.CheckBoxAudio.AutoSize = true;
+            this.CheckBoxAudio.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.CheckBoxAudio.Checked = true;
+            this.CheckBoxAudio.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxAudio.Font = new System.Drawing.Font("굴림", 10F);
+            this.CheckBoxAudio.Location = new System.Drawing.Point(219, 249);
+            this.CheckBoxAudio.Name = "CheckBoxAudio";
+            this.CheckBoxAudio.Size = new System.Drawing.Size(53, 32);
+            this.CheckBoxAudio.TabIndex = 5;
+            this.CheckBoxAudio.Text = "오디오";
+            this.CheckBoxAudio.UseVisualStyleBackColor = true;
+            this.CheckBoxAudio.CheckedChanged += new System.EventHandler(this.CheckBoxAudio_CheckedChanged);
             // 
-            // ComboBoxVideo
+            // CheckBoxVideo
             // 
-            this.ComboBoxVideo.AutoSize = true;
-            this.ComboBoxVideo.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ComboBoxVideo.Checked = true;
-            this.ComboBoxVideo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ComboBoxVideo.Font = new System.Drawing.Font("굴림", 10F);
-            this.ComboBoxVideo.Location = new System.Drawing.Point(12, 316);
-            this.ComboBoxVideo.Name = "ComboBoxVideo";
-            this.ComboBoxVideo.Size = new System.Drawing.Size(53, 32);
-            this.ComboBoxVideo.TabIndex = 6;
-            this.ComboBoxVideo.Text = "비디오";
-            this.ComboBoxVideo.UseVisualStyleBackColor = true;
-            this.ComboBoxVideo.CheckedChanged += new System.EventHandler(this.ComboBoxVideo_CheckedChanged);
+            this.CheckBoxVideo.AutoSize = true;
+            this.CheckBoxVideo.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.CheckBoxVideo.Checked = true;
+            this.CheckBoxVideo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxVideo.Font = new System.Drawing.Font("굴림", 10F);
+            this.CheckBoxVideo.Location = new System.Drawing.Point(12, 316);
+            this.CheckBoxVideo.Name = "CheckBoxVideo";
+            this.CheckBoxVideo.Size = new System.Drawing.Size(53, 32);
+            this.CheckBoxVideo.TabIndex = 6;
+            this.CheckBoxVideo.Text = "비디오";
+            this.CheckBoxVideo.UseVisualStyleBackColor = true;
+            this.CheckBoxVideo.CheckedChanged += new System.EventHandler(this.CheckBoxVideo_CheckedChanged);
             // 
-            // ComboBoxCompact
+            // CheckBoxCompact
             // 
-            this.ComboBoxCompact.AutoSize = true;
-            this.ComboBoxCompact.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ComboBoxCompact.Checked = true;
-            this.ComboBoxCompact.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ComboBoxCompact.Font = new System.Drawing.Font("굴림", 10F);
-            this.ComboBoxCompact.Location = new System.Drawing.Point(118, 316);
-            this.ComboBoxCompact.Name = "ComboBoxCompact";
-            this.ComboBoxCompact.Size = new System.Drawing.Size(39, 32);
-            this.ComboBoxCompact.TabIndex = 7;
-            this.ComboBoxCompact.Text = "압축";
-            this.ComboBoxCompact.UseVisualStyleBackColor = true;
-            this.ComboBoxCompact.CheckedChanged += new System.EventHandler(this.ComboBoxCompact_CheckedChanged);
+            this.CheckBoxCompact.AutoSize = true;
+            this.CheckBoxCompact.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.CheckBoxCompact.Checked = true;
+            this.CheckBoxCompact.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxCompact.Font = new System.Drawing.Font("굴림", 10F);
+            this.CheckBoxCompact.Location = new System.Drawing.Point(118, 316);
+            this.CheckBoxCompact.Name = "CheckBoxCompact";
+            this.CheckBoxCompact.Size = new System.Drawing.Size(39, 32);
+            this.CheckBoxCompact.TabIndex = 7;
+            this.CheckBoxCompact.Text = "압축";
+            this.CheckBoxCompact.UseVisualStyleBackColor = true;
+            this.CheckBoxCompact.CheckedChanged += new System.EventHandler(this.CheckBoxCompact_CheckedChanged);
             // 
-            // ComboBoxEtc
+            // CheckBoxEtc
             // 
-            this.ComboBoxEtc.AutoSize = true;
-            this.ComboBoxEtc.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ComboBoxEtc.Checked = true;
-            this.ComboBoxEtc.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ComboBoxEtc.Font = new System.Drawing.Font("굴림", 10F);
-            this.ComboBoxEtc.Location = new System.Drawing.Point(219, 316);
-            this.ComboBoxEtc.Name = "ComboBoxEtc";
-            this.ComboBoxEtc.Size = new System.Drawing.Size(53, 32);
-            this.ComboBoxEtc.TabIndex = 8;
-            this.ComboBoxEtc.Text = "사용자";
-            this.ComboBoxEtc.UseVisualStyleBackColor = true;
-            this.ComboBoxEtc.CheckedChanged += new System.EventHandler(this.ComboBoxEtc_CheckedChanged);
+            this.CheckBoxEtc.AutoSize = true;
+            this.CheckBoxEtc.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.CheckBoxEtc.Checked = true;
+            this.CheckBoxEtc.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxEtc.Font = new System.Drawing.Font("굴림", 10F);
+            this.CheckBoxEtc.Location = new System.Drawing.Point(219, 316);
+            this.CheckBoxEtc.Name = "CheckBoxEtc";
+            this.CheckBoxEtc.Size = new System.Drawing.Size(53, 32);
+            this.CheckBoxEtc.TabIndex = 8;
+            this.CheckBoxEtc.Text = "사용자";
+            this.CheckBoxEtc.UseVisualStyleBackColor = true;
+            this.CheckBoxEtc.CheckedChanged += new System.EventHandler(this.CheckBoxEtc_CheckedChanged);
             // 
             // ComboBoxList
             // 
@@ -199,51 +200,67 @@
             this.ButtonAccept.UseVisualStyleBackColor = true;
             this.ButtonAccept.Click += new System.EventHandler(this.ButtonAccept_Click);
             // 
-            // ComboBoxTxt
+            // CheckBoxTxt
             // 
-            this.ComboBoxTxt.AutoSize = true;
-            this.ComboBoxTxt.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ComboBoxTxt.Checked = true;
-            this.ComboBoxTxt.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ComboBoxTxt.Font = new System.Drawing.Font("굴림", 10F);
-            this.ComboBoxTxt.Location = new System.Drawing.Point(12, 371);
-            this.ComboBoxTxt.Name = "ComboBoxTxt";
-            this.ComboBoxTxt.Size = new System.Drawing.Size(53, 32);
-            this.ComboBoxTxt.TabIndex = 10;
-            this.ComboBoxTxt.Text = "텍스트";
-            this.ComboBoxTxt.UseVisualStyleBackColor = true;
-            this.ComboBoxTxt.CheckedChanged += new System.EventHandler(this.ComboBoxTxt_CheckedChanged);
+            this.CheckBoxTxt.AutoSize = true;
+            this.CheckBoxTxt.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.CheckBoxTxt.Checked = true;
+            this.CheckBoxTxt.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxTxt.Font = new System.Drawing.Font("굴림", 10F);
+            this.CheckBoxTxt.Location = new System.Drawing.Point(12, 371);
+            this.CheckBoxTxt.Name = "CheckBoxTxt";
+            this.CheckBoxTxt.Size = new System.Drawing.Size(53, 32);
+            this.CheckBoxTxt.TabIndex = 10;
+            this.CheckBoxTxt.Text = "텍스트";
+            this.CheckBoxTxt.UseVisualStyleBackColor = true;
+            this.CheckBoxTxt.CheckedChanged += new System.EventHandler(this.CheckBoxTxt_CheckedChanged);
             // 
-            // ComboBoxDisc
+            // CheckBoxDisc
             // 
-            this.ComboBoxDisc.AutoSize = true;
-            this.ComboBoxDisc.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ComboBoxDisc.Checked = true;
-            this.ComboBoxDisc.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ComboBoxDisc.Font = new System.Drawing.Font("굴림", 10F);
-            this.ComboBoxDisc.Location = new System.Drawing.Point(219, 371);
-            this.ComboBoxDisc.Name = "ComboBoxDisc";
-            this.ComboBoxDisc.Size = new System.Drawing.Size(53, 32);
-            this.ComboBoxDisc.TabIndex = 11;
-            this.ComboBoxDisc.Text = "디스크";
-            this.ComboBoxDisc.UseVisualStyleBackColor = true;
-            this.ComboBoxDisc.CheckedChanged += new System.EventHandler(this.ComboBoxDisc_CheckedChanged);
+            this.CheckBoxDisc.AutoSize = true;
+            this.CheckBoxDisc.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.CheckBoxDisc.Checked = true;
+            this.CheckBoxDisc.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxDisc.Font = new System.Drawing.Font("굴림", 10F);
+            this.CheckBoxDisc.Location = new System.Drawing.Point(219, 371);
+            this.CheckBoxDisc.Name = "CheckBoxDisc";
+            this.CheckBoxDisc.Size = new System.Drawing.Size(53, 32);
+            this.CheckBoxDisc.TabIndex = 11;
+            this.CheckBoxDisc.Text = "디스크";
+            this.CheckBoxDisc.UseVisualStyleBackColor = true;
+            this.CheckBoxDisc.CheckedChanged += new System.EventHandler(this.CheckBoxDisc_CheckedChanged);
+            // 
+            // CheckBoxDevelope
+            // 
+            this.CheckBoxDevelope.AutoSize = true;
+            this.CheckBoxDevelope.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.CheckBoxDevelope.Checked = true;
+            this.CheckBoxDevelope.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxDevelope.Font = new System.Drawing.Font("굴림", 10F);
+            this.CheckBoxDevelope.Location = new System.Drawing.Point(118, 371);
+            this.CheckBoxDevelope.Name = "CheckBoxDevelope";
+            this.CheckBoxDevelope.Size = new System.Drawing.Size(39, 32);
+            this.CheckBoxDevelope.TabIndex = 12;
+            this.CheckBoxDevelope.Text = "개발";
+            this.CheckBoxDevelope.UseVisualStyleBackColor = true;
+            this.CheckBoxDevelope.CheckedChanged += new System.EventHandler(this.CheckBoxDevelope_CheckedChanged);
             // 
             // ViewExtensionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 500);
-            this.Controls.Add(this.ComboBoxDisc);
-            this.Controls.Add(this.ComboBoxTxt);
+            this.Controls.Add(this.CheckBoxDevelope);
+            this.Controls.Add(this.CheckBoxDisc);
+            this.Controls.Add(this.CheckBoxTxt);
             this.Controls.Add(this.ButtonAccept);
             this.Controls.Add(this.ComboBoxList);
-            this.Controls.Add(this.ComboBoxEtc);
-            this.Controls.Add(this.ComboBoxCompact);
-            this.Controls.Add(this.ComboBoxVideo);
-            this.Controls.Add(this.ComboBoxAudio);
-            this.Controls.Add(this.ComboBoxImage);
-            this.Controls.Add(this.ComboBoxDocument);
+            this.Controls.Add(this.CheckBoxEtc);
+            this.Controls.Add(this.CheckBoxCompact);
+            this.Controls.Add(this.CheckBoxVideo);
+            this.Controls.Add(this.CheckBoxAudio);
+            this.Controls.Add(this.CheckBoxImage);
+            this.Controls.Add(this.CheckBoxDocument);
             this.Controls.Add(this.ListViewExtension);
             this.Controls.Add(this.ButtonAddExtension);
             this.Controls.Add(this.txtExtension);
@@ -268,15 +285,16 @@
         private System.Windows.Forms.ListView ListViewExtension;
         private System.Windows.Forms.ColumnHeader chKind;
         private System.Windows.Forms.ColumnHeader chContent;
-        private System.Windows.Forms.CheckBox ComboBoxDocument;
-        private System.Windows.Forms.CheckBox ComboBoxImage;
-        private System.Windows.Forms.CheckBox ComboBoxAudio;
-        private System.Windows.Forms.CheckBox ComboBoxVideo;
-        private System.Windows.Forms.CheckBox ComboBoxCompact;
-        private System.Windows.Forms.CheckBox ComboBoxEtc;
+        private System.Windows.Forms.CheckBox CheckBoxDocument;
+        private System.Windows.Forms.CheckBox CheckBoxImage;
+        private System.Windows.Forms.CheckBox CheckBoxAudio;
+        private System.Windows.Forms.CheckBox CheckBoxVideo;
+        private System.Windows.Forms.CheckBox CheckBoxCompact;
+        private System.Windows.Forms.CheckBox CheckBoxEtc;
         private System.Windows.Forms.ComboBox ComboBoxList;
         private System.Windows.Forms.Button ButtonAccept;
-        private System.Windows.Forms.CheckBox ComboBoxTxt;
-        private System.Windows.Forms.CheckBox ComboBoxDisc;
+        private System.Windows.Forms.CheckBox CheckBoxTxt;
+        private System.Windows.Forms.CheckBox CheckBoxDisc;
+        private System.Windows.Forms.CheckBox CheckBoxDevelope;
     }
 }

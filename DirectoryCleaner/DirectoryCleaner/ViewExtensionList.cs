@@ -12,17 +12,18 @@ namespace DirectoryCleaner
 {
     public partial class ViewExtensionList : Form
     {
-        private String[] strDocument = new String[] { "문서", Extension.docExtension+Extension.userDocExtension };
-        private String[] strImage = new String[] { "이미지", Extension.imgExtension+Extension.userImgExtension };
-        private String[] strAudio = new String[] { "오디오", Extension.audioExtension+Extension.userAudioExtension };
-        private String[] strVideo = new String[] { "비디오", Extension.videoExtension+Extension.userVideoExtension };
-        private String[] strCompac = new String[] { "압축", Extension.compacExtension+Extension.userCompacExtension };
-        private String[] strTxt = new String[] { "텍스트", Extension.txtExtension + Extension.userTxtExtension };
+        private String[] strAudio = new String[] { "오디오", Extension.audioExtension + Extension.userAudioExtension };
+        private String[] strCompac = new String[] { "압축", Extension.compacExtension + Extension.userCompacExtension };
+        private String[] strDevelope = new String[] { "개발", Extension.developeExtension + Extension.userDevelopeExtension };
         private String[] strDisc = new String[] { "디스크", Extension.discExtension + Extension.userDiscExtension };
+        private String[] strDocument = new String[] { "문서", Extension.docExtension+Extension.userDocExtension };
         private String[] strEtc = new String[] { "사용자정의", Extension.userEtcExtension };
+        private String[] strImage = new String[] { "이미지", Extension.imgExtension+Extension.userImgExtension };
+        private String[] strTxt = new String[] { "텍스트", Extension.txtExtension + Extension.userTxtExtension };
+        private String[] strVideo = new String[] { "비디오", Extension.videoExtension+Extension.userVideoExtension };
 
-        private string[] ComboBoxData = { "문서", "이미지", "오디오", "비디오", "압축", "텍스트", "디스크", "사용자정의" };
-        private bool[] checkdata = new bool[8];
+        private string[] ComboBoxData = { "오디오", "압축", "개발", "디스크", "문서", "이미지", "텍스트", "비디오", "사용자정의" };
+        private bool[] checkdata = new bool[9];
 
         public ViewExtensionList()
         {
@@ -36,28 +37,30 @@ namespace DirectoryCleaner
             this.Focus();
 
             this.ListViewExtension.BeginUpdate();
+            this.ListViewExtension.Items.Add(new ListViewItem(strAudio));
+            this.ListViewExtension.Items.Add(new ListViewItem(strCompac));
+            this.ListViewExtension.Items.Add(new ListViewItem(strDevelope));
+            this.ListViewExtension.Items.Add(new ListViewItem(strDisc));
             this.ListViewExtension.Items.Add(new ListViewItem(strDocument));
             this.ListViewExtension.Items.Add(new ListViewItem(strImage));
-            this.ListViewExtension.Items.Add(new ListViewItem(strAudio));
-            this.ListViewExtension.Items.Add(new ListViewItem(strVideo));
-            this.ListViewExtension.Items.Add(new ListViewItem(strCompac));
             this.ListViewExtension.Items.Add(new ListViewItem(strTxt));
-            this.ListViewExtension.Items.Add(new ListViewItem(strDisc));
+            this.ListViewExtension.Items.Add(new ListViewItem(strVideo));
             this.ListViewExtension.Items.Add(new ListViewItem(strEtc));
             this.ListViewExtension.EndUpdate();
 
             this.ComboBoxList.BeginUpdate();
             this.ComboBoxList.Items.AddRange(ComboBoxData);
             this.ComboBoxList.EndUpdate();
-            
-            ComboBoxDocument.Checked = checkdata[0] = Properties.Settings.Default.isDoc;
-            ComboBoxImage.Checked = checkdata[1] = Properties.Settings.Default.isImg;
-            ComboBoxAudio.Checked = checkdata[2] = Properties.Settings.Default.isAudio;
-            ComboBoxVideo.Checked = checkdata[3] = Properties.Settings.Default.isVideo;
-            ComboBoxCompact.Checked = checkdata[4] = Properties.Settings.Default.isCompac;
-            ComboBoxTxt.Checked = checkdata[5] = Properties.Settings.Default.isTxt;
-            ComboBoxDisc.Checked = checkdata[6] = Properties.Settings.Default.isDisc;
-            ComboBoxEtc.Checked = checkdata[7] = Properties.Settings.Default.isEtc;
+
+            CheckBoxAudio.Checked = checkdata[0] = Properties.Settings.Default.isAudio;
+            CheckBoxCompact.Checked = checkdata[1] = Properties.Settings.Default.isCompac;
+            CheckBoxDevelope.Checked = checkdata[2] = Properties.Settings.Default.isDevelope;
+            CheckBoxDisc.Checked = checkdata[3] = Properties.Settings.Default.isDisc;
+            CheckBoxDocument.Checked = checkdata[4] = Properties.Settings.Default.isDoc;
+            CheckBoxImage.Checked = checkdata[5] = Properties.Settings.Default.isImg;
+            CheckBoxTxt.Checked = checkdata[6] = Properties.Settings.Default.isTxt;
+            CheckBoxVideo.Checked = checkdata[7] = Properties.Settings.Default.isVideo;
+            CheckBoxEtc.Checked = checkdata[8] = Properties.Settings.Default.isEtc;
         }
 
         // 확장자 추가
@@ -69,7 +72,25 @@ namespace DirectoryCleaner
             }
             else
             {
-                if (ComboBoxList.SelectedItem.ToString().Equals("문서"))
+                if (ComboBoxList.SelectedItem.ToString().Equals("오디오"))
+                {
+                    Extension.userAudioExtension += txtExtension.Text + ",";
+                    //Extension.curExtension += txtExtension.Text + ";";
+                }
+                else if (ComboBoxList.SelectedItem.ToString().Equals("압축"))
+                {
+                    Extension.userCompacExtension += txtExtension.Text + ",";
+                    //Extension.curExtension += txtExtension.Text + ";";
+                }
+                else if(ComboBoxList.SelectedItem.ToString().Equals("개발"))
+                {
+                    Extension.userDevelopeExtension += txtExtension.Text + ",";
+                }
+                else if (ComboBoxList.SelectedItem.ToString().Equals("디스크"))
+                {
+                    Extension.userDiscExtension += txtExtension.Text + ",";
+                }
+                else if (ComboBoxList.SelectedItem.ToString().Equals("문서"))
                 {
                     Extension.userDocExtension += txtExtension.Text + ",";
                     //Extension.curExtension += txtExtension.Text + ";";
@@ -79,28 +100,14 @@ namespace DirectoryCleaner
                     Extension.userImgExtension += txtExtension.Text + ",";
                     //Extension.curExtension += txtExtension.Text + ";";
                 }
-                else if(ComboBoxList.SelectedItem.ToString().Equals("오디오"))
+                else if (ComboBoxList.SelectedItem.ToString().Equals("텍스트"))
                 {
-                    Extension.userAudioExtension += txtExtension.Text + ",";
-                    //Extension.curExtension += txtExtension.Text + ";";
+                    Extension.userTxtExtension += txtExtension.Text + ",";
                 }
                 else if(ComboBoxList.SelectedItem.ToString().Equals("비디오"))
                 {
                     Extension.userVideoExtension += txtExtension.Text + ",";
                     //Extension.curExtension += txtExtension.Text + ";";
-                }
-                else if(ComboBoxList.SelectedItem.ToString().Equals("압축"))
-                {
-                    Extension.userCompacExtension += txtExtension.Text + ",";
-                    //Extension.curExtension += txtExtension.Text + ";";
-                }
-                else if(ComboBoxList.SelectedItem.ToString().Equals("텍스트"))
-                {
-                    Extension.userTxtExtension += txtExtension.Text + ",";
-                }
-                else if(ComboBoxList.SelectedItem.ToString().Equals("디스크"))
-                {
-                    Extension.userDiscExtension += txtExtension.Text + ",";
                 }
                 else
                 {
@@ -115,14 +122,15 @@ namespace DirectoryCleaner
         private void UpdateListViewExtension()
         {
             this.ListViewExtension.BeginUpdate();
-            this.ListViewExtension.Items[0].SubItems[1].Text = Extension.docExtension + Extension.userDocExtension;
-            this.ListViewExtension.Items[1].SubItems[1].Text = Extension.imgExtension + Extension.userImgExtension;
-            this.ListViewExtension.Items[2].SubItems[1].Text = Extension.audioExtension + Extension.userAudioExtension;
-            this.ListViewExtension.Items[3].SubItems[1].Text = Extension.videoExtension + Extension.userVideoExtension;
-            this.ListViewExtension.Items[4].SubItems[1].Text = Extension.compacExtension + Extension.userCompacExtension;
-            this.ListViewExtension.Items[5].SubItems[1].Text = Extension.txtExtension + Extension.userTxtExtension;
-            this.ListViewExtension.Items[6].SubItems[1].Text = Extension.discExtension + Extension.userDiscExtension;
-            this.ListViewExtension.Items[7].SubItems[1].Text = Extension.userEtcExtension;
+            this.ListViewExtension.Items[0].SubItems[1].Text = Extension.audioExtension + Extension.userAudioExtension;
+            this.ListViewExtension.Items[1].SubItems[1].Text = Extension.compacExtension + Extension.userCompacExtension;
+            this.ListViewExtension.Items[2].SubItems[1].Text = Extension.developeExtension + Extension.userDevelopeExtension;
+            this.ListViewExtension.Items[3].SubItems[1].Text = Extension.discExtension + Extension.userDiscExtension;
+            this.ListViewExtension.Items[4].SubItems[1].Text = Extension.docExtension + Extension.userDocExtension;
+            this.ListViewExtension.Items[5].SubItems[1].Text = Extension.imgExtension + Extension.userImgExtension;
+            this.ListViewExtension.Items[6].SubItems[1].Text = Extension.txtExtension + Extension.userTxtExtension;
+            this.ListViewExtension.Items[7].SubItems[1].Text = Extension.videoExtension + Extension.userVideoExtension;
+            this.ListViewExtension.Items[8].SubItems[1].Text = Extension.userEtcExtension;
             this.ListViewExtension.EndUpdate();
 
             txtExtension.Text = "";
@@ -138,44 +146,49 @@ namespace DirectoryCleaner
         }
 
         #region 체크박스 이벤트 메서드
-        private void ComboBoxImage_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxAudio_CheckedChanged(object sender, EventArgs e)
         {
-            checkdata[1] = Properties.Settings.Default.isImg = ComboBoxImage.Checked;
+            checkdata[0] = Properties.Settings.Default.isAudio = CheckBoxAudio.Checked;
         }
 
-        private void ComboBoxDocument_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxCompact_CheckedChanged(object sender, EventArgs e)
         {
-            checkdata[0] = Properties.Settings.Default.isDoc = ComboBoxDocument.Checked;
+            checkdata[1] = Properties.Settings.Default.isCompac = CheckBoxCompact.Checked;
         }
 
-        private void ComboBoxAudio_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxDevelope_CheckedChanged(object sender, EventArgs e)
         {
-            checkdata[2] = Properties.Settings.Default.isAudio = ComboBoxAudio.Checked;
+            checkdata[2] = Properties.Settings.Default.isDevelope = CheckBoxDevelope.Checked;
         }
 
-        private void ComboBoxVideo_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxDisc_CheckedChanged(object sender, EventArgs e)
         {
-            checkdata[3] = Properties.Settings.Default.isVideo = ComboBoxVideo.Checked;
+            checkdata[3] = Properties.Settings.Default.isDisc = CheckBoxDisc.Checked;
         }
 
-        private void ComboBoxCompact_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxDocument_CheckedChanged(object sender, EventArgs e)
         {
-            checkdata[4] = Properties.Settings.Default.isCompac = ComboBoxCompact.Checked;
+            checkdata[4] = Properties.Settings.Default.isDoc = CheckBoxDocument.Checked;
         }
 
-        private void ComboBoxTxt_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxImage_CheckedChanged(object sender, EventArgs e)
         {
-            checkdata[5] = Properties.Settings.Default.isTxt = ComboBoxTxt.Checked;
+            checkdata[5] = Properties.Settings.Default.isImg = CheckBoxImage.Checked;
         }
 
-        private void ComboBoxDisc_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxTxt_CheckedChanged(object sender, EventArgs e)
         {
-            checkdata[6] = Properties.Settings.Default.isDisc = ComboBoxDisc.Checked;
+            checkdata[6] = Properties.Settings.Default.isTxt = CheckBoxTxt.Checked;
         }
 
-        private void ComboBoxEtc_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxVideo_CheckedChanged(object sender, EventArgs e)
         {
-            checkdata[7] = Properties.Settings.Default.isEtc = ComboBoxEtc.Checked;
+            checkdata[7] = Properties.Settings.Default.isVideo = CheckBoxVideo.Checked;
+        }
+
+        private void CheckBoxEtc_CheckedChanged(object sender, EventArgs e)
+        {
+            checkdata[8] = Properties.Settings.Default.isEtc = CheckBoxEtc.Checked;
         }
         #endregion
 
@@ -230,6 +243,5 @@ namespace DirectoryCleaner
             }
             Setting.pTxtExtension.Text = Extension.curExtension;
         }
-
     }
 }

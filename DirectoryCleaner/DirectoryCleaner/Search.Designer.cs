@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Search));
             this.ListViewFileList = new System.Windows.Forms.ListView();
+            this.chType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -38,7 +39,6 @@
             this.ButtonAccept = new System.Windows.Forms.Button();
             this.ButtonDeleteSelect = new System.Windows.Forms.Button();
             this.ButtonMove = new System.Windows.Forms.Button();
-            this.chType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // ListViewFileList
@@ -59,9 +59,14 @@
             this.ListViewFileList.UseCompatibleStateImageBehavior = false;
             this.ListViewFileList.View = System.Windows.Forms.View.Details;
             this.ListViewFileList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ListViewFileList_ColumnClick);
+            this.ListViewFileList.ItemMouseHover += new System.Windows.Forms.ListViewItemMouseHoverEventHandler(this.ListViewFileList_ItemMouseHover);
             this.ListViewFileList.SelectedIndexChanged += new System.EventHandler(this.ListViewFileList_SelectedIndexChanged);
             this.ListViewFileList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListViewFileList_MouseDoubleClick);
             this.ListViewFileList.Resize += new System.EventHandler(this.ListViewFileList_Resize);
+            // 
+            // chType
+            // 
+            this.chType.Text = "분류";
             // 
             // chName
             // 
@@ -130,10 +135,6 @@
             this.ButtonMove.UseVisualStyleBackColor = true;
             this.ButtonMove.Click += new System.EventHandler(this.ButtonMove_Click);
             // 
-            // chType
-            // 
-            this.chType.Text = "분류";
-            // 
             // Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -146,6 +147,7 @@
             this.Controls.Add(this.ListViewFileList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Search";
             this.Text = " ";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Search_FormClosed);

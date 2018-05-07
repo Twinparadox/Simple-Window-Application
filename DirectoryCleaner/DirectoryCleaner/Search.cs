@@ -61,6 +61,9 @@ namespace DirectoryCleaner
                             case "Compac":
                                 fileType = "압축파일";
                                 break;
+                            case "Dev":
+                                fileType = "개발";
+                                break;
                             case "Disc":
                                 fileType = "디스크";
                                 break;
@@ -251,11 +254,15 @@ namespace DirectoryCleaner
             }
         }
 
+        /// <summary>
+        /// 반응형 사이즈를 구축하는 것을 목표로 하고 있음.
+        /// 컨트롤 별 크기와 상대적 위치를 지정하는 방법을 고민중.
+        /// </summary>
         #region 반응형
         private void ListViewResizing()
         {
             ListViewFileList.Width = this.Size.Width * 98 / 100 - 10;
-            ListViewFileList.Height = this.Size.Height * 80 / 100 - 10;
+            ListViewFileList.Height = this.Size.Height * 75 / 100 - 10;
             SetColumnWidth();
             ButtonAccept.Left = this.Size.Width * 98 / 100 - ButtonAccept.Width - 8;
             ButtonRefresh.Left= this.Size.Width * 98 / 100 - ButtonAccept.Width - ButtonRefresh.Width - 10;
@@ -278,10 +285,11 @@ namespace DirectoryCleaner
 
         private void SetColumnWidth()
         {
-            ListViewFileList.Columns[0].Width = ListViewFileList.Width * 20 / 100;
-            ListViewFileList.Columns[1].Width = ListViewFileList.Width * 50 / 100;
-            ListViewFileList.Columns[2].Width = ListViewFileList.Width * 20 / 100;
+            ListViewFileList.Columns[0].Width = ListViewFileList.Width * 10 / 100;
+            ListViewFileList.Columns[1].Width = ListViewFileList.Width * 25 / 100;
+            ListViewFileList.Columns[2].Width = ListViewFileList.Width * 45 / 100;
             ListViewFileList.Columns[3].Width = ListViewFileList.Width * 10 / 100;
+            ListViewFileList.Columns[4].Width = ListViewFileList.Width * 10 / 100;
         }
 
         private void Search_Load(object sender, EventArgs e)
@@ -295,7 +303,7 @@ namespace DirectoryCleaner
 
         }
 
-        #region Column Sorting
+        #region 칼럼별 정렬
         private void ListViewFileList_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             this.ListViewFileList.ListViewItemSorter = new ListViewItemComparer(e.Column);
@@ -352,5 +360,9 @@ namespace DirectoryCleaner
             }
         }
         #endregion
+
+        private void ListViewFileList_ItemMouseHover(object sender, ListViewItemMouseHoverEventArgs e)
+        {
+        }
     }
 }
