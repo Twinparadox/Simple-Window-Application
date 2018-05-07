@@ -13,7 +13,7 @@ namespace DirectoryCleaner
         public static string defaultCompacExtension = "ace,alz,bz2,gz,jar,rar,tar,xz,zip, 7z";
         public static string defaultDocExtension = "csv,doc,dochtml,docm,docx,docxml,dot,dothtml,dotm,dotx,eps,fdf,key,keynote,kth,mpd,mpp,mpt,mpx,nmbtemplate,numbers,odc,odg,odp,ods,odt,pages,pdf,pdfxml,pot,pothtml,potm,potx,ppa,ppam,pps,ppsm,ppsx,ppt,ppthtml,pptm,pptx,pptxml,prn,ps,pwz,rtf,tab,template,tsv,txt,vdx,vsd,vss,vst,vsx,vtx,wbk,wiz,wpd,wps,xdf,xdp,xlam,xll,xlr,xls,xlsb,xlsm,xlsx,xltm,xltx,xps";
         public static string defaultDiscExtension = "bin,dmg,img,iso,lcd,ooo";
-        public static string defaultDeveloperExtension = "cpp,c,hpp,h,java,jav";
+        public static string defaultDevelopeExtension = "cpp,c,hpp,h,java,jav";
         public static string defaultImgExtension = "bmp,cr2,gif,ico,ithmb,jpeg,jpg,nef,png,raw,svg,tif,tiff,wbmp,webp";
         public static string defaultTxtExtension = "applescript,as,as3,c,cc,clisp,coffee,cpp,cs,css,csv,cxx,def,diff,erl,fountain,ft,h,hpp,htm,html,hxx,inc,ini,java,js,json,less,log,lua,m,markdown,mat,md,mdown,mkdn,mm,mustache,mxml,patch,php,phtml,pl,plist,properties,py,rb,sass,scss,sh,shtml,sql,tab,taskpaper,tex,text,tmpl,tsv,txt,url,vb,xhtml,xml,yaml,yml";
         public static string defaultVideoExtension = "3g2,3gp,3gpp,3gpp2,asf,avi,dv,dvi,flv,m2t,m4v,mkv,mov,mp4,mpeg,mpg,mts,ogv,ogx,rm,rmvb,ts,vob,webm,wmv";
@@ -21,34 +21,37 @@ namespace DirectoryCleaner
         public static string defaultEtcExtension;
 
         // 기타 확장자 - 사용자 추가 확장자
-        public static string userEtcExtension;
-        public static string userDocExtension;
-        public static string userImgExtension;
         public static string userAudioExtension;
-        public static string userVideoExtension;
         public static string userCompacExtension;
-        public static string userTxtExtension;
         public static string userDiscExtension;
+        public static string userDocExtension;
+        public static string userDevelopeExtension;
+        public static string userEtcExtension;
+        public static string userImgExtension;
+        public static string userTxtExtension;
+        public static string userVideoExtension;
 
         // 확장자 조합
-        public static string docExtension;
-        public static string imgExtension;
         public static string audioExtension;
-        public static string videoExtension;
         public static string compacExtension;
-        public static string txtExtension;
         public static string discExtension;
+        public static string docExtension;
+        public static string developeExtension;
         public static string etcExtension;
+        public static string imgExtension;
+        public static string txtExtension;
+        public static string videoExtension;
 
         // 배열로 만들기
-        public static string[] arrDocExtension;
-        public static string[] arrImgExtension;
         public static string[] arrAudioExtension;
-        public static string[] arrVideoExtension;
         public static string[] arrCompacExtension;
-        public static string[] arrTxtExtension;
         public static string[] arrDiscExtension;
+        public static string[] arrDocExtension;
+        public static string[] arrDevelopeExtension;
         public static string[] arrEtcExtension;
+        public static string[] arrImgExtension;
+        public static string[] arrTxtExtension;
+        public static string[] arrVideoExtension;
 
         // 현재 확장자 - 초기 확장자 + 사용자 추가 확장자
         public static string initExtension = "";
@@ -59,23 +62,25 @@ namespace DirectoryCleaner
 
         public static void LoadExtension()
         {
-            userEtcExtension = Properties.Settings.Default.EtcExtensionList;
-            userDocExtension = Properties.Settings.Default.DocExtensionList;
-            userImgExtension = Properties.Settings.Default.ImageExtensionList;
             userAudioExtension = Properties.Settings.Default.AudioExtensionList;
-            userVideoExtension = Properties.Settings.Default.VideoExtensionList;
             userCompacExtension = Properties.Settings.Default.CompactExtensionLIst;
-            userTxtExtension = Properties.Settings.Default.TxtExtensionList;
             userDiscExtension = Properties.Settings.Default.DiscExtensionList;
+            userDocExtension = Properties.Settings.Default.DocExtensionList;
+            userDevelopeExtension = Properties.Settings.Default.DevelopeExtensionList;
+            userEtcExtension = Properties.Settings.Default.EtcExtensionList;
+            userImgExtension = Properties.Settings.Default.ImageExtensionList;
+            userTxtExtension = Properties.Settings.Default.TxtExtensionList;
+            userVideoExtension = Properties.Settings.Default.VideoExtensionList;
 
-            etcExtension = defaultEtcExtension + userEtcExtension;
-            docExtension = defaultDocExtension + userDocExtension;
-            imgExtension = defaultImgExtension + userImgExtension;
             audioExtension = defaultAudioExtension + userAudioExtension;
-            videoExtension = defaultVideoExtension + userVideoExtension;
             compacExtension = defaultCompacExtension + userCompacExtension;
-            txtExtension = defaultTxtExtension + userTxtExtension;
             discExtension = defaultDiscExtension + userDiscExtension;
+            docExtension = defaultDocExtension + userDocExtension;
+            developeExtension = defaultDevelopeExtension + userDevelopeExtension;
+            etcExtension = defaultEtcExtension + userEtcExtension;
+            imgExtension = defaultImgExtension + userImgExtension;
+            txtExtension = defaultTxtExtension + userTxtExtension;
+            videoExtension = defaultVideoExtension + userVideoExtension;
 
 
             if (Properties.Settings.Default.isAudio)
@@ -143,44 +148,86 @@ namespace DirectoryCleaner
         {
             int size;
             size = arrAudioExtension.Length;
-            for(int i=0;i<size;i++)
+            for (int i = 0; i < size; i++)
+            {
                 if (arrAudioExtension[i].Equals(extension))
+                {
                     return "Audio";
+                }
+            }
 
             size = arrCompacExtension.Length;
             for (int i = 0; i < size; i++)
+            {
                 if (arrCompacExtension[i].Equals(extension))
+                {
                     return "Compac";
+                }
+            }
 
             size = arrDiscExtension.Length;
             for (int i = 0; i < size; i++)
+            {
                 if (arrDiscExtension[i].Equals(extension))
+                {
                     return "Disc";
+                }
+            }
 
             size = arrDocExtension.Length;
             for (int i = 0; i < size; i++)
+            {
                 if (arrDocExtension[i].Equals(extension))
+                {
                     return "Doc";
+                }
+            }
+
+            size = arrDevelopeExtension.Length;
+            for (int i = 0; i < size; i++)
+            {
+                if (arrDevelopeExtension[i].Equals(extension))
+                {
+                    return "Dev";
+                }
+            }
 
             size = arrEtcExtension.Length;
             for (int i = 0; i < size; i++)
+            {
                 if (arrEtcExtension[i].Equals(extension))
+                {
                     return "Etc";
+                }
+            }
+
 
             size = arrImgExtension.Length;
             for (int i = 0; i < size; i++)
+            {
                 if (arrImgExtension[i].Equals(extension))
+                {
                     return "Image";
+                }
+            }
 
             size = arrTxtExtension.Length;
             for (int i = 0; i < size; i++)
+            {
                 if (arrTxtExtension[i].Equals(extension))
+                {
                     return "Txt";
+                }
+            }
 
             size = arrVideoExtension.Length;
             for (int i = 0; i < size; i++)
+            {
                 if (arrVideoExtension[i].Equals(extension))
+                {
                     return "Video";
+                }
+            }
 
             return "";
         }
