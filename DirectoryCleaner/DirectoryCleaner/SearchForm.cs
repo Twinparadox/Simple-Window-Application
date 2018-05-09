@@ -15,14 +15,14 @@ using System.Collections;
 
 namespace DirectoryCleaner
 {
-    public partial class Search : Form
+    public partial class SearchForm : Form
     {
         private string extension = Extension.curExtension;
         private string[] extensionList;
         private string movePath;
         public static int[] sortStatus=new int[5];
 
-        public Search()
+        public SearchForm()
         {
             InitializeComponent();
             SetColumnWidth();
@@ -254,10 +254,6 @@ namespace DirectoryCleaner
             }
         }
 
-        /// <summary>
-        /// 반응형 사이즈를 구축하는 것을 목표로 하고 있음.
-        /// 컨트롤 별 크기와 상대적 위치를 지정하는 방법을 고민중.
-        /// </summary>
         #region 반응형
         private void ListViewResizing()
         {
@@ -297,7 +293,10 @@ namespace DirectoryCleaner
             SetColumnWidth();
         }
         #endregion
-
+        /// <summary>
+        /// 반응형 사이즈를 구축하는 것을 목표로 하고 있음.
+        /// 컨트롤 별 크기와 상대적 위치를 지정하는 방법을 고민중.
+        /// </summary>
         private void ListViewFileList_SelectedIndexChanged(object sender, EventArgs e)
         {
 

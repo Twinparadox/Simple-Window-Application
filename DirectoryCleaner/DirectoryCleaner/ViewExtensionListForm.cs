@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace DirectoryCleaner
 {
-    public partial class ViewExtensionList : Form
+    public partial class ViewExtensionListForm : Form
     {
         private String[] strAudio = new String[] { "오디오", Extension.audioExtension + Extension.userAudioExtension };
         private String[] strCompac = new String[] { "압축", Extension.compacExtension + Extension.userCompacExtension };
@@ -25,7 +25,7 @@ namespace DirectoryCleaner
         private string[] ComboBoxData = { "오디오", "압축", "개발", "디스크", "문서", "이미지", "텍스트", "비디오", "사용자정의" };
         private bool[] checkdata = new bool[9];
 
-        public ViewExtensionList()
+        public ViewExtensionListForm()
         {
             InitializeComponent();
         }
@@ -241,7 +241,7 @@ namespace DirectoryCleaner
             {
                 Extension.curExtension += Extension.videoExtension + Extension.userVideoExtension;
             }
-            Setting.pTxtExtension.Text = Extension.curExtension;
+            SettingForm.pTxtExtension.Text = Extension.curExtension;
         }
     }
 }

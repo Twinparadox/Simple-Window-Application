@@ -46,17 +46,58 @@ namespace DirectoryCleaner
             isCheck = Extension.CheckActivatedExtension(); 
         }
 
-        // 경로 설정 버튼
+        #region 경로 설정
+        /// <summary>
+        /// 경로 설정 버튼(Find)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonFinder_Click(object sender, EventArgs e)
         {
             SettingPath();
         }
 
-        // 설정 버튼
+        /// <summary>
+        /// 경로 클릭
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextPath_MouseClick(object sender, MouseEventArgs e)
+        {
+            SettingPath();
+        }
+
+        /// <summary>
+        /// 경로 설정
+        /// </summary>
+        private void SettingPath()
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.ShowDialog();
+            string selectedPath = dialog.SelectedPath;
+
+            if (selectedPath.Equals(""))
+            {
+                TextPath.Text = Properties.Settings.Default.LatestPath;
+            }
+            else
+            {
+                TextPath.Text = selectedPath;
+                Properties.Settings.Default.LatestPath = selectedPath;
+            }
+            Properties.Settings.Default.Save();
+        }
+        #endregion
+
+        /// <summary>
+        /// 설정 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonSetting_Click(object sender, EventArgs e)
         {
             Point thisFormPoint = this.Location;
-            Setting settingForm = new Setting();
+            SettingForm settingForm = new SettingForm();
 
             if (exceptionCheck == true)
                 return;
@@ -66,14 +107,22 @@ namespace DirectoryCleaner
             settingForm.ShowDialog();
         }
 
-        // 종료 버튼
+        /// <summary>
+        /// 닫기 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        // 시작 버튼
-        private void ButtonStart_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 목록보기 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonList_Click(object sender, EventArgs e)
         {
             isCheck = Extension.CheckActivatedExtension();
             DirectoryInfo di = new DirectoryInfo(pTextPath.Text);
@@ -98,7 +147,7 @@ namespace DirectoryCleaner
             Extension.TokenizeExtension();
 
             Point thisFormPoint = this.Location;
-            Search searchForm = new Search
+            SearchForm searchForm = new SearchForm
             {
                 StartPosition = FormStartPosition.Manual,
                 Location = thisFormPoint
@@ -108,30 +157,20 @@ namespace DirectoryCleaner
             searchForm.ShowDialog();
             this.Visible = true;
         }
-
-        // 경로 클릭
-        private void TextPath_MouseClick(object sender, MouseEventArgs e)
+        
+        /// <summary>
+        /// 파일정리 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonDuplicate_Click(object sender, EventArgs e)
         {
-            SettingPath();
-        }
-
-        // 경로 설정
-        private void SettingPath()
-        {
-            FolderBrowserDialog dialog = new FolderBrowserDialog();
-            dialog.ShowDialog();
-            string selectedPath = dialog.SelectedPath;
-
-            if(selectedPath.Equals(""))
+            Point thisFormPoint = this.Location;
+            RemoveDuplicatedFilesForm removeForm = new RemoveDuplicatedFilesForm
             {
-                TextPath.Text = Properties.Settings.Default.LatestPath;
-            }
-            else
-            {
-                TextPath.Text = selectedPath;
-                Properties.Settings.Default.LatestPath = selectedPath;
-            }
-            Properties.Settings.Default.Save();
+                StartPosition = FormStartPosition.Manual,
+                Location = thisFormPoint
+            };
         }
 
         // 프로그램 종료

@@ -1,6 +1,6 @@
 ﻿namespace DirectoryCleaner
 {
-    partial class ViewExtensionList
+    partial class ViewExtensionListForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewExtensionList));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewExtensionListForm));
             this.txtExtension = new System.Windows.Forms.TextBox();
             this.ButtonAddExtension = new System.Windows.Forms.Button();
             this.ListViewExtension = new System.Windows.Forms.ListView();

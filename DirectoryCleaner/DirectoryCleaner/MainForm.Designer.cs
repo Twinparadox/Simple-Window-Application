@@ -31,9 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.TextPath = new System.Windows.Forms.TextBox();
             this.ButtonFinder = new System.Windows.Forms.Button();
-            this.ButtonStart = new System.Windows.Forms.Button();
+            this.ButtonList = new System.Windows.Forms.Button();
             this.ButtonSetting = new System.Windows.Forms.Button();
             this.ButtonExit = new System.Windows.Forms.Button();
+            this.ButtonDuplicate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TextPath
@@ -59,47 +60,59 @@
             this.ButtonFinder.UseVisualStyleBackColor = true;
             this.ButtonFinder.Click += new System.EventHandler(this.ButtonFinder_Click);
             // 
-            // ButtonStart
+            // ButtonList
             // 
-            this.ButtonStart.Font = new System.Drawing.Font("돋움", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ButtonStart.Location = new System.Drawing.Point(553, 90);
-            this.ButtonStart.Name = "ButtonStart";
-            this.ButtonStart.Size = new System.Drawing.Size(139, 47);
-            this.ButtonStart.TabIndex = 2;
-            this.ButtonStart.Text = "START";
-            this.ButtonStart.UseVisualStyleBackColor = true;
-            this.ButtonStart.Click += new System.EventHandler(this.ButtonStart_Click);
+            this.ButtonList.Font = new System.Drawing.Font("돋움", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ButtonList.Location = new System.Drawing.Point(553, 82);
+            this.ButtonList.Name = "ButtonList";
+            this.ButtonList.Size = new System.Drawing.Size(139, 47);
+            this.ButtonList.TabIndex = 2;
+            this.ButtonList.Text = "목록보기";
+            this.ButtonList.UseVisualStyleBackColor = true;
+            this.ButtonList.Click += new System.EventHandler(this.ButtonList_Click);
             // 
             // ButtonSetting
             // 
             this.ButtonSetting.Font = new System.Drawing.Font("돋움", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ButtonSetting.Location = new System.Drawing.Point(553, 160);
+            this.ButtonSetting.Location = new System.Drawing.Point(553, 202);
             this.ButtonSetting.Name = "ButtonSetting";
             this.ButtonSetting.Size = new System.Drawing.Size(139, 47);
             this.ButtonSetting.TabIndex = 3;
-            this.ButtonSetting.Text = "SETTING";
+            this.ButtonSetting.Text = "설정";
             this.ButtonSetting.UseVisualStyleBackColor = true;
             this.ButtonSetting.Click += new System.EventHandler(this.ButtonSetting_Click);
             // 
             // ButtonExit
             // 
             this.ButtonExit.Font = new System.Drawing.Font("돋움", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ButtonExit.Location = new System.Drawing.Point(553, 230);
+            this.ButtonExit.Location = new System.Drawing.Point(553, 262);
             this.ButtonExit.Name = "ButtonExit";
             this.ButtonExit.Size = new System.Drawing.Size(139, 47);
             this.ButtonExit.TabIndex = 4;
-            this.ButtonExit.Text = "EXIT";
+            this.ButtonExit.Text = "닫기";
             this.ButtonExit.UseVisualStyleBackColor = true;
             this.ButtonExit.Click += new System.EventHandler(this.ButtonExit_Click);
+            // 
+            // ButtonDuplicate
+            // 
+            this.ButtonDuplicate.Font = new System.Drawing.Font("돋움", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ButtonDuplicate.Location = new System.Drawing.Point(553, 142);
+            this.ButtonDuplicate.Name = "ButtonDuplicate";
+            this.ButtonDuplicate.Size = new System.Drawing.Size(139, 47);
+            this.ButtonDuplicate.TabIndex = 5;
+            this.ButtonDuplicate.Text = "파일정리";
+            this.ButtonDuplicate.UseVisualStyleBackColor = true;
+            this.ButtonDuplicate.Click += new System.EventHandler(this.ButtonDuplicate_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 321);
+            this.Controls.Add(this.ButtonDuplicate);
             this.Controls.Add(this.ButtonExit);
             this.Controls.Add(this.ButtonSetting);
-            this.Controls.Add(this.ButtonStart);
+            this.Controls.Add(this.ButtonList);
             this.Controls.Add(this.ButtonFinder);
             this.Controls.Add(this.TextPath);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -118,9 +131,10 @@
 
         private System.Windows.Forms.TextBox TextPath;
         private System.Windows.Forms.Button ButtonFinder;
-        private System.Windows.Forms.Button ButtonStart;
+        private System.Windows.Forms.Button ButtonList;
         private System.Windows.Forms.Button ButtonSetting;
         private System.Windows.Forms.Button ButtonExit;
+        private System.Windows.Forms.Button ButtonDuplicate;
     }
 }
 

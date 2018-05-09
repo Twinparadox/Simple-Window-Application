@@ -1,6 +1,6 @@
 ﻿namespace DirectoryCleaner
 {
-    partial class Setting
+    partial class SettingForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Setting));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingForm));
             this.txtExtension = new System.Windows.Forms.TextBox();
             this.lblExtension = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();

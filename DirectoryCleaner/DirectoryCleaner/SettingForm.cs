@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace DirectoryCleaner
 {
-    public partial class Setting : Form
+    public partial class SettingForm : Form
     {
         private static string initSettings = "1";
 
         public static TextBox pTxtExtension;
 
-        public Setting()
+        public SettingForm()
         {
             InitializeComponent();
         }
@@ -85,7 +85,7 @@ namespace DirectoryCleaner
         private void ButtonManagement_Click(object sender, EventArgs e)
         {
             Point thisFormPoint = this.Location;
-            ViewExtensionList viewForm = new ViewExtensionList
+            ViewExtensionListForm viewForm = new ViewExtensionListForm
             {
                 StartPosition = FormStartPosition.Manual,
                 Location = thisFormPoint
