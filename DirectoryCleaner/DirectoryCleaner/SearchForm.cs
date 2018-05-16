@@ -158,6 +158,7 @@ namespace DirectoryCleaner
         }
 
         // 새로고침
+        // 이 부분은 조금 고민해봐야 함
         private void ButtonRefresh_Click(object sender, EventArgs e)
         {
             ListViewFileList.BeginUpdate();

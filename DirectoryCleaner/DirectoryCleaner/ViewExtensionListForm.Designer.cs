@@ -245,7 +245,7 @@
             this.CheckBoxDevelope.UseVisualStyleBackColor = true;
             this.CheckBoxDevelope.CheckedChanged += new System.EventHandler(this.CheckBoxDevelope_CheckedChanged);
             // 
-            // ViewExtensionList
+            // ViewExtensionListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -267,9 +267,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "ViewExtensionList";
+            this.Name = "ViewExtensionListForm";
             this.ShowInTaskbar = false;
-            this.Text = "확장자 관리";
+            this.Text = "DirectoryCleaner - 확장자 관리";
             this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewExtensionList_FormClosed);
             this.Load += new System.EventHandler(this.ViewExtensionList_Load);

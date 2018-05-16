@@ -35,6 +35,7 @@
             this.ButtonSetting = new System.Windows.Forms.Button();
             this.ButtonExit = new System.Windows.Forms.Button();
             this.ButtonDuplicate = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TextPath
@@ -100,15 +101,26 @@
             this.ButtonDuplicate.Name = "ButtonDuplicate";
             this.ButtonDuplicate.Size = new System.Drawing.Size(139, 47);
             this.ButtonDuplicate.TabIndex = 5;
-            this.ButtonDuplicate.Text = "파일정리";
+            this.ButtonDuplicate.Text = "파일조회";
             this.ButtonDuplicate.UseVisualStyleBackColor = true;
             this.ButtonDuplicate.Click += new System.EventHandler(this.ButtonDuplicate_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(10, 300);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(393, 12);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Copyrightⓒ. 2017-2018. Twinparadox. All Rights Reserved.";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 321);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.ButtonDuplicate);
             this.Controls.Add(this.ButtonExit);
             this.Controls.Add(this.ButtonSetting);
@@ -135,6 +147,7 @@
         private System.Windows.Forms.Button ButtonSetting;
         private System.Windows.Forms.Button ButtonExit;
         private System.Windows.Forms.Button ButtonDuplicate;
+        private System.Windows.Forms.Label label1;
     }
 }
 

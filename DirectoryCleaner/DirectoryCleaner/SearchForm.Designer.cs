@@ -135,7 +135,7 @@
             this.ButtonMove.UseVisualStyleBackColor = true;
             this.ButtonMove.Click += new System.EventHandler(this.ButtonMove_Click);
             // 
-            // Search
+            // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -148,8 +148,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Search";
-            this.Text = " ";
+            this.Name = "SearchForm";
+            this.Text = " DirectoryCleaner - 파일 조회";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Search_FormClosed);
             this.Load += new System.EventHandler(this.Search_Load);
             this.ResizeBegin += new System.EventHandler(this.Search_ResizeBegin);

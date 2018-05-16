@@ -159,14 +159,14 @@ namespace DirectoryCleaner
         }
         
         /// <summary>
-        /// 파일정리 버튼
+        /// 파일조회 버튼
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonDuplicate_Click(object sender, EventArgs e)
         {
             Point thisFormPoint = this.Location;
-            RemoveDuplicatedFilesForm removeForm = new RemoveDuplicatedFilesForm
+            RemoveDuplicateFilesForm removeForm = new RemoveDuplicateFilesForm
             {
                 StartPosition = FormStartPosition.Manual,
                 Location = thisFormPoint

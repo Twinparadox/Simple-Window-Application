@@ -26,6 +26,7 @@ namespace DirectoryCleaner
 
         /// <summary>
         /// 프로그램 실행 전 초기 설정 지정
+        /// 경로 지정이 따로 필요할 것 같음
         /// </summary>
         private static void InitializeSetting()
         {
