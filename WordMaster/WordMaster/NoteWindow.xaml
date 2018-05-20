@@ -8,7 +8,7 @@
         Title="WordMaster - NoteWindow" Height="820" Width="400" ResizeMode="CanMinimize" Loaded="Window_Loaded">
     <Grid x:Name="Grid" Loaded="Grid_Loaded">
         <ListView x:Name="ListViewWord" Height="700" Margin="10,10,10,0" VerticalAlignment="Top"/>
-        <Slider Margin="10,715,10,0" VerticalAlignment="Top" IsSnapToTickEnabled="True"/>
+        <Slider x:Name="PageSlider" Margin="10,715,10,0" VerticalAlignment="Top" IsSnapToTickEnabled="True" ValueChanged="PageSlider_ValueChanged"/>
         <Button x:Name="ButtonClose" Content="닫기" RenderTransformOrigin="1.48,4.367" Margin="309,743,10,10" FontFamily="NanumSquare ExtraBold" Click="ButtonClose_Click"/>
     </Grid>
 </Window>

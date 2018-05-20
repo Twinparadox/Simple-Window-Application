@@ -62,6 +62,7 @@ namespace WordMaster
 
         private char sep = ',';
 
+        private const int PageSize = 20;
         private int pageCount;
         private int curPage;
 
@@ -85,6 +86,17 @@ namespace WordMaster
                 koText = File.ReadAllLines(WordBook.saveKrPath, Encoding.GetEncoding("utf-8"));
                 lineCount = Properties.Settings.Default.curSize;
 
+                PageSlider.Minimum = 1;
+                if (lineCount % 20 == 0)
+                {
+                    PageSlider.Maximum = lineCount / 20;
+                }
+                else
+                {
+                    PageSlider.Maximum = lineCount / 20 + 1;
+                }
+                PageSlider.Value = 1;
+
                 for (int i = 0; i < lineCount; i++)
                 {
                     string kor = koText[i];
@@ -95,7 +107,7 @@ namespace WordMaster
 
                 wordList.Sort((w1, w2) => w1.rate.CompareTo(w2.rate));
 
-                for (int i = 0; i < lineCount; i++)
+                for (int i = 0; i < PageSize; i++)
                 {
                     ListViewWord.Items.Add(new ListViewItem { Content = wordList[i].eng, HorizontalContentAlignment = HorizontalAlignment.Center });
                 }
@@ -105,9 +117,28 @@ namespace WordMaster
             }
         }
 
+        private void ChangeListView()
+        {
+            // 현재 임시 구현 상태, 매번 이런 식으로 업데이트하면 성능 저하, 메모리 낭비 발생할 듯.
+            ListViewWord.Items.Clear();
+            for(int i=(curPage-1)*PageSize;i<curPage*PageSize;i++)
+            {
+                if(i<lineCount)
+                {
+                    ListViewWord.Items.Add(new ListViewItem { Content = wordList[i].eng, HorizontalContentAlignment = HorizontalAlignment.Center });
+                }
+            }
+        }
+
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void PageSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            curPage = (int)PageSlider.Value;
+            ChangeListView();
         }
     }
 }

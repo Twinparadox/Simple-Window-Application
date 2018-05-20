@@ -124,7 +124,9 @@ namespace WordMaster
                 for (int i = 0; i < lineCount; i++)
                 {
                     if (enText[i] == enWord + count)
-                        isAlready = true;
+                    {
+                        isAlready = CheckAddAlready(koWord, koText[i]);
+                    }
                 }
                 if (isAlready == true)
                 {
@@ -150,6 +152,21 @@ namespace WordMaster
         {
             this.Topmost = true;
             this.Focus();
+        }
+
+        private bool CheckAddAlready(string addWord, string source)
+        {
+            string[] korWords = kor.Split(',');
+            int wordCount = korWords.Length;
+
+            for(int i=0;i<wordCount;i++)
+            {
+                if()
+            }
+
+            bool check = false;
+
+            return check;
         }
     }
 }

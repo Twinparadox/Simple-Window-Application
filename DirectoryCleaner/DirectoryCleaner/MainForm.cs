@@ -171,6 +171,7 @@ namespace DirectoryCleaner
                 StartPosition = FormStartPosition.Manual,
                 Location = thisFormPoint
             };
+            removeForm.ShowDialog();
         }
 
         // 프로그램 종료

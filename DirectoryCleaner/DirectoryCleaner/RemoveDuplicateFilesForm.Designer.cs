@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemoveDuplicateFilesForm));
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.ListViewDuplicateList = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
-            // listView1
+            // ListViewDuplicateList
             // 
-            this.listView1.Location = new System.Drawing.Point(12, 12);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(776, 329);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.ListViewDuplicateList.Location = new System.Drawing.Point(12, 12);
+            this.ListViewDuplicateList.Name = "ListViewDuplicateList";
+            this.ListViewDuplicateList.Size = new System.Drawing.Size(640, 330);
+            this.ListViewDuplicateList.TabIndex = 0;
+            this.ListViewDuplicateList.UseCompatibleStateImageBehavior = false;
             // 
-            // RemoveDuplicatedFilesForm
+            // RemoveDuplicateFilesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listView1);
+            this.ClientSize = new System.Drawing.Size(800, 354);
+            this.Controls.Add(this.ListViewDuplicateList);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "RemoveDuplicatedFilesForm";
+            this.Name = "RemoveDuplicateFilesForm";
             this.Text = "DirectoryCleaner - 중복 파일 정리";
             this.ResumeLayout(false);
 
@@ -56,6 +56,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView ListViewDuplicateList;
     }
 }

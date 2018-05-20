@@ -41,9 +41,11 @@ namespace WordMaster
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            notifyIcon = new System.Windows.Forms.NotifyIcon();
-            notifyIcon.Icon = Properties.Resources.icon;
-            notifyIcon.Text = "WordMaster";
+            notifyIcon = new System.Windows.Forms.NotifyIcon
+            {
+                Icon = Properties.Resources.icon,
+                Text = "WordMaster"
+            };
             notifyIcon.DoubleClick += NotifyIcon_DoubleClick;
             WordBook.CreateDirectoryAndFiles();
         }
