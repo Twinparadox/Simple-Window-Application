@@ -165,6 +165,28 @@ namespace DirectoryCleaner
         /// <param name="e"></param>
         private void ButtonDuplicate_Click(object sender, EventArgs e)
         {
+            isCheck = Extension.CheckActivatedExtension();
+            DirectoryInfo di = new DirectoryInfo(pTextPath.Text);
+
+            if (!isCheck)
+            {
+                MessageBox.Show("파일 종류를 설정하지 않았습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (pTextPath.Text == "")
+            {
+                MessageBox.Show("경로를 지정하지 않았습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!di.Exists)
+            {
+                MessageBox.Show("해당 경로가 존재하지 않습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Extension.LoadExtension();
+            Extension.TokenizeExtension();
+
             Point thisFormPoint = this.Location;
             RemoveDuplicateFilesForm removeForm = new RemoveDuplicateFilesForm
             {

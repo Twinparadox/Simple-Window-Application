@@ -60,6 +60,19 @@ namespace DirectoryCleaner
 
         public static char sep = ',';
 
+        public enum ExtensionCode
+        {
+            Audio=1,
+            Compact,
+            Develope,
+            DiscImage,
+            Document,
+            Etc,
+            Image,
+            Text,
+            Video
+        };
+
         public static void LoadExtension()
         {
             userAudioExtension = Properties.Settings.Default.AudioExtensionList;
@@ -168,7 +181,7 @@ namespace DirectoryCleaner
             {
                 if (arrCompacExtension[i].Equals(extension))
                 {
-                    return "Compac";
+                    return "Compact";
                 }
             }
 
@@ -177,7 +190,7 @@ namespace DirectoryCleaner
             {
                 if (arrDevelopeExtension[i].Equals(extension))
                 {
-                    return "Dev";
+                    return "Develope";
                 }
             }
 
@@ -186,7 +199,7 @@ namespace DirectoryCleaner
             {
                 if (arrDiscExtension[i].Equals(extension))
                 {
-                    return "Disc";
+                    return "DiscImage";
                 }
             }
 
@@ -195,7 +208,7 @@ namespace DirectoryCleaner
             {
                 if (arrDocExtension[i].Equals(extension))
                 {
-                    return "Doc";
+                    return "Document";
                 }
             }
 
@@ -223,7 +236,7 @@ namespace DirectoryCleaner
             {
                 if (arrTxtExtension[i].Equals(extension))
                 {
-                    return "Txt";
+                    return "Text";
                 }
             }
 

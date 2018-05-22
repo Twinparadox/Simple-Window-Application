@@ -14,7 +14,7 @@ namespace DirectoryCleaner
 {
     public partial class RemoveDuplicateFilesForm : Form
     {
-        private List<FileInfo> fileInfos = null;
+        private List<FileList> fileInfos = null;
 
         private bool?[,] checkTable;
 
@@ -26,7 +26,7 @@ namespace DirectoryCleaner
             InitializeComponent();
 
             extensionList = extension.Split(',');
-            fileInfos = new List<FileInfo>();
+            fileInfos = new List<FileList>();
 
             ApplyAllFiles(MainForm.pTextPath.Text, SearchFile);
             CheckDuplicateFiles();
@@ -40,36 +40,7 @@ namespace DirectoryCleaner
             {
                 try
                 {
-                    FileInfo item = new FileInfo(searchPath);
-/*
-                    string fileType = Extension.CheckExtensionType(item.Extension.Substring(1, item.Extension.Length - 1));
-                    switch (fileType)
-                    {
-                        case "":
-                            break;
-                        case "Audio":
-                            break;
-                        case "Compac":
-                            break;
-                        case "Dev":
-                            break;
-                        case "Disc":
-                            break;
-                        case "Doc":
-                            break;
-                        case "Etc":
-                            break;
-                        case "Image":
-                            break;
-                        case "Txt":
-                            break;
-                        case "Video":
-                            break;
-                        default:
-                            break;
-                    }
-                    */
-                    fileInfos.Add(item);
+                    fileInfos.Add(new FileList(searchPath));
                 }
                 catch (UnauthorizedAccessException e)
                 {
@@ -98,7 +69,7 @@ namespace DirectoryCleaner
         #endregion
 
         /// <summary>
-        /// 단순 해싱 비교 200개 기준 약 5초 소요
+        /// 단순 해싱 비교 200개 기준 약 0.2초 소요
         /// </summary>
         #region 중복파일 탐색 및 리스트 생성
         public void CheckDuplicateFiles()
@@ -112,25 +83,10 @@ namespace DirectoryCleaner
                 {
                     if (checkTable[i, j] == null)
                     {
-                        checkTable[i, j] = checkTable[j, i] = CompareFilesHash(fileInfos[i], fileInfos[j]);
+                        checkTable[i, j] = checkTable[j, i] = fileInfos[i].CompareHashCode(fileInfos[j]);
                     }
                 }
             }
-        }
-
-        public bool CompareFilesHash(FileInfo source, FileInfo compare)
-        {
-            byte[] sourceHash = MD5.Create().ComputeHash(source.OpenRead());
-            byte[] compareHash = MD5.Create().ComputeHash(compare.OpenRead());
-            
-            for (int i = 0; i < sourceHash.Length; i++)
-            {
-                if (sourceHash[i] != compareHash[i])
-                {
-                    return false;
-                }
-            }
-            return true;
         }
         #endregion
     }

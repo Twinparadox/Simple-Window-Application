@@ -58,16 +58,16 @@ namespace DirectoryCleaner
                             case "Audio":
                                 fileType = "오디오";
                                 break;
-                            case "Compac":
+                            case "Compact":
                                 fileType = "압축파일";
                                 break;
-                            case "Dev":
+                            case "Develope":
                                 fileType = "개발";
                                 break;
-                            case "Disc":
+                            case "DiscImage":
                                 fileType = "디스크";
                                 break;
-                            case "Doc":
+                            case "Document":
                                 fileType = "문서";
                                 break;
                             case "Etc":
@@ -76,7 +76,7 @@ namespace DirectoryCleaner
                             case "Image":
                                 fileType = "이미지";
                                 break;
-                            case "Txt":
+                            case "Text":
                                 fileType = "텍스트";
                                 break;
                             case "Video":
