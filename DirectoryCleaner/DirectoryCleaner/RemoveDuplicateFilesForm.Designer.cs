@@ -39,6 +39,7 @@
             this.ListViewDuplicateList.Size = new System.Drawing.Size(640, 330);
             this.ListViewDuplicateList.TabIndex = 0;
             this.ListViewDuplicateList.UseCompatibleStateImageBehavior = false;
+            this.ListViewDuplicateList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListViewDuplicateList_MouseDoubleClick);
             // 
             // RemoveDuplicateFilesForm
             // 

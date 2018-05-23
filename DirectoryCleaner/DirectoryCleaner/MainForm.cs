@@ -86,7 +86,7 @@ namespace DirectoryCleaner
                 Properties.Settings.Default.LatestPath = selectedPath;
             }
             Properties.Settings.Default.Save();
-        }
+        }   
         #endregion
 
         /// <summary>

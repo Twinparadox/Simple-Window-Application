@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 namespace DirectoryCleaner
 {
     /// <summary>
-    /// 파일정보, 해시코드, 확장자코드를 이용한 중복 확인.   
+    /// 파일정보, 해시코드, 확장자코드를 이용한 중복 확인. 
+    /// LSF에 대해서는 엄청난 속도 저하 발견.
+    /// 다른 방안을 모색해야 함.
     /// </summary>
     class FileList
     {
         private FileInfo item;
-        public byte[] hashcode;
-        public int extensionCode;
+        private byte[] hashcode;
+        private int extensionCode;
 
         public FileList()
         {
@@ -64,6 +66,29 @@ namespace DirectoryCleaner
                 default:
                     extensionCode = -1;
                     break;
+            }
+        }
+
+        public string GetFileName()
+        {
+            if(item!=null)
+            {
+                return item.Name;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public string GetFilePath()
+        {
+            if(item!=null)
+            {
+                return item.FullName;
+            }
+            else
+            {
+                return null;
             }
         }
         public bool CompareHashCode(FileList compare)
