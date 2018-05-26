@@ -25,7 +25,7 @@ namespace DirectoryCleaner
         private void Setting_Load(object sender, EventArgs e)
         {
             pTxtExtension = txtExtension;
-            
+
             Extension.curExtension = Extension.initExtension + Extension.userExtension;
 
             if (Properties.Settings.Default.TimeSetting.Equals("1"))
@@ -37,11 +37,11 @@ namespace DirectoryCleaner
 
             txtExtension.Text = Extension.curExtension;
         }
-        
+
         // 폼 종료
         private void Setting_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(MessageBox.Show("설정을 저장하시겠습니까?","확인",MessageBoxButtons.YesNo)==DialogResult.Yes)
+            if (MessageBox.Show("설정을 저장하시겠습니까?", "확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 SaveSettings();
             }
@@ -70,8 +70,8 @@ namespace DirectoryCleaner
             Properties.Settings.Default.isEtc = Properties.Settings.Default.isImg = Properties.Settings.Default.isVideo =
             Properties.Settings.Default.isTxt = Properties.Settings.Default.isDisc = true;
 
-            Extension.userEtcExtension = Extension.userDocExtension = 
-                Extension.userAudioExtension = Extension.userVideoExtension = 
+            Extension.userEtcExtension = Extension.userDocExtension =
+                Extension.userAudioExtension = Extension.userVideoExtension =
                 Extension.userImgExtension = Extension.userCompacExtension = "";
             Properties.Settings.Default.TimeSetting = initSettings;
             Properties.Settings.Default.LatestPath = @"C:\";

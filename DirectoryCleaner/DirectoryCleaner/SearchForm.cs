@@ -20,7 +20,7 @@ namespace DirectoryCleaner
         private string extension = Extension.curExtension;
         private string[] extensionList;
         private string movePath;
-        public static int[] sortStatus=new int[5];
+        public static int[] sortStatus = new int[5];
 
         public SearchForm()
         {
@@ -174,7 +174,7 @@ namespace DirectoryCleaner
             ListView.SelectedListViewItemCollection selectedItems = ListViewFileList.SelectedItems;
             ListView.SelectedIndexCollection items = ListViewFileList.SelectedIndices;
 
-            while (items.Count>0)
+            while (items.Count > 0)
             {
                 string remove = selectedItems[i].SubItems[1].Text + @"\" + selectedItems[i].Text;
                 FileInfo removeFile = new FileInfo(remove);
@@ -186,7 +186,7 @@ namespace DirectoryCleaner
             }
             ListViewFileList.Refresh();
         }
-        
+
         // 일괄 이동
         private void ButtonMove_Click(object sender, EventArgs e)
         {
@@ -198,7 +198,7 @@ namespace DirectoryCleaner
             ListView.SelectedListViewItemCollection selectedItems = ListViewFileList.SelectedItems;
             ListView.SelectedIndexCollection items = ListViewFileList.SelectedIndices;
 
-            while (i<items.Count && movePath.Equals("")==false)
+            while (i < items.Count && movePath.Equals("") == false)
             {
                 string move = selectedItems[i].SubItems[2].Text + @"\" + selectedItems[i].SubItems[1].Text;
                 FileInfo moveFile = new FileInfo(move);
@@ -233,7 +233,7 @@ namespace DirectoryCleaner
         // 중복 시 파일에 폴더명 추가
         private string CreateAdditionalString(string s)
         {
-            string[] tmp=s.Split('\\');
+            string[] tmp = s.Split('\\');
             return tmp[tmp.Length - 1];
         }
 
@@ -262,17 +262,17 @@ namespace DirectoryCleaner
             ListViewFileList.Height = this.Size.Height * 75 / 100 - 10;
             SetColumnWidth();
             ButtonAccept.Left = this.Size.Width * 98 / 100 - ButtonAccept.Width - 8;
-            ButtonRefresh.Left= this.Size.Width * 98 / 100 - ButtonAccept.Width - ButtonRefresh.Width - 10;
+            ButtonRefresh.Left = this.Size.Width * 98 / 100 - ButtonAccept.Width - ButtonRefresh.Width - 10;
         }
 
         private void ListViewFileList_Resize(object sender, EventArgs e)
         {
-        //    ListViewResizing((ListView)sender);
+            //    ListViewResizing((ListView)sender);
         }
 
         private void Search_ResizeBegin(object sender, EventArgs e)
         {
-        //    ListViewResizing((ListView)sender);
+            //    ListViewResizing((ListView)sender);
         }
 
         private void Search_Resize(object sender, EventArgs e)

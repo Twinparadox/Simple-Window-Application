@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemoveDuplicateFilesForm));
             this.ListViewDuplicateList = new System.Windows.Forms.ListView();
+            this.ButtonDeleteAll = new System.Windows.Forms.Button();
+            this.ButtonClose = new System.Windows.Forms.Button();
+            this.ButtonDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ListViewDuplicateList
@@ -41,11 +44,44 @@
             this.ListViewDuplicateList.UseCompatibleStateImageBehavior = false;
             this.ListViewDuplicateList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListViewDuplicateList_MouseDoubleClick);
             // 
+            // ButtonDeleteAll
+            // 
+            this.ButtonDeleteAll.Location = new System.Drawing.Point(658, 154);
+            this.ButtonDeleteAll.Name = "ButtonDeleteAll";
+            this.ButtonDeleteAll.Size = new System.Drawing.Size(139, 47);
+            this.ButtonDeleteAll.TabIndex = 1;
+            this.ButtonDeleteAll.Text = "전체 삭제";
+            this.ButtonDeleteAll.UseVisualStyleBackColor = true;
+            this.ButtonDeleteAll.Click += new System.EventHandler(this.ButtonDeleteAll_Click);
+            // 
+            // ButtonClose
+            // 
+            this.ButtonClose.Location = new System.Drawing.Point(658, 295);
+            this.ButtonClose.Name = "ButtonClose";
+            this.ButtonClose.Size = new System.Drawing.Size(139, 47);
+            this.ButtonClose.TabIndex = 2;
+            this.ButtonClose.Text = "닫기";
+            this.ButtonClose.UseVisualStyleBackColor = true;
+            this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
+            // 
+            // ButtonDelete
+            // 
+            this.ButtonDelete.Location = new System.Drawing.Point(658, 12);
+            this.ButtonDelete.Name = "ButtonDelete";
+            this.ButtonDelete.Size = new System.Drawing.Size(139, 47);
+            this.ButtonDelete.TabIndex = 3;
+            this.ButtonDelete.Text = "선택 삭제";
+            this.ButtonDelete.UseVisualStyleBackColor = true;
+            this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
+            // 
             // RemoveDuplicateFilesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 354);
+            this.Controls.Add(this.ButtonDelete);
+            this.Controls.Add(this.ButtonClose);
+            this.Controls.Add(this.ButtonDeleteAll);
             this.Controls.Add(this.ListViewDuplicateList);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -58,5 +94,8 @@
         #endregion
 
         private System.Windows.Forms.ListView ListViewDuplicateList;
+        private System.Windows.Forms.Button ButtonDeleteAll;
+        private System.Windows.Forms.Button ButtonClose;
+        private System.Windows.Forms.Button ButtonDelete;
     }
 }

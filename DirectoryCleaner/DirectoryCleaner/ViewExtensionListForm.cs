@@ -16,11 +16,11 @@ namespace DirectoryCleaner
         private String[] strCompac = new String[] { "압축", Extension.compacExtension + Extension.userCompacExtension };
         private String[] strDevelope = new String[] { "개발", Extension.developeExtension + Extension.userDevelopeExtension };
         private String[] strDisc = new String[] { "디스크", Extension.discExtension + Extension.userDiscExtension };
-        private String[] strDocument = new String[] { "문서", Extension.docExtension+Extension.userDocExtension };
+        private String[] strDocument = new String[] { "문서", Extension.docExtension + Extension.userDocExtension };
         private String[] strEtc = new String[] { "사용자정의", Extension.userEtcExtension };
-        private String[] strImage = new String[] { "이미지", Extension.imgExtension+Extension.userImgExtension };
+        private String[] strImage = new String[] { "이미지", Extension.imgExtension + Extension.userImgExtension };
         private String[] strTxt = new String[] { "텍스트", Extension.txtExtension + Extension.userTxtExtension };
-        private String[] strVideo = new String[] { "비디오", Extension.videoExtension+Extension.userVideoExtension };
+        private String[] strVideo = new String[] { "비디오", Extension.videoExtension + Extension.userVideoExtension };
 
         private string[] ComboBoxData = { "오디오", "압축", "개발", "디스크", "문서", "이미지", "텍스트", "비디오", "사용자정의" };
         private bool[] checkdata = new bool[9];
@@ -82,7 +82,7 @@ namespace DirectoryCleaner
                     Extension.userCompacExtension += txtExtension.Text + ",";
                     //Extension.curExtension += txtExtension.Text + ";";
                 }
-                else if(ComboBoxList.SelectedItem.ToString().Equals("개발"))
+                else if (ComboBoxList.SelectedItem.ToString().Equals("개발"))
                 {
                     Extension.userDevelopeExtension += txtExtension.Text + ",";
                 }
@@ -95,7 +95,7 @@ namespace DirectoryCleaner
                     Extension.userDocExtension += txtExtension.Text + ",";
                     //Extension.curExtension += txtExtension.Text + ";";
                 }
-                else if(ComboBoxList.SelectedItem.ToString().Equals("이미지"))
+                else if (ComboBoxList.SelectedItem.ToString().Equals("이미지"))
                 {
                     Extension.userImgExtension += txtExtension.Text + ",";
                     //Extension.curExtension += txtExtension.Text + ";";
@@ -104,7 +104,7 @@ namespace DirectoryCleaner
                 {
                     Extension.userTxtExtension += txtExtension.Text + ",";
                 }
-                else if(ComboBoxList.SelectedItem.ToString().Equals("비디오"))
+                else if (ComboBoxList.SelectedItem.ToString().Equals("비디오"))
                 {
                     Extension.userVideoExtension += txtExtension.Text + ",";
                     //Extension.curExtension += txtExtension.Text + ";";
@@ -204,7 +204,7 @@ namespace DirectoryCleaner
             ChangeSetting();
             this.Close();
         }
-        
+
         // 세팅 변화
         private void ChangeSetting()
         {
@@ -217,7 +217,7 @@ namespace DirectoryCleaner
             {
                 Extension.curExtension += Extension.compacExtension + Extension.userCompacExtension;
             }
-            if(Properties.Settings.Default.isDisc)
+            if (Properties.Settings.Default.isDisc)
             {
                 Extension.curExtension += Extension.discExtension + Extension.userDiscExtension;
             }

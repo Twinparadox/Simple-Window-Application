@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DirectoryCleaner
 {
-    static class Extension
+    public static class Extension
     {
         // 기본 확장자 - 문서, 이미지, 음성, 영상, 압축, 텍스트
         public static string defaultAudioExtension = "aac,aif,aifc,aiff,au,flac,m4a,m4b,m4p,m4r,mid,mp3,oga,ogg,opus,ra,ram,spx,wav,wma";
@@ -62,7 +62,7 @@ namespace DirectoryCleaner
 
         public enum ExtensionCode
         {
-            Audio=1,
+            Audio = 1,
             Compact,
             Develope,
             DiscImage,

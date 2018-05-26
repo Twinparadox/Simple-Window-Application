@@ -43,7 +43,7 @@ namespace DirectoryCleaner
             Extension.curExtension = Extension.initExtension + Extension.userExtension;
 
             exceptionCheck = false;
-            isCheck = Extension.CheckActivatedExtension(); 
+            isCheck = Extension.CheckActivatedExtension();
         }
 
         #region 경로 설정
@@ -86,7 +86,7 @@ namespace DirectoryCleaner
                 Properties.Settings.Default.LatestPath = selectedPath;
             }
             Properties.Settings.Default.Save();
-        }   
+        }
         #endregion
 
         /// <summary>
@@ -137,12 +137,12 @@ namespace DirectoryCleaner
                 MessageBox.Show("경로를 지정하지 않았습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if(!di.Exists)
+            if (!di.Exists)
             {
                 MessageBox.Show("해당 경로가 존재하지 않습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+
             Extension.LoadExtension();
             Extension.TokenizeExtension();
 
@@ -157,7 +157,7 @@ namespace DirectoryCleaner
             searchForm.ShowDialog();
             this.Visible = true;
         }
-        
+
         /// <summary>
         /// 파일조회 버튼
         /// </summary>
