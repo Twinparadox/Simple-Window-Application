@@ -107,22 +107,28 @@ namespace DirectoryCleaner
                         if (cnt == 0)
                         {
                             index = new ListViewGroup(fileInfos[i].GetFileName());
-                        }
-                        else if(cnt==1)
-                        {
                             ListViewDuplicateList.Groups.Add(index);
                             ListViewDuplicateList.Items.Add(
-                                new ListViewItem(new string[] {
+                                new ListViewItem(new string[]
+                                {
                                     Extension.GetKorFileType(fileInfos[i].GetExtensionCode()),
                                     fileInfos[i].GetFileName(),
                                     fileInfos[i].GetDirectoryPath()},
                                 index));
                         }
-                        else
-                        {
-                            ListViewDuplicateList.Items.Add(new ListViewItem(fileInfos[i].GetFileName(), index));
-                        }
+                        ListViewDuplicateList.Items.Add(
+                                new ListViewItem(new string[] {
+                                    Extension.GetKorFileType(fileInfos[j].GetExtensionCode()),
+                                    fileInfos[j].GetFileName(),
+                                    fileInfos[j].GetDirectoryPath()},
+                                index));
                         cnt++;
+
+                        // 이 부분 너무 비효율적이니, 개선해야 함.
+                        for (int k = 0; k < size; k++)
+                        {
+                            checkTable[j, k] = false;
+                        }
                     }
                 }
             }
