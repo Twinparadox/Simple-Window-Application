@@ -153,9 +153,16 @@ namespace DirectoryCleaner
                 Location = thisFormPoint
             };
 
-            this.Visible = false;
-            searchForm.ShowDialog();
-            this.Visible = true;
+            if (searchForm.IsListEmpty())
+            {
+                MessageBox.Show("검색된 파일이 없습니다.");
+            }
+            else
+            {
+                this.Visible = false;
+                searchForm.ShowDialog();
+                this.Visible = true;
+            }
         }
 
         /// <summary>

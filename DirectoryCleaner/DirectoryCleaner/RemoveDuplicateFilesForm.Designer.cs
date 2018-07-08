@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemoveDuplicateFilesForm));
             this.ListViewDuplicateList = new System.Windows.Forms.ListView();
+            this.chType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ButtonDeleteAll = new System.Windows.Forms.Button();
             this.ButtonClose = new System.Windows.Forms.Button();
             this.ButtonDelete = new System.Windows.Forms.Button();
@@ -37,12 +40,33 @@
             // 
             // ListViewDuplicateList
             // 
+            this.ListViewDuplicateList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chType,
+            this.chName,
+            this.chPath});
+            this.ListViewDuplicateList.Font = new System.Drawing.Font("굴림", 9F);
+            this.ListViewDuplicateList.FullRowSelect = true;
             this.ListViewDuplicateList.Location = new System.Drawing.Point(12, 12);
             this.ListViewDuplicateList.Name = "ListViewDuplicateList";
             this.ListViewDuplicateList.Size = new System.Drawing.Size(640, 330);
             this.ListViewDuplicateList.TabIndex = 0;
             this.ListViewDuplicateList.UseCompatibleStateImageBehavior = false;
+            this.ListViewDuplicateList.View = System.Windows.Forms.View.Details;
             this.ListViewDuplicateList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListViewDuplicateList_MouseDoubleClick);
+            // 
+            // chType
+            // 
+            this.chType.Text = "분류";
+            // 
+            // chName
+            // 
+            this.chName.Text = "이름";
+            this.chName.Width = 200;
+            // 
+            // chPath
+            // 
+            this.chPath.Text = "경로";
+            this.chPath.Width = 500;
             // 
             // ButtonDeleteAll
             // 
@@ -97,5 +121,8 @@
         private System.Windows.Forms.Button ButtonDeleteAll;
         private System.Windows.Forms.Button ButtonClose;
         private System.Windows.Forms.Button ButtonDelete;
+        private System.Windows.Forms.ColumnHeader chType;
+        private System.Windows.Forms.ColumnHeader chName;
+        private System.Windows.Forms.ColumnHeader chPath;
     }
 }

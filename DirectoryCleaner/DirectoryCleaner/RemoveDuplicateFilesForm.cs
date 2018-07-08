@@ -72,6 +72,7 @@ namespace DirectoryCleaner
         /// <summary>
         /// 단순 해싱 비교 200개 기준 약 0.2초 소요 (LSF가 없는 경우)
         /// LSF가 있는 경우 엄청난 시간 소요됨.
+        /// 해시값 비교는 두 파일이 다르다는 걸 입증해줄 수 있을지언정, 같다는 걸 입증할 수는 없음.
         /// </summary>
         #region 중복파일 탐색 및 리스트 생성
         public void CheckDuplicateFiles()
@@ -90,6 +91,7 @@ namespace DirectoryCleaner
                 }
             }
         }
+
         public void MakeDuplicateFileList()
         {
             ListViewDuplicateList.BeginUpdate();
@@ -97,18 +99,39 @@ namespace DirectoryCleaner
             for (int i = 0; i < size; i++)
             {
                 int cnt = 0;
+                ListViewGroup index = null;
                 for (int j = i; j < size; j++)
                 {
                     if (checkTable[i, j] == true)
                     {
                         if (cnt == 0)
                         {
-                            ListViewDuplicateList.Groups.Add(new ListViewGroup("항목", HorizontalAlignment.Left));
+                            index = new ListViewGroup(fileInfos[i].GetFileName());
                         }
+                        else if(cnt==1)
+                        {
+                            ListViewDuplicateList.Groups.Add(index);
+                            ListViewDuplicateList.Items.Add(
+                                new ListViewItem(new string[] {
+                                    Extension.GetKorFileType(fileInfos[i].GetExtensionCode()),
+                                    fileInfos[i].GetFileName(),
+                                    fileInfos[i].GetDirectoryPath()},
+                                index));
+                        }
+                        else
+                        {
+                            ListViewDuplicateList.Items.Add(new ListViewItem(fileInfos[i].GetFileName(), index));
+                        }
+                        cnt++;
                     }
                 }
             }
             ListViewDuplicateList.EndUpdate();
+        }
+
+        public void RefreshListView()
+        {
+
         }
         #endregion
 
@@ -121,7 +144,7 @@ namespace DirectoryCleaner
                 ListViewItem ListViewItem = items[0];
                 try
                 {
-                    Process.Start(ListViewItem.SubItems[0].Text);
+                    Process.Start(ListViewItem.SubItems[2].Text);
                 }
                 catch
                 {
@@ -164,7 +187,27 @@ namespace DirectoryCleaner
             {
                 try
                 {
-
+                    List<int> deleteListIndex = new List<int>();
+                    ListView.SelectedListViewItemCollection selectedItem = this.ListViewDuplicateList.SelectedItems;
+                    int selectedItemsize = selectedItem.Count;
+                    int listSize = fileInfos.Count;
+                    for (int i = 0; i < selectedItemsize; i++)
+                    {
+                        for (int j = 0; j < listSize; j++)
+                        {
+                            if (selectedItem[i].Text.Equals(fileInfos[j].GetFileName()) == true)
+                            {
+                                deleteListIndex.Add(j);
+                            }
+                        }
+                    }
+                    int deleteSize = deleteListIndex.Count;
+                    for (int i = 0; i < deleteSize; i++)
+                    {
+                        fileInfos[deleteListIndex[i]].DeleteFile();
+                        fileInfos.RemoveAt(deleteListIndex[i]);
+                    }
+                    RefreshListView();
                 }
                 catch (Exception ex)
                 {

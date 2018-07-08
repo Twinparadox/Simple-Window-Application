@@ -49,42 +49,7 @@ namespace DirectoryCleaner
                     }
                     if (IsExist(item))
                     {
-                        string fileType = Extension.CheckExtensionType(item.Extension.Substring(1, item.Extension.Length - 1));
-                        switch (fileType)
-                        {
-                            case "":
-                                fileType = "분류 없음";
-                                break;
-                            case "Audio":
-                                fileType = "오디오";
-                                break;
-                            case "Compact":
-                                fileType = "압축파일";
-                                break;
-                            case "Develope":
-                                fileType = "개발";
-                                break;
-                            case "DiscImage":
-                                fileType = "디스크";
-                                break;
-                            case "Document":
-                                fileType = "문서";
-                                break;
-                            case "Etc":
-                                fileType = "기타";
-                                break;
-                            case "Image":
-                                fileType = "이미지";
-                                break;
-                            case "Text":
-                                fileType = "텍스트";
-                                break;
-                            case "Video":
-                                fileType = "비디오";
-                                break;
-                            default:
-                                break;
-                        }
+                        string fileType = GetFileType(Extension.CheckExtensionType(item.Extension.Substring(1, item.Extension.Length - 1)));
                         string fileName = GetPureFileName(item.Name);
                         string fileSize = item.Length.ToString();
                         string directoryName = item.DirectoryName;
@@ -129,6 +94,29 @@ namespace DirectoryCleaner
             pureName = filename.Substring(0, filename.LastIndexOf('.'));
             pureName += filename.Substring(filename.LastIndexOf('.'));
             return pureName;
+        }
+
+        // 리스트뷰가 비어 있으면 폼을 그냥 종료시킴.
+        public bool IsListEmpty()
+        {
+            if (ListViewFileList.Items.Count == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 파일 분류 설정 : 한글
+        /// TODO: 이 파일의 swtich문 제거하고 Extension 클래스에서 처리하게끔. 
+        /// </summary>
+        /// <param name="fileType"></param>
+        /// <returns></returns>
+        private string GetFileType(string fileType)
+        {
+            string korFileType;
+            korFileType = Extension.GetKorFileType(fileType);
+            return korFileType;
         }
 
         // 파일 존재 여부 확인

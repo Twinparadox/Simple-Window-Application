@@ -10,8 +10,8 @@ namespace DirectoryCleaner
 {
     /// <summary>
     /// 파일정보, 해시코드, 확장자코드를 이용한 중복 확인. 
-    /// LSF에 대해서는 엄청난 속도 저하 발견.
-    /// 다른 방안을 모색해야 함.
+    /// 해시코드:LSF에 대해서는 엄청난 속도 저하 발견.
+    /// TODO: 해시 계산은 일단 주석처리했음, 다른 방안을 모색해야 함.
     /// </summary>
     public sealed class FileList
     {
@@ -26,61 +26,35 @@ namespace DirectoryCleaner
             filePath = null;
             directoryPath = null;
             item = null;
-            hashcode = null;
+            //hashcode = null;
             extensionCode = -1;
         }
+
         public FileList(string filePath)
         {
             this.filePath = filePath;
-            directoryPath = null;
             item = new FileInfo(filePath);
-            hashcode = MD5.Create().ComputeHash(item.OpenRead());
+            this.directoryPath = item.DirectoryName;
+            //hashcode = MD5.Create().ComputeHash(item.OpenRead());
 
             string fileType = Extension.CheckExtensionType(item.Extension.Substring(1, item.Extension.Length - 1));
-            switch (fileType)
-            {
-                case "":
-                    extensionCode = -1;
-                    break;
-                case "Audio":
-                    extensionCode = (int)Extension.ExtensionCode.Audio;
-                    break;
-                case "Compact":
-                    extensionCode = (int)Extension.ExtensionCode.Compact;
-                    break;
-                case "Develope":
-                    extensionCode = (int)Extension.ExtensionCode.Develope;
-                    break;
-                case "DiscImage":
-                    extensionCode = (int)Extension.ExtensionCode.DiscImage;
-                    break;
-                case "Document":
-                    extensionCode = (int)Extension.ExtensionCode.Document;
-                    break;
-                case "Etc":
-                    extensionCode = (int)Extension.ExtensionCode.Etc;
-                    break;
-                case "Image":
-                    extensionCode = (int)Extension.ExtensionCode.Image;
-                    break;
-                case "Text":
-                    extensionCode = (int)Extension.ExtensionCode.Text;
-                    break;
-                case "Video":
-                    extensionCode = (int)Extension.ExtensionCode.Video;
-                    break;
-                default:
-                    extensionCode = -1;
-                    break;
-            }
+            extensionCode = Extension.GetExtensionCode(fileType);
         }
 
         public void DeleteFile()
         {
+            this.filePath = null;
+            this.directoryPath = null;
             this.item.Delete();
             this.extensionCode = -1;
             hashcode = null;
         }
+
+        public int GetExtensionCode()
+        {
+            return this.extensionCode;
+        }
+
         public string GetFileName()
         {
             if (item != null)
@@ -92,6 +66,7 @@ namespace DirectoryCleaner
                 return null;
             }
         }
+
         public string GetFilePath()
         {
             if (item != null)
@@ -103,13 +78,23 @@ namespace DirectoryCleaner
                 return null;
             }
         }
-        public int GetExtensionCode()
+
+        public string GetDirectoryPath()
         {
-            return this.extensionCode;
+            if(item != null)
+            {
+                return item.Directory.FullName;
+            }
+            else
+            {
+                return null;
+            }
         }
+
         /// <summary>
         /// HashCode Comparison
         /// using MD5 Hash Algorithm
+        /// TODO : 다른 방안 모색하거나 삭제 고려
         /// </summary>
         /// <param name="compare"></param>
         /// <returns></returns>
@@ -135,6 +120,10 @@ namespace DirectoryCleaner
             bool success = true;
 
             if (this.item.Length != compare.item.Length)
+            {
+                return false;
+            }
+            if(this.GetExtensionCode().Equals(compare.GetExtensionCode()) == false)
             {
                 return false;
             }

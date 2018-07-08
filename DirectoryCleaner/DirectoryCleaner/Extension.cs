@@ -12,7 +12,7 @@ namespace DirectoryCleaner
         public static string defaultAudioExtension = "aac,aif,aifc,aiff,au,flac,m4a,m4b,m4p,m4r,mid,mp3,oga,ogg,opus,ra,ram,spx,wav,wma";
         public static string defaultCompacExtension = "ace,alz,bz2,gz,jar,rar,tar,xz,zip, 7z";
         public static string defaultDevelopeExtension = "cpp,c,hpp,h,java,jav";
-        public static string defaultDocExtension = "csv,doc,dochtml,docm,docx,docxml,dot,dothtml,dotm,dotx,eps,fdf,key,keynote,kth,mpd,mpp,mpt,mpx,nmbtemplate,numbers,odc,odg,odp,ods,odt,pages,pdf,pdfxml,pot,pothtml,potm,potx,ppa,ppam,pps,ppsm,ppsx,ppt,ppthtml,pptm,pptx,pptxml,prn,ps,pwz,rtf,tab,template,tsv,txt,vdx,vsd,vss,vst,vsx,vtx,wbk,wiz,wpd,wps,xdf,xdp,xlam,xll,xlr,xls,xlsb,xlsm,xlsx,xltm,xltx,xps";
+        public static string defaultDocExtension = "csv,doc,dochtml,docm,docx,docxml,dot,dothtml,dotm,dotx,eps,fdf,hwp,key,keynote,kth,mpd,mpp,mpt,mpx,nmbtemplate,numbers,odc,odg,odp,ods,odt,pages,pdf,pdfxml,pot,pothtml,potm,potx,ppa,ppam,pps,ppsm,ppsx,ppt,ppthtml,pptm,pptx,pptxml,prn,ps,pwz,rtf,tab,template,tsv,txt,vdx,vsd,vss,vst,vsx,vtx,wbk,wiz,wpd,wps,xdf,xdp,xlam,xll,xlr,xls,xlsb,xlsm,xlsx,xltm,xltx,xps";
         public static string defaultDiscExtension = "bin,dmg,img,iso,lcd,ooo";
         public static string defaultImgExtension = "bmp,cr2,gif,ico,ithmb,jpeg,jpg,nef,png,raw,svg,tif,tiff,wbmp,webp";
         public static string defaultTxtExtension = "applescript,as,as3,c,cc,clisp,coffee,cpp,cs,css,csv,cxx,def,diff,erl,fountain,ft,h,hpp,htm,html,hxx,inc,ini,java,js,json,less,log,lua,m,markdown,mat,md,mdown,mkdn,mm,mustache,mxml,patch,php,phtml,pl,plist,properties,py,rb,sass,scss,sh,shtml,sql,tab,taskpaper,tex,text,tmpl,tsv,txt,url,vb,xhtml,xml,yaml,yml";
@@ -221,7 +221,6 @@ namespace DirectoryCleaner
                 }
             }
 
-
             size = arrImgExtension.Length;
             for (int i = 0; i < size; i++)
             {
@@ -250,6 +249,101 @@ namespace DirectoryCleaner
             }
 
             return "";
+        }
+
+        public static string GetKorFileType(string fileType)
+        {
+            string korFileType;
+            switch (fileType)
+            {
+                case "":
+                    korFileType = "분류 없음";
+                    break;
+                case "Audio":
+                    korFileType = "오디오";
+                    break;
+                case "Compact":
+                    korFileType = "압축파일";
+                    break;
+                case "Develope":
+                    korFileType = "개발";
+                    break;
+                case "DiscImage":
+                    korFileType = "디스크";
+                    break;
+                case "Document":
+                    korFileType = "문서";
+                    break;
+                case "Etc":
+                    korFileType = "기타";
+                    break;
+                case "Image":
+                    korFileType = "이미지";
+                    break;
+                case "Text":
+                    korFileType = "텍스트";
+                    break;
+                case "Video":
+                    korFileType = "비디오";
+                    break;
+                default:
+                    korFileType = "분류 없음";
+                    break;
+            }
+            return korFileType;
+        }
+
+        public static string GetKorFileType(int extensionCode)
+        {
+            string korFileType = "분류 없음";
+            foreach(int code in Enum.GetValues(typeof(ExtensionCode)))
+            {
+                if(code==extensionCode)
+                {
+                    korFileType = GetKorFileType(Enum.GetName(typeof(ExtensionCode), code));
+                    break;
+                }
+            }
+            return korFileType;
+        }
+
+        public static int GetExtensionCode(string fileType)
+        {
+            int extensionCode;
+            switch (fileType)
+            {
+                case "Audio":
+                    extensionCode = (int)ExtensionCode.Audio;
+                    break;
+                case "Compact":
+                    extensionCode = (int)ExtensionCode.Compact;
+                    break;
+                case "Develope":
+                    extensionCode = (int)ExtensionCode.Develope;
+                    break;
+                case "DiscImage":
+                    extensionCode = (int)ExtensionCode.DiscImage;
+                    break;
+                case "Document":
+                    extensionCode = (int)ExtensionCode.Document;
+                    break;
+                case "Etc":
+                    extensionCode = (int)ExtensionCode.Etc;
+                    break;
+                case "Image":
+                    extensionCode = (int)ExtensionCode.Image;
+                    break;
+                case "Text":
+                    extensionCode = (int)ExtensionCode.Text;
+                    break;
+                case "Video":
+                    extensionCode = (int)ExtensionCode.Video;
+                    break;
+                default:
+                    extensionCode = -1;
+                    break;
+            }
+            return extensionCode;
         }
     }
 }
