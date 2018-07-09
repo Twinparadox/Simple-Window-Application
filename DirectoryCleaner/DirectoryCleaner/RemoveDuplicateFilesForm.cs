@@ -15,6 +15,7 @@ namespace DirectoryCleaner
 {
     public partial class RemoveDuplicateFilesForm : Form
     {
+        // FileInfo 클래스와 혼동될 수 있으므로 변수 바꿔야..
         private List<FileList> fileInfos = null;
 
         private bool?[,] checkTable;
@@ -170,14 +171,14 @@ namespace DirectoryCleaner
             {
                 try
                 {
-                    int size = fileInfos.Count;
-                    for (int i = 0; i < size; i++)
+                    foreach(FileList info in fileInfos)
                     {
-                        fileInfos[i].DeleteFile();
+                        info.DeleteFile();
                     }
                     fileInfos.Clear();
                     ListViewDuplicateList.Clear();
-                    MessageBox.Show("파일 삭제 완료");
+
+                    MessageBox.Show("모든 파일이 삭제되었습니다.");
                     this.Close();
                 }
                 catch (Exception ex)
@@ -193,27 +194,35 @@ namespace DirectoryCleaner
             {
                 try
                 {
-                    List<int> deleteListIndex = new List<int>();
+                    HashSet<FileList> deleteFileInfoIndex = new HashSet<FileList>();
+                    HashSet<int> deleteListViewIndex = new HashSet<int>();
                     ListView.SelectedListViewItemCollection selectedItem = this.ListViewDuplicateList.SelectedItems;
-                    int selectedItemsize = selectedItem.Count;
-                    int listSize = fileInfos.Count;
-                    for (int i = 0; i < selectedItemsize; i++)
+                    int selectedItemSize = selectedItem.Count;
+                    int fileInfoSize = fileInfos.Count;
+
+                    // 이미 삭제된 파일을 HashSet에 넣는 비효율 작업 해결 필요.
+                    for (int i = 0; i < selectedItemSize; i++)
                     {
-                        for (int j = 0; j < listSize; j++)
+                        for (int j = 0; j < fileInfoSize; j++)
                         {
-                            if (selectedItem[i].Text.Equals(fileInfos[j].GetFileName()) == true)
+                            if (selectedItem[i].SubItems[1].Text.Equals(fileInfos[j].GetFileName()) == true)
                             {
-                                deleteListIndex.Add(j);
+                                deleteFileInfoIndex.Add(fileInfos[j]);
+                                deleteListViewIndex.Add(i);
                             }
                         }
                     }
-                    int deleteSize = deleteListIndex.Count;
-                    for (int i = 0; i < deleteSize; i++)
+                    
+                    while(selectedItem.Count!=0)
                     {
-                        fileInfos[deleteListIndex[i]].DeleteFile();
-                        fileInfos.RemoveAt(deleteListIndex[i]);
+                        selectedItem[0].Remove();
                     }
-                    RefreshListView();
+                    foreach(FileList info in deleteFileInfoIndex)
+                    {
+                        info.DeleteFile();
+                    }
+
+                    MessageBox.Show("선택한 파일이 삭제되었습니다.");
                 }
                 catch (Exception ex)
                 {
