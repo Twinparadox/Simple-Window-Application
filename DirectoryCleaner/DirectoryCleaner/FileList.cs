@@ -19,47 +19,82 @@ namespace DirectoryCleaner
         private string directoryPath;
         private FileInfo item;
         private byte[] hashcode;
-        private int extensionCode;
+
+        public string FilePath
+        {
+            get
+            {
+                return filePath;
+            }
+            set
+            {
+                if ((value == null) || (value.Length == 0))
+                    throw new ArgumentException("FilePath cannot be blank", "FilePath");
+                filePath = value;
+            }
+        }
+        public string DirectoryPath
+        {
+            get
+            {
+                return directoryPath;
+            }
+            set
+            {
+                if ((value == null) || (value.Length == 0))
+                    throw new ArgumentException("DirectoryPath Cannot be blank", "DirectoryPath");
+                directoryPath = value;
+            }
+        }
+        public int ExtensionCode { get; set; }
+        public FileInfo Item
+        {
+            get
+            {
+                return item;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentException("FileInfo cannot be blank", "FilePath");
+                item = value;
+            }
+        }
 
         public FileList()
         {
-            filePath = null;
-            directoryPath = null;
-            item = null;
+            FilePath = null;
+            DirectoryPath = null;
+            Item = null;
             //hashcode = null;
-            extensionCode = -1;
+            ExtensionCode = -1;
         }
 
         public FileList(string filePath)
         {
-            this.filePath = filePath;
-            item = new FileInfo(filePath);
-            this.directoryPath = item.DirectoryName;
+            FilePath = filePath;
+            Item = new FileInfo(filePath);
+            DirectoryPath = item.DirectoryName;
             //hashcode = MD5.Create().ComputeHash(item.OpenRead());
 
             string fileType = Extension.CheckExtensionType(item.Extension.Substring(1, item.Extension.Length - 1));
-            extensionCode = Extension.GetExtensionCode(fileType);
+            ExtensionCode = Extension.GetExtensionCode(fileType);
         }
 
         public void DeleteFile()
         {
-            this.filePath = null;
-            this.directoryPath = null;
-            this.item.Delete();
-            this.extensionCode = -1;
+            FilePath = null;
+            DirectoryPath = null;
+            Item.Delete();
+            ExtensionCode = -1;
             hashcode = null;
-        }
-
-        public int GetExtensionCode()
-        {
-            return this.extensionCode;
         }
 
         public string GetFileName()
         {
-            if (item != null)
+            if (Item != null)
             {
-                return item.Name;
+                return Item.Name;
             }
             else
             {
@@ -69,21 +104,9 @@ namespace DirectoryCleaner
 
         public string GetFilePath()
         {
-            if (item != null)
+            if (Item != null)
             {
-                return item.FullName;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public string GetDirectoryPath()
-        {
-            if(item != null)
-            {
-                return item.Directory.FullName;
+                return Item.FullName;
             }
             else
             {
@@ -119,16 +142,16 @@ namespace DirectoryCleaner
         {
             bool success = true;
 
-            if (this.item.Length != compare.item.Length)
+            if (this.Item.Length != compare.Item.Length)
             {
                 return false;
             }
-            if(this.GetExtensionCode().Equals(compare.GetExtensionCode()) == false)
+            if(ExtensionCode==compare.ExtensionCode)
             {
                 return false;
             }
 
-            long fileLength = item.Length;
+            long fileLength = Item.Length;
             const int size = 0x1000000;
 
             Parallel.For(0, fileLength / size, x =>
@@ -140,9 +163,9 @@ namespace DirectoryCleaner
                         return;
                     }
 
-                    using (FileStream sourceFile = File.OpenRead(this.filePath))
+                    using (FileStream sourceFile = File.OpenRead(this.FilePath))
                     {
-                        using (FileStream compareFile = File.OpenRead(compare.filePath))
+                        using (FileStream compareFile = File.OpenRead(compare.FilePath))
                         {
                             var bufferSource = new byte[size];
                             var bufferCompare = new byte[size];
