@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,13 @@ namespace DirectoryCleaner
     public partial class RemoveDuplicateFilesForm : Form
     {
         // FileInfo 클래스와 혼동될 수 있으므로 변수 바꿔야..
+        // 인접행렬 구조를 이용해서 자료구조를 개편해볼 것.
+        // 확장자별로 리스트 구조 만들고, 확장자별로 1차원 Array로 파일 체크 확인
+        // A=B B = C인데 A=C가 아닐 수 없으니까 이거로 충분할 듯.
+        // 확장자별로 인접행렬 구조를 만들었다면, 이번에는 리스트뷰그룹별로 인접행렬 구조를 만드는 것이 괜찮을 것 같음.
         private List<FileList> fileInfos = null;
+        private List<List<FileList>> fileListTable = null;
+        private List<List<bool>> checkTables = null;
 
         private bool?[,] checkTable;
 
@@ -28,10 +35,22 @@ namespace DirectoryCleaner
             InitializeComponent();
 
             extensionList = extension.Split(',');
+
             fileInfos = new List<FileList>();
+            fileListTable = new List<List<FileList>>(
+                Enum.GetNames(typeof(Extension.ExtensionCode)).Length + 1);
+            checkTables = new List<List<bool>>(
+                Enum.GetNames(typeof(Extension.ExtensionCode)).Length + 1);
+
+            for (int i = 0; i < fileListTable.Capacity; i++)
+            {
+                fileListTable[i] = new List<FileList>();
+                checkTables[i] = new List<bool>();
+            }
 
             ApplyAllFiles(MainForm.pTextPath.Text, SearchFile);
-            CheckDuplicateFiles();
+            for (int i = 1; i < fileListTable.Capacity; i++)
+                CheckDuplicateFiles(i);
             MakeDuplicateFileList();
         }
 
@@ -42,7 +61,9 @@ namespace DirectoryCleaner
             {
                 try
                 {
-                    fileInfos.Add(new FileList(searchPath));
+                    FileList element = new FileList(searchPath);
+                    fileInfos.Add(element);
+                    fileListTable[element.ExtensionCode].Add(element);
                 }
                 catch (UnauthorizedAccessException e)
                 {
@@ -76,10 +97,12 @@ namespace DirectoryCleaner
         /// 해시값 비교는 두 파일이 다르다는 걸 입증해줄 수 있을지언정, 같다는 걸 입증할 수는 없음.
         /// </summary>
         #region 중복파일 탐색 및 리스트 생성
-        public void CheckDuplicateFiles()
+        public void CheckDuplicateFiles(int code)
         {
+            int listSize = fileListTable[code].Count;
             int size = fileInfos.Count;
             checkTable = new bool?[size, size];
+
             for (int i = 0; i < size; i++)
             {
                 checkTable[i, i] = false;
@@ -112,16 +135,16 @@ namespace DirectoryCleaner
                             ListViewDuplicateList.Items.Add(
                                 new ListViewItem(new string[]
                                 {
-                                    Extension.GetKorFileType(fileInfos[i].GetExtensionCode()),
+                                    Extension.GetKorFileType(fileInfos[i].ExtensionCode),
                                     fileInfos[i].GetFileName(),
-                                    fileInfos[i].GetDirectoryPath()},
+                                    fileInfos[i].DirectoryPath},
                                 index));
                         }
                         ListViewDuplicateList.Items.Add(
                                 new ListViewItem(new string[] {
-                                    Extension.GetKorFileType(fileInfos[j].GetExtensionCode()),
+                                    Extension.GetKorFileType(fileInfos[j].ExtensionCode),
                                     fileInfos[j].GetFileName(),
-                                    fileInfos[j].GetDirectoryPath()},
+                                    fileInfos[j].DirectoryPath},
                                 index));
                         cnt++;
 
