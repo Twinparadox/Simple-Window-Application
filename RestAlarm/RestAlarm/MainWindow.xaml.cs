@@ -186,6 +186,8 @@ namespace RestAlarm
 				mTimer.Stop();
 				changeButton();
 				ringAlarm();
+				this.Topmost = false;
+				this.Topmost = true;
 			}
 
 			if (mSeconds > 0)
