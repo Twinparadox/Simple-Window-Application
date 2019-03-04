@@ -30,6 +30,8 @@ namespace RestAlarm
 		public int mMinutes { get; set; }
 		public int mSeconds { get; set; }
 
+		public SoundPlayer player { get; set; }
+
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -120,6 +122,7 @@ namespace RestAlarm
 		/// <param name="e"></param>
 		private void settingbutton_Click(object sender, RoutedEventArgs e)
 		{
+			this.Topmost = false;
 			SettingWindow win = new SettingWindow();
 			win.ShowDialog();
 		}
@@ -137,6 +140,7 @@ namespace RestAlarm
 			Properties.Settings.Default.filePath = "";
 			Properties.Settings.Default.Save();
 
+			player = null;
 			mRemainigTime = Properties.Settings.Default.DefaultTimer;
 			calculateRemainingTime();
 			changeLabelTimer();
@@ -159,6 +163,23 @@ namespace RestAlarm
 				}
 				else
 				{
+					if (Properties.Settings.Default.customAlarm==true)
+					{
+						if (Properties.Settings.Default.filePath == "")
+						{
+							MessageBox.Show("사용자 설정 알람 경로를 확인해주세요.", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+							return;
+						}
+						else
+						{
+							if (player == null || player.SoundLocation != Properties.Settings.Default.filePath)
+							{
+								player = new SoundPlayer(Properties.Settings.Default.filePath);
+							}
+							//player.LoadCompleted += new System.ComponentModel.AsyncCompletedEventHandler(player_LoadCompleted);
+							player.LoadAsync();
+						}
+					}
 					changeLabelTimer();
 					changeButton();
 					mTimer.Start();
@@ -219,7 +240,7 @@ namespace RestAlarm
 		{
 			if(Properties.Settings.Default.customAlarm==true)
 			{
-				SoundPlayer player = new SoundPlayer(Properties.Settings.Default.filePath);
+				player.Play();
 			}
 			else
 			{

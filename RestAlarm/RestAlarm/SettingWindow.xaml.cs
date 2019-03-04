@@ -109,7 +109,7 @@ namespace RestAlarm
 			Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
 
 			dialog.DefaultExt = ".mp3";
-			dialog.Filter = "WAV Files (*.wav)|*.wav|MP3 Files (*.mp3)|*.mp3";
+			dialog.Filter = "MP3 Files (*.mp3)|*.mp3|WAV Files (*.wav)|*.wav";
 
 			Nullable<bool> result = dialog.ShowDialog();
 
@@ -137,6 +137,7 @@ namespace RestAlarm
 			Properties.Settings.Default.customAlarm = (rButtonCustom.IsChecked == true) ? true : false;
 			Properties.Settings.Default.CustomTimer = int.Parse(textBoxHours.Text) * 3600 + int.Parse(textBoxMinutes.Text) * 60 + int.Parse(textBoxSeconds.Text);
 			Properties.Settings.Default.Save();
+			Properties.Settings.Default.Reload();
 
 			((MainWindow)System.Windows.Application.Current.MainWindow).reloadSettings();
 			((MainWindow)System.Windows.Application.Current.MainWindow).calculateRemainingTime();
