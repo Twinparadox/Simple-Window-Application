@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -24,13 +25,15 @@ namespace RestAlarm
 	{
 		public DispatcherTimer mTimer { get; set; }
 		public bool mIsPlaying { get; set; }
+		public bool mIsWav { get; set; }
 
 		public int mRemainigTime { get; set; }
 		public int mHours { get; set; }
 		public int mMinutes { get; set; }
 		public int mSeconds { get; set; }
 
-		public SoundPlayer player { get; set; }
+		public SoundPlayer playerForWav { get; set; }
+		public WMPLib.WindowsMediaPlayer playerForElse { get; set; }
 
 		public MainWindow()
 		{
@@ -140,7 +143,7 @@ namespace RestAlarm
 			Properties.Settings.Default.filePath = "";
 			Properties.Settings.Default.Save();
 
-			player = null;
+			playerForWav = null;
 			mRemainigTime = Properties.Settings.Default.DefaultTimer;
 			calculateRemainingTime();
 			changeLabelTimer();
@@ -172,12 +175,34 @@ namespace RestAlarm
 						}
 						else
 						{
-							if (player == null || player.SoundLocation != Properties.Settings.Default.filePath)
+							FileInfo file = new FileInfo(Properties.Settings.Default.filePath);
+							String extension = file.Extension;
+
+							if (extension == "wav")
 							{
-								player = new SoundPlayer(Properties.Settings.Default.filePath);
+								mIsWav = true;
+								if (playerForWav == null || playerForWav.SoundLocation != Properties.Settings.Default.filePath)
+								{
+									playerForWav = new SoundPlayer(Properties.Settings.Default.filePath);
+								}
+								//playerForWav.LoadCompleted += new System.ComponentModel.AsyncCompletedEventHandler(player_LoadCompleted);
+								playerForWav.LoadAsync();
 							}
-							//player.LoadCompleted += new System.ComponentModel.AsyncCompletedEventHandler(player_LoadCompleted);
-							player.LoadAsync();
+							else
+							{
+								mIsWav = false;
+								if (playerForElse == null)
+								{
+									playerForElse = new WMPLib.WindowsMediaPlayer();
+									playerForElse.URL = Properties.Settings.Default.filePath;
+									playerForElse.controls.stop();
+								}
+								else if(playerForElse.URL!=Properties.Settings.Default.filePath)
+								{
+									playerForElse.URL = Properties.Settings.Default.filePath;
+									playerForElse.controls.stop();
+								}
+							}
 						}
 					}
 					changeLabelTimer();
@@ -238,9 +263,16 @@ namespace RestAlarm
 		/// </summary>
 		private void ringAlarm()
 		{
-			if(Properties.Settings.Default.customAlarm==true)
+			if (Properties.Settings.Default.customAlarm == true)
 			{
-				player.Play();
+				if (mIsWav)
+				{
+					playerForWav.Play();
+				}
+				else
+				{
+					playerForElse.controls.play();
+				}
 			}
 			else
 			{
